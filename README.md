@@ -48,3 +48,29 @@ export default tseslint.config({
   },
 })
 ```
+
+## Conventions de Commit
+
+Ce projet utilise des conventions de commit standardisées avec Husky et Commitlint. Chaque message de commit doit suivre le format suivant :
+
+```
+<type>: <description>
+```
+
+Les types autorisés sont :
+- `feat`: Nouvelle fonctionnalité
+- `fix`: Correction de bug
+- `docs`: Modification de la documentation
+- `style`: Formatage du code (espaces, point-virgules, etc.)
+- `refactor`: Refactorisation du code
+- `test`: Ajout ou modification de tests
+- `chore`: Tâches de maintenance
+
+Exemples :
+```bash
+git commit -m "feat: ajouter la connexion OAuth"
+git commit -m "fix: corriger le problème d'affichage sur mobile"
+git commit -m "docs: mettre à jour la documentation API"
+```
+
+Si votre commit ne suit pas ces conventions, il sera automatiquement rejeté par Husky.
