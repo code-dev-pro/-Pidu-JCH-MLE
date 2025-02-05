@@ -7,6 +7,104 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+## Démarrage Rapide
+
+### Prérequis
+
+- Node.js >= 18
+- Yarn >= 1.22
+- Git
+
+### Installation
+
+```bash
+# Cloner le projet
+git clone [URL_DU_REPO]
+cd pidu
+
+# Installer les dépendances
+yarn install
+
+# Lancer en développement
+yarn dev
+```
+
+### Scripts Disponibles
+
+- `yarn dev` : Lance le serveur de développement
+- `yarn build` : Compile le projet pour la production
+- `yarn preview` : Prévisualise la version de production
+- `yarn lint` : Vérifie le code avec ESLint
+- `yarn format` : Formate le code avec Prettier
+- `yarn format:check` : Vérifie le formatage sans modifier les fichiers
+
+## Structure du Projet
+
+```
+pidu/
+├── src/               # Code source
+│   ├── components/    # Composants réutilisables
+│   ├── pages/        # Pages/Routes de l'application
+│   ├── hooks/        # Custom hooks
+│   ├── services/     # Services (API, etc.)
+│   ├── types/        # Types TypeScript
+│   ├── utils/        # Fonctions utilitaires
+│   └── assets/       # Images, fonts, etc.
+├── public/           # Fichiers statiques
+├── .husky/           # Hooks Git
+├── .vscode/          # Configuration VS Code
+└── config/           # Fichiers de configuration
+```
+
+## Environnement de Développement
+
+### Configuration Recommandée
+
+- VS Code avec les extensions suivantes :
+  - ESLint
+  - Prettier
+  - TypeScript + JavaScript
+  - GitLens (optionnel)
+  - Error Lens (optionnel)
+
+### Configuration VS Code
+
+Ajouter dans `.vscode/settings.json` :
+
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
+```
+
+### Debugging
+
+1. Dans VS Code, utiliser le debugger intégré
+2. Configuration pour le debugging des tests disponible
+3. Pour le debugging en développement :
+   - Ouvrir Chrome DevTools (F12)
+   - Utiliser les React DevTools
+
+### Problèmes Courants
+
+1. **Erreur de type TypeScript** :
+
+   - Vérifier que toutes les dépendances sont installées
+   - Lancer `yarn install` pour mettre à jour les types
+
+2. **Conflit de versions** :
+
+   - Supprimer `node_modules` et `yarn.lock`
+   - Relancer `yarn install`
+
+3. **Problèmes de hook Git** :
+   - Vérifier que Husky est bien installé : `yarn prepare`
+   - Vérifier les permissions des scripts : `chmod +x .husky/*`
+
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
@@ -114,3 +212,183 @@ Pour lancer le linting :
 ```bash
 yarn lint
 ```
+
+## Workflow Git
+
+### Initialisation de la Structure Git
+
+Si vous démarrez avec un nouveau dépôt, suivez ces étapes pour mettre en place la structure des branches :
+
+1. **Créer la branche develop**
+
+   ```bash
+   # Depuis main
+   git checkout main
+   git checkout -b develop
+   git push origin develop
+   ```
+
+2. **Protéger les branches principales**
+   Dans GitHub > Settings > Branches :
+
+   - Ajouter une règle de protection pour `main`
+     - ✓ Require pull request reviews
+     - ✓ Require status checks to pass
+     - ✓ Include administrators
+   - Faire de même pour `develop`
+
+3. **Configurer les branches par défaut**
+   Dans GitHub > Settings > Branches :
+
+   - Définir `develop` comme branche par défaut
+
+4. **Créer les premières branches**
+
+   ```bash
+   # Pour une fonctionnalité
+   git checkout develop
+   git checkout -b feature/initial-setup
+
+   # Pour un bug fix
+   git checkout develop
+   git checkout -b fix/initial-fixes
+   ```
+
+5. **Mettre à jour le README**
+
+   - Ajouter la description du workflow
+   - Documenter la structure des branches
+   - Commit et push sur votre branche feature
+
+6. **Créer la première Pull Request**
+   - De `feature/initial-setup` vers `develop`
+   - Faire valider par l'équipe
+   - Merger une fois approuvé
+
+### Branches
+
+- `main` : branche principale, code en production
+- `develop` : branche de développement, code stable en cours de développement
+- `feature/*` : branches de fonctionnalités (ex: `feature/auth`)
+- `fix/*` : branches de correction de bugs (ex: `fix/login-error`)
+- `release/*` : branches de préparation de release (ex: `release/1.0.0`)
+
+### Workflow de développement
+
+1. **Créer une nouvelle branche**
+
+   ```bash
+   # Pour une nouvelle fonctionnalité
+   git checkout develop
+   git pull origin develop
+   git checkout -b feature/ma-fonctionnalite
+
+   # Pour un bug fix
+   git checkout -b fix/description-du-bug
+   ```
+
+2. **Développement**
+
+   - Faire des commits réguliers avec des messages clairs
+   - Suivre les conventions de commit définies
+   - Formatter le code avec `yarn format` avant chaque commit
+
+3. **Mise à jour de sa branche**
+
+   ```bash
+   # Mettre à jour sa branche avec develop
+   git checkout develop
+   git pull origin develop
+   git checkout feature/ma-fonctionnalite
+   git rebase develop
+   ```
+
+4. **Pull Request**
+
+   - Créer une Pull Request vers `develop`
+   - Titre : même format que les commits (`feat: description`)
+   - Description détaillée des changements
+   - Demander une review à au moins un autre développeur
+   - S'assurer que tous les tests passent
+   - Vérifier que le code est bien formaté
+
+5. **Review**
+
+   - Examiner le code attentivement
+   - Tester les changements localement
+   - Faire des commentaires constructifs
+   - Approuver ou demander des modifications
+
+6. **Merge**
+   - Merger uniquement après approbation
+   - Utiliser "Squash and merge" pour garder l'historique propre
+   - Supprimer la branche après le merge
+
+### Bonnes pratiques
+
+- Ne jamais pusher directement sur `main` ou `develop`
+- Garder les branches à jour avec `develop`
+- Faire des branches courtes et focalisées
+- Nommer les branches de manière descriptive
+- Faire des commits atomiques et bien décrits
+- Résoudre les conflits localement avant de pusher
+- Toujours formatter et tester avant de commiter
+
+### Release
+
+1. **Préparer la release**
+
+   ```bash
+   git checkout develop
+   git pull origin develop
+   git checkout -b release/x.y.z
+   ```
+
+2. **Finaliser la release**
+
+   - Mettre à jour la version dans package.json
+   - Mettre à jour le CHANGELOG.md
+   - Créer une Pull Request vers `main`
+
+3. **Après le merge**
+   ```bash
+   git checkout main
+   git pull origin main
+   git tag -a vx.y.z -m "Version x.y.z"
+   git push origin vx.y.z
+   ```
+
+### Templates GitHub (Recommandé)
+
+1. **Créer un template de Pull Request**
+   Dans `.github/PULL_REQUEST_TEMPLATE.md` :
+
+   ```markdown
+   ## Description
+
+   [Description des changements]
+
+   ## Type de changement
+
+   - [ ] Feature
+   - [ ] Bug fix
+   - [ ] Documentation
+   - [ ] Refactoring
+
+   ## Tests
+
+   - [ ] Tests ajoutés/mis à jour
+   - [ ] Tests existants passent
+
+   ## Checklist
+
+   - [ ] Code formaté (yarn format)
+   - [ ] Lint passé (yarn lint)
+   - [ ] Documentation mise à jour
+   ```
+
+2. **Créer des templates d'Issues**
+   Dans `.github/ISSUE_TEMPLATE/` :
+   - `bug_report.md`
+   - `feature_request.md`
+   - `documentation.md`
