@@ -324,6 +324,26 @@ Si vous démarrez avec un nouveau dépôt, suivez ces étapes pour mettre en pla
    - Utiliser "Squash and merge" pour garder l'historique propre
    - Supprimer la branche après le merge
 
+### Migration vers develop
+
+Si vous aviez déjà cloné le projet avant le changement de branche par défaut :
+
+```bash
+# Récupérer les derniers changements
+git fetch origin
+
+# Basculer sur develop
+git checkout develop
+
+# Lier votre branche develop locale à celle du dépôt distant
+git branch --set-upstream-to=origin/develop develop
+
+# Vérifier que tout est bien configuré
+git branch -vv
+```
+
+Pour les nouveaux clones, aucune action n'est nécessaire : la branche `develop` sera automatiquement utilisée.
+
 ### Bonnes pratiques
 
 - Ne jamais pusher directement sur `main` ou `develop`

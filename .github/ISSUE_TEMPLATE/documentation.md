@@ -1,5 +1,5 @@
 ---
-name: Documentation
+name: 📚 Documentation
 about: Suggérer une amélioration ou signaler une erreur dans la documentation
 title: '[DOC] '
 labels: documentation
