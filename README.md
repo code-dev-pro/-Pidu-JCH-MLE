@@ -58,6 +58,7 @@ Ce projet utilise des conventions de commit standardisées avec Husky et Commitl
 ```
 
 Les types autorisés sont :
+
 - `feat`: Nouvelle fonctionnalité
 - `fix`: Correction de bug
 - `docs`: Modification de la documentation
@@ -67,6 +68,7 @@ Les types autorisés sont :
 - `chore`: Tâches de maintenance
 
 Exemples :
+
 ```bash
 git commit -m "feat: ajouter la connexion OAuth"
 git commit -m "fix: corriger le problème d'affichage sur mobile"
@@ -74,3 +76,41 @@ git commit -m "docs: mettre à jour la documentation API"
 ```
 
 Si votre commit ne suit pas ces conventions, il sera automatiquement rejeté par Husky.
+
+## Conventions de Code
+
+### Formatage (Prettier)
+
+Le projet utilise Prettier pour un formatage de code cohérent. La configuration se trouve dans `.prettierrc` :
+
+- Pas de point-virgule
+- Guillemets simples
+- Indentation de 2 espaces
+- Longueur maximale de ligne : 100 caractères
+- Virgules en fin de ligne (ES5)
+- Guillemets doubles pour JSX
+
+Pour formater manuellement :
+
+```bash
+# Formater tous les fichiers
+yarn format
+
+# Vérifier le formatage sans modifier les fichiers
+yarn format:check
+```
+
+### Linting (ESLint)
+
+ESLint est configuré avec :
+
+- Support TypeScript
+- Règles React et React Hooks
+- Intégration Prettier
+- Configuration moderne (ESM)
+
+Pour lancer le linting :
+
+```bash
+yarn lint
+```
