@@ -6,6 +6,6 @@ export default function MyButton() {
   const handleClick = () => {
     setClicked(true)
   }
-
-  return <button onClick={handleClick}>{clicked ? 'Clicked !' : 'Click !'}</button>
+  const labelButton = clicked ? 'Clicked !' : 'Click !'
+  ;<button onClick={handleClick}>{labelButton}</button>
 }
