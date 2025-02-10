@@ -7,5 +7,5 @@ export default function MyButton() {
     setClicked(true)
   }
   const labelButton = clicked ? 'Clicked !' : 'Click !'
-  ;<button onClick={handleClick}>{labelButton}</button>
+  return <button onClick={handleClick}>{labelButton}</button>
 }
