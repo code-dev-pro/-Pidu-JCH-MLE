@@ -1,6 +1,7 @@
 import './App.css'
+
+import NewButton from './components/new-button'
 import MyButton from './components/my-button'
-import NewButton from './components/Newbutton'
 
 function App() {
   return (
