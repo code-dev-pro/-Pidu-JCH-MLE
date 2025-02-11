@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function MyButton() {
   const [clicked, setClicked] = useState(false)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    if (clicked) {
-      console.log('Le bouton a été cliqué !')
+    if (buttonRef.current) {
+      buttonRef.current.style.backgroundColor = clicked ? 'lightblue' : 'white'
+      console.log(clicked ? 'Le bouton est cliqué et bleu' : 'Le bouton est décoché et blanc')
     }
   }, [clicked])
 
-  const handleClick = () => {
-    setClicked(true)
-  }
-
-  const labelButton = clicked ? 'Clicked !' : 'Click !'
-  return <button onClick={handleClick}>{labelButton}</button>
+  return (
+    <button ref={buttonRef} onClick={() => setClicked(!clicked)}>
+      {clicked ? 'Clicked !' : 'Click !'}
+    </button>
+  )
 }
