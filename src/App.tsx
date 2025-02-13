@@ -1,13 +1,14 @@
 import './App.css'
-
-import ComposantParent from './components/exo-maryline/composant-parent'
-import Child from './components/test-julie/parent'
+import Card from './components/Card-timeGoal'
+// import ComposantParent from './components/exo-maryline/composant-parent'
+// import Child from './components/test-julie/parent'
 
 function App() {
   return (
     <>
-      <ComposantParent />
-      <Child />
+      <Card />
+      {/* <ComposantParent />
+      <Child /> */}
     </>
   )
 }
