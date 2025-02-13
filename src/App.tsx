@@ -1,16 +1,10 @@
 import './App.css'
 import Card from './components/Card-timeGoal'
-// import ComposantParent from './components/exo-maryline/composant-parent'
-// import Child from './components/test-julie/parent'
+import CardChild from './components/card-learning'
 
 function App() {
-  return (
-    <>
-      <Card />
-      {/* <ComposantParent />
-      <Child /> */}
-    </>
-  )
+  return <> <Card /><CardChild /></>
+
 }
 
 export default App
