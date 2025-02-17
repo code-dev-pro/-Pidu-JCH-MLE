@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Level from './pages/Level'
 import Result from './pages/Result'
-import Exercice from './pages/Exercice'
+// YOU CAN NOW USE ALIAS IN YOUR IMPORTS
+import Exercice from '@/pages/Exercice'
 
 function App() {
   return (
