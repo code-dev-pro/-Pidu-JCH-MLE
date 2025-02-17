@@ -1,8 +1,8 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Level from './pages/Level'
-import Result from './pages/Result'
+import Home from '@/pages/Home'
+import Level from '@/pages/Level'
+import Result from '@/pages/Result'
 // YOU CAN NOW USE ALIAS IN YOUR IMPORTS
 import Exercice from '@/pages/Exercice'
 
