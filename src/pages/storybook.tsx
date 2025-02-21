@@ -1,9 +1,13 @@
 import Title from '@/components/title'
 import CardAnswer from '@/components/card-answer'
+import Picture from '@/components/picture'
+
 
 export default function StoryBook() {
   return (
     <>
+      <h1>Nos composants Pidu</h1>
+      <Picture src="./Happy.svg" alt="image pidu content" />
       <Title tag="h3" title="Composant choix réponse" />
       <CardAnswer index={1} title="Apple" />
       <CardAnswer index={2} title="Orange" />
