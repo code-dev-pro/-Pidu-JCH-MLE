@@ -1,7 +1,9 @@
+import Title from '@/components/title'
+
 export default function Exercice() {
   return (
     <>
-      <h1>QCM</h1>
+      <Title tag="h3" title="Bonjour Laurent" />
     </>
   )
 }
