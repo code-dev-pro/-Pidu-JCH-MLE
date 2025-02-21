@@ -1,7 +1,7 @@
 import Title from '@/components/title'
 import CardAnswer from '@/components/card-answer'
 import Picture from '@/components/picture'
-
+import CardReward from '@/components/card-reward'
 
 export default function StoryBook() {
   return (
@@ -13,6 +13,7 @@ export default function StoryBook() {
       <CardAnswer index={2} title="Orange" />
       <CardAnswer index={3} title="Apples" />
       <CardAnswer index={4} title="Coconut" />
+      <CardReward />
     </>
   )
 }
