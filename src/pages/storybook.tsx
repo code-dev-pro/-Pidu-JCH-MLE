@@ -6,6 +6,7 @@ import CardReward from '@/components/card-reward'
 import Number from '@/components/score'
 import CardGreen from '@/components/card-reward-level'
 import ProgressNumber from '@/components/progressnumber'
+import ButtonHelp from '@/components/buttonhelp'
 import Avatar from '@/components/card-avatar'
 
 export default function StoryBook() {
@@ -23,6 +24,7 @@ export default function StoryBook() {
       <Number value={1} />
       <CardGreen />
       <ProgressNumber />
+      <ButtonHelp />
       <Avatar />
     </>
   )
