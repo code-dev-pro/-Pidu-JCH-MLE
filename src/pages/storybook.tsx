@@ -5,6 +5,7 @@ import Progressbar from '@/components/progressbar'
 import CardReward from '@/components/card-reward'
 import Number from '@/components/score'
 import CardGreen from '@/components/card-reward-level'
+import ProgressNumber from '@/components/progressnumber'
 
 export default function StoryBook() {
   return (
@@ -20,6 +21,7 @@ export default function StoryBook() {
       <CardReward />
       <Number value={1} />
       <CardGreen />
+      <ProgressNumber />
     </>
   )
 }
