@@ -3,6 +3,7 @@ import CardAnswer from '@/components/card-answer'
 import Picture from '@/components/picture'
 import Progressbar from '@/components/progressbar'
 import CardReward from '@/components/card-reward'
+import Number from '@/components/score'
 
 export default function StoryBook() {
   return (
@@ -16,6 +17,7 @@ export default function StoryBook() {
       <CardAnswer index={3} title="Apples" />
       <CardAnswer index={4} title="Coconut" />
       <CardReward />
+      <Number value={1} />
     </>
   )
 }
