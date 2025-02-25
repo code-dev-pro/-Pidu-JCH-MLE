@@ -1,11 +1,10 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import Home from '@/pages/home'
-import Level from '@/pages/level'
-import Result from '@/pages/result'
-import Exercice from '@/pages/exercice'
+import Home from '@/pages/Home'
+import Level from '@/pages/Level'
+import Result from '@/pages/Result'
+import Exercice from '@/pages/Exercice'
 import StoryBook from '@/pages/storybook'
-
 
 function App() {
   return (
