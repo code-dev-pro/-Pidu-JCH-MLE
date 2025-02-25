@@ -8,6 +8,7 @@ import CardGreen from '@/components/card-reward-level'
 import ProgressNumber from '@/components/progressnumber'
 import ButtonHelp from '@/components/buttonhelp'
 import Avatar from '@/components/card-avatar'
+import ButtonCercle from '@/components/button-cercle'
 
 export default function StoryBook() {
   return (
@@ -26,6 +27,7 @@ export default function StoryBook() {
       <ProgressNumber />
       <ButtonHelp />
       <Avatar />
+      <ButtonCercle />
     </>
   )
 }
