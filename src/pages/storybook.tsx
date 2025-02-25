@@ -9,6 +9,8 @@ import ProgressNumber from '@/components/progressnumber'
 import ButtonHelp from '@/components/buttonhelp'
 import Avatar from '@/components/card-avatar'
 import ButtonWrapper from '@/components/button-cercle'
+import CustomButton from '@/components/buttonlong'
+
 
 export default function StoryBook() {
   return (
@@ -28,6 +30,7 @@ export default function StoryBook() {
       <ButtonHelp />
       <Avatar />
       <ButtonWrapper />
+      <CustomButton bgColor="green" icon="Arrow.svg" />
     </>
   )
 }
