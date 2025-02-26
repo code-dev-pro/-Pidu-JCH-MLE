@@ -14,7 +14,7 @@ export default function ProgressNumber() {
         <span className="text-green-500">{currentQuestion}/</span>
         <span className="text-neutral-400">5</span>
       </div>
-      <button onClick={count}>ingrementer</button>
+      <button onClick={count}>incrémenter</button>
     </>
   )
 }
