@@ -15,7 +15,7 @@ export default function Progressbar() {
           style={{ width: `${progress}%` }}
         />
       </div>
-      <button onClick={count}>ingrementer</button>
+      <button onClick={count}>incrémenter</button>
     </>
   )
 }

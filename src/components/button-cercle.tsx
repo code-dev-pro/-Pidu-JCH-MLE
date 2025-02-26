@@ -16,7 +16,7 @@ function ButtonLocked() {
 function ButtonFlag() {
   return (
     <button aria-label="Bouton pour ouvrir le modal de démarrage">
-      <Picture src="./Recent.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
+      <Picture src="./Btn.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
     </button>
   )
 }
