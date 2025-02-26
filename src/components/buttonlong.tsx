@@ -18,13 +18,21 @@ export default function CustomButton({ bgColor, text, icon }: ButtonProps) {
 
   return (
     <button
-      className="relative rounded-4xl w-44 h-10 flex items-center justify-center cursor-pointer"
+      className="relative rounded-4xl w-[240px] h-[60px] flex items-center justify-center cursor-pointer"
       style={{ backgroundColor }}
       aria-label={text || 'Bouton avec icône'}
     >
-      <Picture className="absolute top-1 left-1" src="./Vector.svg" alt="vector" />
+      <Picture
+        className="absolute top-1.5 left-2 w-[9px] h-[10px]"
+        src="./Vector.svg"
+        alt="vector"
+      />
       {setContentButton()}
-      <Picture className="absolute top-0 right-1 w-5 h-5" src="./Ellipse.svg" alt="ellipse" />
+      <Picture
+        className="absolute top-1.5 right-1 w-[30px] h-[15px]"
+        src="./Ellipse.svg"
+        alt="ellipse"
+      />
     </button>
   )
 }
