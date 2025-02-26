@@ -11,7 +11,6 @@ import Avatar from '@/components/card-avatar'
 import ButtonWrapper from '@/components/button-cercle'
 import CustomButton from '@/components/buttonlong'
 
-
 export default function StoryBook() {
   return (
     <>
