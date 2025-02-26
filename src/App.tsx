@@ -1,9 +1,9 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import Exercice from '@/pages/Exercice'
 import Home from '@/pages/Home'
 import Level from '@/pages/Level'
 import Result from '@/pages/Result'
+import Exercice from '@/pages/Exercice'
 import StoryBook from '@/pages/storybook'
 
 function App() {
