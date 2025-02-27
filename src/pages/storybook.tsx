@@ -26,10 +26,10 @@ export default function StoryBook() {
       <Number value={1} />
       <CardGreen />
       <ProgressNumber />
-      <ButtonHelp />
       <Avatar />
       <ButtonWrapper />
       <CustomButton bgColor="green" icon="Arrow.svg" />
+      <ButtonHelp />
     </>
   )
 }
