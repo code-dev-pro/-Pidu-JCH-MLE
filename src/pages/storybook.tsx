@@ -19,10 +19,12 @@ export default function StoryBook() {
       <Picture src="./Happy.svg" alt="image pidu content" />
       <Progressbar />
       <Title tag="h3" title="Composant choix réponse" />
-      <CardAnswer index={1} title="Apple" />
-      <CardAnswer index={2} title="Orange" />
-      <CardAnswer index={3} title="Apples" />
-      <CardAnswer index={4} title="Coconut" />
+      <div className="flex flex-row gap-10">
+        <CardAnswer index={1} title="Apple" />
+        <CardAnswer index={2} title="Orange" />
+        <CardAnswer index={3} title="Apples" />
+        <CardAnswer index={4} title="Coconut" />
+      </div>
       <CardReward />
       <Number value={1} />
       <CardRewardLevel />
