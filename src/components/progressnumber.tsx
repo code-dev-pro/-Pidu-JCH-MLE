@@ -10,7 +10,7 @@ export default function ProgressNumber() {
 
   return (
     <>
-      <div className="text-2xl ">
+      <div className="text-2xl">
         <span className="text-green-500">{currentQuestion}/</span>
         <span className="text-neutral-400">5</span>
       </div>
