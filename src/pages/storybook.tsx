@@ -4,7 +4,7 @@ import Picture from '@/components/picture'
 import Progressbar from '@/components/progressbar'
 import CardReward from '@/components/card-reward'
 import Number from '@/components/score'
-import CardGreen from '@/components/card-reward-level'
+import CardRewardLevel from '@/components/card-reward-level'
 import ProgressNumber from '@/components/progressnumber'
 import ButtonHelp from '@/components/buttonhelp'
 import Avatar from '@/components/card-avatar'
@@ -25,7 +25,7 @@ export default function StoryBook() {
       <CardAnswer index={4} title="Coconut" />
       <CardReward />
       <Number value={1} />
-      <CardGreen />
+      <CardRewardLevel />
       <ProgressNumber />
       <Avatar />
       <ButtonWrapper />
