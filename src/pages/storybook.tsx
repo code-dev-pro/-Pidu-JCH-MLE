@@ -10,6 +10,7 @@ import ButtonHelp from '@/components/buttonhelp'
 import Avatar from '@/components/card-avatar'
 import ButtonWrapper from '@/components/button-cercle'
 import CustomButton from '@/components/buttonlong'
+import ContentCorrectAnswer from '@/components/card-correct-answer'
 
 export default function StoryBook() {
   return (
@@ -30,6 +31,7 @@ export default function StoryBook() {
       <ButtonWrapper />
       <CustomButton bgColor="green" icon="Arrow.svg" />
       <ButtonHelp />
+      <ContentCorrectAnswer />
     </>
   )
 }
