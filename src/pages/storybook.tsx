@@ -11,7 +11,6 @@ import Avatar from '@/components/card-avatar'
 import ButtonWrapper from '@/components/button-cercle'
 import CustomButton from '@/components/buttonlong'
 
-
 export default function StoryBook() {
   return (
     <>
@@ -27,10 +26,10 @@ export default function StoryBook() {
       <Number value={1} />
       <CardGreen />
       <ProgressNumber />
-      <ButtonHelp />
       <Avatar />
       <ButtonWrapper />
       <CustomButton bgColor="green" icon="Arrow.svg" />
+      <ButtonHelp />
     </>
   )
 }
