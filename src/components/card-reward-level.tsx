@@ -3,7 +3,7 @@ import Score from '@/components/score'
 
 const score = 3
 
-export default function CardGreen() {
+export default function CardRewardLevel() {
   const pictureSrc =
     score >= 1 && score < 5 ? './Star.svg' : score <= 5 ? './Diamond.svg' : './default.svg/'
 
