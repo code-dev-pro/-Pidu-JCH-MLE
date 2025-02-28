@@ -1,5 +1,4 @@
 import ProgressNumber from '@/components/progressnumber'
-
 export default function ContentCorrectAnswer() {
   return (
     <>
