@@ -59,21 +59,6 @@ export default function StoryBook() {
         <Feedback isCorrect={true} onClick={() => {}} correctAnswer="" />
         <Feedback isCorrect={false} onClick={() => {}} correctAnswer="Apple" />
       </div>
-
-
-      <CardReward />
-      <Number value={1} />
-      <CardRewardLevel />
-      <ProgressNumber />
-      <Avatar />
-      <ButtonWrapper />
-      <CustomButton bgColor="green" icon="Arrow.svg" />
-      <ButtonHelp />
-      <ContentCorrectAnswer />
-      <Feedback isCorrect={true} onClick={() => {}} correctAnswer="" />
-      <Feedback isCorrect={false} onClick={() => {}} correctAnswer="Apple" />
-
-
     </>
   )
 }
