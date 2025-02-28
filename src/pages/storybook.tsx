@@ -16,24 +16,46 @@ export default function StoryBook() {
   return (
     <>
       <h1>Nos composants Pidu</h1>
-      <Picture src="./Happy.svg" alt="image pidu content" />
-      <Progressbar />
-      <Title tag="h3" title="Composant choix réponse" />
-      <div className="flex flex-row gap-10">
-        <CardAnswer index={1} title="Apple" />
-        <CardAnswer index={2} title="Orange" />
-        <CardAnswer index={3} title="Apples" />
-        <CardAnswer index={4} title="Coconut" />
+      <div className="flex flex-col gap-8 px-4">
+        <h2 className="text-2xl font-semibold mb-4 bg-pink-100">Progression</h2>
+        <ProgressNumber
+          className="text-2xl font-bold text-green-500"
+          currentColor="text-green-500"
+        />
+        <Progressbar />
+
+        <h2 className="text-2xl font-semibold bg-pink-100">Card</h2>
+        <Title tag="h3" title="Composant choix réponse" />
+        <div className="flex flex-wrap gap-6">
+          <CardAnswer index={1} title="Apple" />
+          <CardAnswer index={2} title="Orange" />
+          <CardAnswer index={3} title="Apples" />
+          <CardAnswer index={4} title="Coconut" />
+        </div>
+
+        <div className="flex gap-10 justify-center ">
+          <div className="w-1/3">
+            <CardRewardLevel />
+          </div>
+          <CardReward />
+          <ContentCorrectAnswer />
+        </div>
+
+        <div className="w-full mt-8">
+          <h2 className="text-2xl font-semibold mb-4 bg-pink-100">Modal</h2>
+          <ButtonHelp />
+          <ButtonWrapper />
+        </div>
+
+        <h2 className="text-2xl font-semibold mb-4 bg-pink-100">Picture et Autres</h2>
+        <div className="flex flex-wrap gap-6 mt-8 justify-center">
+          <Picture src="./Happy.svg" alt="image pidu content" />
+          <Avatar />
+          <Number value={1} />
+          <CustomButton bgColor="green" icon="Arrow.svg" />
+        </div>
+        <h2 className="text-2xl font-semibold mb-4 bg-pink-100">Feedback</h2>
       </div>
-      <CardReward />
-      <Number value={1} />
-      <CardRewardLevel />
-      <ProgressNumber className="text-2xl font-bold" currentColor="text-green-500" />
-      <Avatar />
-      <ButtonWrapper />
-      <CustomButton bgColor="green" icon="Arrow.svg" />
-      <ButtonHelp />
-      <ContentCorrectAnswer />
     </>
   )
 }
