@@ -11,6 +11,7 @@ import Avatar from '@/components/card-avatar'
 import ButtonWrapper from '@/components/button-cercle'
 import CustomButton from '@/components/buttonlong'
 import ContentCorrectAnswer from '@/components/card-correct-answer'
+import Feedback from '@/components/feedback'
 
 export default function StoryBook() {
   return (
@@ -56,6 +57,19 @@ export default function StoryBook() {
         </div>
         <h2 className="text-2xl font-semibold mb-4 bg-pink-100">Feedback</h2>
       </div>
+
+      <CardReward />
+      <Number value={1} />
+      <CardRewardLevel />
+      <ProgressNumber />
+      <Avatar />
+      <ButtonWrapper />
+      <CustomButton bgColor="green" icon="Arrow.svg" />
+      <ButtonHelp />
+      <ContentCorrectAnswer />
+      <Feedback isCorrect={true} onClick={() => {}} correctAnswer="" />
+      <Feedback isCorrect={false} onClick={() => {}} correctAnswer="Apple" />
+
     </>
   )
 }
