@@ -1,13 +1,22 @@
 import { useState } from 'react'
 
-export default function ProgressNumber() {
+interface ProgressNumberProps {
+  className?: string
+  colorNumber?: string
+  currentColor?: string
+}
+export default function ProgressNumber({
+  className = '',
+  currentColor = 'text-black',
+  colorNumber = 'text-neutral-400',
+}: ProgressNumberProps) {
   const [currentQuestion] = useState(1)
 
   return (
     <>
-      <div className="text-2xl">
-        <span className="text-green-500">{currentQuestion}/</span>
-        <span className="text-neutral-400">5</span>
+      <div className={className}>
+        <span className={currentColor}>{currentQuestion}/</span>
+        <span className={colorNumber}>5</span>
       </div>
     </>
   )

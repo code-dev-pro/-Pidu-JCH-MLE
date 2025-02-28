@@ -28,7 +28,7 @@ export default function StoryBook() {
       <CardReward />
       <Number value={1} />
       <CardRewardLevel />
-      <ProgressNumber />
+      <ProgressNumber className="text-2xl font-bold" currentColor="text-green-500" />
       <Avatar />
       <ButtonWrapper />
       <CustomButton bgColor="green" icon="Arrow.svg" />

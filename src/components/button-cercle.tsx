@@ -37,7 +37,7 @@ function ButtonFlag() {
             <Title tag="h2" title="Exercice n°1 : Question à choix unique sur les couleurs " />
           </div>
           <div className="flex flex-row ml-27 font-semibold">
-            <ProgressNumber />
+            <ProgressNumber colorNumber="text-black" currentColor="text-black" />
             <span className="mt-1">question</span>
           </div>
           <div className="flex flex-col items-center justify-center gap-17">
