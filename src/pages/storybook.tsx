@@ -11,6 +11,7 @@ import Avatar from '@/components/card-avatar'
 import ButtonWrapper from '@/components/button-cercle'
 import CustomButton from '@/components/buttonlong'
 import ContentCorrectAnswer from '@/components/card-correct-answer'
+import Feedback from '@/components/feedback'
 
 export default function StoryBook() {
   return (
@@ -34,6 +35,8 @@ export default function StoryBook() {
       <CustomButton bgColor="green" icon="Arrow.svg" />
       <ButtonHelp />
       <ContentCorrectAnswer />
+      <Feedback isCorrect={true} onClick={() => {}} correctAnswer="" />
+      <Feedback isCorrect={false} onClick={() => {}} correctAnswer="Apple" />
     </>
   )
 }
