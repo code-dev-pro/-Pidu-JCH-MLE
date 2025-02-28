@@ -15,6 +15,7 @@ function Feedback({ isCorrect, correctAnswer, onClick }: FeedbackProps) {
   const subtitle = isCorrect
     ? 'Tu as trouvé la bonne réponse!'
     : `La bonne réponse est : "${correctAnswer}"`
+  const color = isCorrect ? 'text-[#19C472]' : 'text-[#F84E40]'
 
   return (
     <div className="flex items-center w-full h-[144px]" style={{ backgroundColor }}>
@@ -24,9 +25,9 @@ function Feedback({ isCorrect, correctAnswer, onClick }: FeedbackProps) {
 
           <div className="flex flex-col justify-center ml-4">
             <div className="font-bold mb-2">
-              <Title tag="h2" title={title} />
+              <Title tag="h2" title={title} className={color} />
             </div>
-            <Title tag="h3" title={subtitle} />
+            <Title tag="h3" title={subtitle} className={color} />
           </div>
         </div>
 
