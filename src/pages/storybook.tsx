@@ -56,7 +56,10 @@ export default function StoryBook() {
           <CustomButton bgColor="green" icon="Arrow.svg" />
         </div>
         <h2 className="text-2xl font-semibold mb-4 bg-pink-100">Feedback</h2>
+        <Feedback isCorrect={true} onClick={() => {}} correctAnswer="" />
+        <Feedback isCorrect={false} onClick={() => {}} correctAnswer="Apple" />
       </div>
+
 
       <CardReward />
       <Number value={1} />
@@ -69,6 +72,8 @@ export default function StoryBook() {
       <ContentCorrectAnswer />
       <Feedback isCorrect={true} onClick={() => {}} correctAnswer="" />
       <Feedback isCorrect={false} onClick={() => {}} correctAnswer="Apple" />
+
+
     </>
   )
 }
