@@ -41,3 +41,16 @@
 .read-the-docs {
   color: #888;
 }
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('./assets/fonts/Nunito-Bold.woff') format('woff'),
+       url('./assets/fonts/Nunito-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
