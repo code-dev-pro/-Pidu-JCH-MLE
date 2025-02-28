@@ -69,7 +69,6 @@ export default function StoryBook() {
       <ContentCorrectAnswer />
       <Feedback isCorrect={true} onClick={() => {}} correctAnswer="" />
       <Feedback isCorrect={false} onClick={() => {}} correctAnswer="Apple" />
-
     </>
   )
 }
