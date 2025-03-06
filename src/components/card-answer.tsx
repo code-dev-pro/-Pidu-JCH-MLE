@@ -1,4 +1,4 @@
-import useAnswerStore from '@/store/store-answer'
+import useAnswerStore from '@/store/store-choice-answer'
 
 interface CardAnswerProps {
   title: string

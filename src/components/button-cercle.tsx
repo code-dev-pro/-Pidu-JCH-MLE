@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Picture from './picture'
-import useLevelStore from '@/store/store-exercice'
+import useLevelStore from '@/store/store-level'
 import Title from './title'
 import Progressbar from './progressbar'
 import ProgressNumber from './progressnumber'
