@@ -10,7 +10,7 @@ import Layout from './components/layout/layout'
 function App() {
   return (
     <Routes>
-      <Route path="" element={<Home />} />
+      <Route path="" element={<Layout>{<Home />}</Layout>} />
       <Route path="level" element={<Level />} />
       <Route path="exercice/:levelId/:questionId" element={<Exercice />} />
       <Route path="exercice" element={<Exercice />} />
