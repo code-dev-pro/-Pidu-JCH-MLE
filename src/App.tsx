@@ -10,10 +10,38 @@ import Layout from './components/layout/layout'
 function App() {
   return (
     <Routes>
-      <Route path="" element={<Layout>{<Home />}</Layout>} />
-      <Route path="level" element={<Level />} />
-      <Route path="exercice/:levelId/:questionId" element={<Exercice />} />
-      <Route path="exercice" element={<Exercice />} />
+      <Route
+        path=""
+        element={
+          <Layout>
+            <Home />
+          </Layout>
+        }
+      />
+      <Route
+        path="level"
+        element={
+          <Layout>
+            <Level />
+          </Layout>
+        }
+      />
+      <Route
+        path="exercice/:levelId/:questionId"
+        element={
+          <Layout>
+            <Exercice />
+          </Layout>
+        }
+      />
+      <Route
+        path="exercice"
+        element={
+          <Layout>
+            <Exercice />
+          </Layout>
+        }
+      />
       <Route
         path="result"
         element={
@@ -22,7 +50,14 @@ function App() {
           </Layout>
         }
       />
-      <Route path="storybook" element={<StoryBook />} />
+      <Route
+        path="storybook"
+        element={
+          <Layout>
+            <StoryBook />
+          </Layout>
+        }
+      />
     </Routes>
   )
 }
