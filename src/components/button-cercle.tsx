@@ -11,10 +11,37 @@ interface IButtonLevelProps {
 }
 
 function ButtonLocked() {
+  const [showing, setShowing] = useState(false)
+
+  const handleClick = () => {
+    setShowing(!showing)
+  }
+
   return (
-    <button aria-label="Bouton du prochain niveau verrouillé">
-      <Picture src="./Lock.svg" alt="Bouton avec cadenas" className="cursor-pointer" />
-    </button>
+    <>
+      <button onClick={handleClick} aria-label="Bouton du prochain niveau verrouillé">
+        <Picture src="./Lock.svg" alt="Bouton avec cadenas" className="cursor-pointer" />
+      </button>
+
+      {showing && (
+        <div className="relative w-[456px] h-[220px] bg-white rounded-[24px] shadow-lg text-center left-1/2 transform -translate-x-1/2">
+          <div className="absolute -top-2 left-1/2 bg-white -translate-x-1/2 w-4 h-4 rotate-45"></div>
+
+          <button
+            onClick={() => setShowing(false)}
+            className="absolute top-4 right-4"
+            aria-label="Fermer le modal"
+          >
+            <Picture src="./Close-Circle.svg" alt="Fermer" className="w-6 h-6 cursor-pointer" />
+          </button>
+
+          <div className="p-10 font-bold text-base flex flex-col items-center justify-center">
+            <Picture src="./Pidu-study.svg" alt="pidu" className="w-[90px] h-[90px]" />
+            <p>Tu dois valider l'exercice en cours pour pouvoir passer au suivant</p>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 
