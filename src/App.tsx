@@ -9,16 +9,21 @@ import Layout from './components/layout/layout'
 
 function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="" element={<Home />} />
-        <Route path="level" element={<Level />} />
-        <Route path="exercice/:levelId/:questionId" element={<Exercice />} />
-        <Route path="exercice" element={<Exercice />} />
-        <Route path="result" element={<Result />} />
-        <Route path="storybook" element={<StoryBook />} />
-      </Routes>
-    </Layout>
+    <Routes>
+      <Route path="" element={<Home />} />
+      <Route path="level" element={<Level />} />
+      <Route path="exercice/:levelId/:questionId" element={<Exercice />} />
+      <Route path="exercice" element={<Exercice />} />
+      <Route
+        path="result"
+        element={
+          <Layout>
+            <Result />
+          </Layout>
+        }
+      />
+      <Route path="storybook" element={<StoryBook />} />
+    </Routes>
   )
 }
 
