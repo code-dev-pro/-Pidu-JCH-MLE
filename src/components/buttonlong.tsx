@@ -4,9 +4,10 @@ interface ButtonProps {
   bgColor?: 'green' | 'orange'
   text?: string
   icon?: string
+  onClick?: () => void
 }
 
-export default function CustomButton({ bgColor, text, icon }: ButtonProps) {
+export default function CustomButton({ onClick, bgColor, text, icon }: ButtonProps) {
   const backgroundColor = bgColor === 'orange' ? '#FF8B2D' : '#19C472'
 
   const setContentButton = () => {
@@ -21,6 +22,7 @@ export default function CustomButton({ bgColor, text, icon }: ButtonProps) {
       className="relative rounded-4xl w-[240px] h-[60px] flex items-center justify-center cursor-pointer"
       style={{ backgroundColor }}
       aria-label={text || 'Bouton avec icône'}
+      onClick={onClick}
     >
       <Picture
         className="absolute top-1.5 left-2 w-[9px] h-[10px]"
