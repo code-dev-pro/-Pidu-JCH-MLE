@@ -1,4 +1,5 @@
 import './App.css'
+import './end.css'
 import { Routes, Route } from 'react-router-dom'
 import Home from '@/pages/Home'
 import Level from '@/pages/Level'
@@ -6,7 +7,7 @@ import Result from '@/pages/Result'
 import Exercice from '@/pages/Exercice'
 import StoryBook from '@/pages/storybook'
 import Layout from './components/layout/layout'
-import ResultCompleted from './pages/completed'
+import TheEnd from './pages/End'
 
 function App() {
   return (
@@ -60,10 +61,14 @@ function App() {
         }
       />
       <Route
-        path="completed"
+
+        path="end"
         element={
           <Layout>
-            <ResultCompleted />
+            <TheEnd />
+       
+        
+
           </Layout>
         }
       />
