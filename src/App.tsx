@@ -61,14 +61,10 @@ function App() {
         }
       />
       <Route
-
         path="end"
         element={
           <Layout>
             <TheEnd />
-       
-        
-
           </Layout>
         }
       />
