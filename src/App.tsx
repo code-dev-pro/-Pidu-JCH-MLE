@@ -8,6 +8,8 @@ import Exercice from '@/pages/Exercice'
 import StoryBook from '@/pages/storybook'
 import Layout from './components/layout/layout'
 import TheEnd from './pages/End'
+import ResultCompleted from './pages/completed'
+
 
 function App() {
   return (
@@ -61,10 +63,17 @@ function App() {
         }
       />
       <Route
+
         path="end"
         element={
           <Layout>
             <TheEnd />
+
+        path="completed"
+        element={
+          <Layout>
+            <ResultCompleted />
+
           </Layout>
         }
       />
