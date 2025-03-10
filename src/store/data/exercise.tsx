@@ -9,8 +9,9 @@ interface Choice {
 interface Question {
   id: number
   question: string
+  image: string
   choices: Choice[]
-  answer: number
+  help: string
 }
 
 interface Exercise {
