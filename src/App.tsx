@@ -6,6 +6,7 @@ import Result from '@/pages/Result'
 import Exercice from '@/pages/Exercice'
 import StoryBook from '@/pages/storybook'
 import Layout from './components/layout/layout'
+import TheEnd from './pages/End'
 
 function App() {
   return (
@@ -55,6 +56,14 @@ function App() {
         element={
           <Layout>
             <StoryBook />
+          </Layout>
+        }
+      />
+      <Route
+        path="end"
+        element={
+          <Layout>
+            <TheEnd />
           </Layout>
         }
       />
