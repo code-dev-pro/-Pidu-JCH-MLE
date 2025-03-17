@@ -4,9 +4,11 @@ interface ITitle {
   title: string
   tag: TTitle
   className?: string
+  text?: string
 }
 
-export default function Title({ title, tag, className }: ITitle) {
+export default function Title({ title, tag, className, text }: ITitle) {
   const Tag = tag
-  return <Tag className={className}>{title}</Tag>
+  const textHelp = text ? text : title
+  return <Tag className={className}>{textHelp}</Tag>
 }

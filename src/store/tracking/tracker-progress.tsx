@@ -9,7 +9,7 @@ interface ProgressStore {
 
 const useProgressStore = create<ProgressStore>(set => ({
   progressNumber: 1,
-  progressBar: 0,
+  progressBar: 20,
   increaseProgress: () =>
     set(state => {
       const newProgressNumber = state.progressNumber + 1

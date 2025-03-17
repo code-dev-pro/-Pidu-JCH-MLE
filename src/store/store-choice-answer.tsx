@@ -6,7 +6,7 @@ interface AnswerStore {
 }
 
 const useAnswerStore = create<AnswerStore>(set => ({
-  clickedIndex: 0,
+  clickedIndex: -1,
   setClickedIndex: index => set(() => ({ clickedIndex: index })),
 }))
 

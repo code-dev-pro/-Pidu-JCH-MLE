@@ -5,30 +5,110 @@ import ProgressNumber from '@/components/progressnumber'
 import CardAnswer from '@/components/card-answer'
 import CustomButton from '@/components/buttonlong'
 import Picture from '@/components/picture'
+import useProgressStore from '@/store/tracking/tracker-progress'
+import useExerciseStore from '@/store/data/exercise'
+import useLevelStore from '@/store/store-level'
+import Feedback from '@/components/feedback'
+import useQuizStore from '@/store/tracking/tracker-answer'
+import { useState } from 'react'
+import useFeedbackStore from '@/store/data/feedback'
+import useAnswerStore from '@/store/store-choice-answer'
+import { useNavigate } from 'react-router-dom'
 
 export default function Exercice() {
+  const { progressNumber, increaseProgress } = useProgressStore() //Récupère la valeur actuelle de la progression et une fonction pour l'augmenter
+  const { exercises } = useExerciseStore() // Récupère la liste des exercices
+  const { level } = useLevelStore() // Récupère le niveau actuel
+  const { setClickedIndex } = useAnswerStore() // Récupère une fonction pour enregistrer l'index de la réponse sélectionnée
+  const { addAnswer } = useQuizStore() // Récupère une fonction pour enregistrer une réponse au quiz
+  const { setValue } = useFeedbackStore() // Récupère une fonction pour définir une valeur dans le store de feedback
+  const data = exercises[level - 1] // Sélectionne les données de l'exercice correspondant au niveau actuel
+  const exerciseId = level // Identifiant de l'exercice basé sur le niveau actuel
+  const questionId = progressNumber // Identifiant de la question basé sur le numéro de progression
+
+  const title = data.questions[progressNumber - 1].question // Récupère le titre (question) de la question actuelle en fonction du numéro de progression
+  const image = data.questions[progressNumber - 1].image // Récupère l'image associée à la question actuelle
+  const choices = data.questions[progressNumber - 1].choices // Récupère les choix de réponse pour la question actuelle
+  const help = data.questions[progressNumber - 1].help // Récupère l'aide éventuelle pour la question actuelle
+  const question = data.questions[progressNumber - 1] // Récupère l'objet complet de la question actuelle
+  const label = question.choices.find(choice => choice.isCorrect)?.label || '""' // Trouve le choix de réponse correct et récupère son label (texte affiché), sinon retourne une chaîne vide
+
+  // Déclare un état pour stocker le choix sélectionné par l'utilisateur, qui peut être null par défaut
+  const [selectedChoice, setSelectedChoice] = useState<{
+    id: number
+    label: string
+    isCorrect: boolean
+  } | null>(null)
+
+  const navigate = useNavigate() // Hook pour gérer la navigation entre les pages
+  const [showing, setShowing] = useState(false) // Déclare un état pour contrôler l'affichage d'un élément (ex: validation, feedback)
+  // Fonction appelée pour changer la progression de l'exercice
+  const onChangedProgress = () => {
+    setClickedIndex(-1)
+    setSelectedChoice(null)
+    // Vérifie si la progression a atteint la dernière question (ici, la 5e question)
+    if (progressNumber === 5) {
+      navigate('/Result')
+      return
+    }
+    // Incrémente la progression et cache l'affichage (ex: feedback)
+    increaseProgress()
+    setShowing(false)
+  }
+  // Fonction déclenchée lorsqu'un utilisateur valide son choix
+  const onClickHandler = () => {
+    if (!selectedChoice) return // Si aucun choix n'est sélectionné, on arrête la fonction
+    addAnswer(exerciseId, questionId, selectedChoice.label, selectedChoice.isCorrect) // Ajoute la réponse donnée par l'utilisateur au store des réponses
+    setValue(selectedChoice.isCorrect ? 'success' : 'error') // Définit le feedback de l'utilisateur (succès si bonne réponse, erreur sinon)
+    setShowing(!showing) // Alterne l'affichage de l'élément lié au feedback
+  }
+  // Fonction appelée lorsqu'un utilisateur sélectionne une réponse
+  const setTracking = (choice: { id: number; label: string; isCorrect: boolean }) => {
+    setSelectedChoice(choice) // Met à jour l'état du choix sélectionné avec l'objet correspondant
+  }
+
   return (
     <>
-      <div className="flex flex-wrap gap-6 justify-center p-7">
-        <div className="max-w-16 max-h-16 mt-[-20px]">
-          <ButtonHelp />
+      <div className="w-screen">
+        <div className="flex flex-wrap gap-6 justify-center mt-15">
+          <div className="max-w-16 max-h-16 mt-[-20px]">
+            <ButtonHelp text={help} />
+          </div>
+          <Progressbar />
+          <ProgressNumber
+            className="text-2xl font-bold text-green-500 mt-[-10px]"
+            currentColor="text-green-500"
+          />
         </div>
-        <Progressbar />
-        <ProgressNumber
-          className="text-2xl font-bold text-green-500 mt-[-10px]"
-          currentColor="text-green-500"
-        />
-      </div>
-      <Title tag="h1" title="Devine le mot" className="mb-7" />
-      <Picture src="/Apple.svg" alt="image pomme" className=" block mx-auto gap-7" />
-      <div className="flex flex-wrap gap-6 justify-center mt-7">
-        <CardAnswer index={1} title="Apple" />
-        <CardAnswer index={2} title="Orange" />
-        <CardAnswer index={3} title="Apples" />
-        <CardAnswer index={4} title="Coconut" />
-      </div>
-      <div className="flex justify-center gap-12 mt-7">
-        <CustomButton icon="/Arrow.svg" />
+        <Title tag="h1" title={title} className="mb-14" />
+        <div className="flex justify-center">
+          <div className="w-[235px] h-[231px] bg-[#FDF3F2] rounded-2xl">
+            <Picture
+              src={image}
+              alt="image pomme"
+              className=" block mx-auto gap-7 w-[235px] h-[231px]"
+            />
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-6 justify-center mt-14">
+          {choices.map((choice, index) => (
+            <CardAnswer
+              onClickHandler={() => setTracking(choice)} // Passe la fonction setTracking avec le choix sélectionné lorsqu'on clique sur la carte
+              key={choice.id}
+              index={index}
+              label={choice.label}
+              isCorrect={choice.isCorrect}
+            />
+          ))}
+        </div>
+        <div className="flex justify-center gap-12 mt-14">
+          <CustomButton onClickHandler={onClickHandler} text="Valider" disabled={!selectedChoice} />
+        </div>
+        {showing && (
+          <div className="mt-10">
+            <Feedback correctAnswer={label} increaseProgress={onChangedProgress} />
+          </div>
+        )}
       </div>
     </>
   )
