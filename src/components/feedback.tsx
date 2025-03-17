@@ -5,7 +5,7 @@ import useFeedbackStore from '@/store/data/feedback'
 
 interface FeedbackProps {
   correctAnswer: string
-  increaseProgress: () => void
+  increaseProgress?: () => void
 }
 
 function Feedback({ correctAnswer, increaseProgress }: FeedbackProps) {

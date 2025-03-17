@@ -8,7 +8,6 @@ interface CardAnswerProps {
 
 export default function CardAnswer({ label, index, onClickHandler, isCorrect }: CardAnswerProps) {
   const { clickedIndex, setClickedIndex } = useAnswerStore()
-  console.log(clickedIndex === index ? 'Le bouton est cliqué' : 'Le bouton est décoché')
   const onChoice = () => {
     setClickedIndex(index)
     onClickHandler?.(index, label, isCorrect)

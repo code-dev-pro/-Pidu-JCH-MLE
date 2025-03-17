@@ -36,10 +36,10 @@ export default function StoryBook() {
 
         <div className="flex gap-10 justify-center ">
           <div className="w-1/3">
-            <CardRewardLevel />
+            <CardRewardLevel value={1} />
           </div>
-          <CardReward />
-          <ContentCorrectAnswer />
+          <CardReward value={1} />
+          <ContentCorrectAnswer value={1} />
         </div>
 
         <div className="w-full mt-8">
@@ -56,7 +56,7 @@ export default function StoryBook() {
           <CustomButton bgColor="green" icon="Arrow.svg" />
         </div>
         <h2 className="text-2xl font-semibold mb-4 bg-pink-100">Feedback</h2>
-        <Feedback onClick={() => {}} correctAnswer="" />
+        <Feedback correctAnswer="" />
       </div>
     </>
   )
