@@ -1,17 +1,15 @@
 import Picture from './picture'
 import Title from './title'
 import CustomButton from './buttonlong'
-// import useDataStore from '@/store/store-data'
 import useFeedbackStore from '@/store/data/feedback'
 
 interface FeedbackProps {
   correctAnswer: string
-  onClick: () => void
+  increaseProgress: () => void
 }
 
-function Feedback({ correctAnswer, onClick }: FeedbackProps) {
+function Feedback({ correctAnswer, increaseProgress }: FeedbackProps) {
   const { valueFeedback } = useFeedbackStore()
-
   const isSuccess = valueFeedback === 'success'
   const backgroundColor = isSuccess ? '#DFF8EC' : '#FDF3F2'
   const pictureSrc = isSuccess ? './Happy.svg' : './Sad.svg'
@@ -23,7 +21,7 @@ function Feedback({ correctAnswer, onClick }: FeedbackProps) {
   const color = isSuccess ? 'text-[#19C472]' : 'text-[#F84E40]'
 
   return (
-    <div className="flex items-center w-full h-[144px]" style={{ backgroundColor }}>
+    <div className="flex items-center w-full h-[144px] rounded-xl" style={{ backgroundColor }}>
       <div className="flex flex-row justify-between w-full">
         <div className="flex flex-row ml-8">
           <Picture src={pictureSrc} alt={pictureAlt} className="mx-auto mb-4 w-24 h-24" />
@@ -34,7 +32,7 @@ function Feedback({ correctAnswer, onClick }: FeedbackProps) {
             <Title tag="h3" title={subtitle} className={color} />
           </div>
         </div>
-        <div onClick={onClick} className="mr-8 flex items-center">
+        <div onClick={increaseProgress} className="mr-8 flex items-center">
           <CustomButton bgColor="green" icon="Arrow.svg" />
         </div>
       </div>

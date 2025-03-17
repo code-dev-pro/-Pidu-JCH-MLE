@@ -1,7 +1,7 @@
 export const data = [
   {
     id: 1,
-    title: 'Exercice 1: Les fruits',
+    title: 'Exercice 1 : Les fruits',
     questions: [
       {
         id: 1,
@@ -13,7 +13,7 @@ export const data = [
           { id: 3, label: 'Orange', isCorrect: false },
           { id: 4, label: 'Banana', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre A',
+        help: 'Le mot commence par la lettre A',
       },
       {
         id: 2,
@@ -25,7 +25,7 @@ export const data = [
           { id: 3, label: 'Apple', isCorrect: false },
           { id: 4, label: 'Strawberry', isCorrect: true },
         ],
-        help: 'le mot commence par la lettre S',
+        help: 'Le mot commence par la lettre S',
       },
       {
         id: 3,
@@ -37,7 +37,7 @@ export const data = [
           { id: 3, label: 'Lemon', isCorrect: false },
           { id: 4, label: 'Strawberry', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre P',
+        help: 'Le mot commence par la lettre P',
       },
       {
         id: 4,
@@ -49,7 +49,7 @@ export const data = [
           { id: 3, label: 'Lemon', isCorrect: true },
           { id: 4, label: 'Banana', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre L',
+        help: 'Le mot commence par la lettre L',
       },
       {
         id: 5,
@@ -61,13 +61,13 @@ export const data = [
           { id: 3, label: 'Apple', isCorrect: false },
           { id: 4, label: 'Strawberry', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre W',
+        help: 'Le mot commence par la lettre W',
       },
     ],
   },
   {
     id: 2,
-    title: 'Exercice 2: Les animaux',
+    title: 'Exercice 2 : Les animaux',
     questions: [
       {
         id: 1,
@@ -79,7 +79,7 @@ export const data = [
           { id: 3, label: 'Cat', isCorrect: true },
           { id: 4, label: 'Bird', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre C',
+        help: 'Le mot commence par la lettre C',
       },
       {
         id: 2,
@@ -91,7 +91,7 @@ export const data = [
           { id: 3, label: 'Fish', isCorrect: false },
           { id: 4, label: 'Cat', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre P',
+        help: 'Le mot commence par la lettre P',
       },
       {
         id: 3,
@@ -103,7 +103,7 @@ export const data = [
           { id: 3, label: 'Tortoise', isCorrect: false },
           { id: 4, label: 'Rabbit', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre D',
+        help: 'Le mot commence par la lettre D',
       },
       {
         id: 4,
@@ -115,7 +115,7 @@ export const data = [
           { id: 3, label: 'Rabbit', isCorrect: true },
           { id: 4, label: 'Dog', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre R',
+        help: 'Le mot commence par la lettre R',
       },
       {
         id: 5,
@@ -127,13 +127,13 @@ export const data = [
           { id: 3, label: 'Dog', isCorrect: false },
           { id: 4, label: 'Fish', isCorrect: true },
         ],
-        help: 'le mot commence par la lettre F',
+        help: 'Le mot commence par la lettre F',
       },
     ],
   },
   {
     id: 3,
-    title: 'Exercice 3: Les chiffres',
+    title: 'Exercice 3 : Les chiffres',
     questions: [
       {
         id: 1,
@@ -145,7 +145,7 @@ export const data = [
           { id: 3, label: 'Five', isCorrect: false },
           { id: 4, label: 'Nine', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre O',
+        help: 'Le mot commence par la lettre O',
       },
       {
         id: 2,
@@ -157,7 +157,7 @@ export const data = [
           { id: 3, label: 'Five', isCorrect: true },
           { id: 4, label: 'Three', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre F',
+        help: 'Le mot commence par la lettre F',
       },
       {
         id: 3,
@@ -169,7 +169,7 @@ export const data = [
           { id: 3, label: 'Four', isCorrect: false },
           { id: 4, label: 'Nine', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre S',
+        help: 'Le mot commence par la lettre S',
       },
       {
         id: 4,
@@ -181,7 +181,7 @@ export const data = [
           { id: 3, label: 'Five', isCorrect: false },
           { id: 4, label: 'Three', isCorrect: true },
         ],
-        help: 'le mot commence par la lettre T',
+        help: 'Le mot commence par la lettre T',
       },
       {
         id: 5,
@@ -193,13 +193,13 @@ export const data = [
           { id: 3, label: 'One', isCorrect: false },
           { id: 4, label: 'Four', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre N',
+        help: 'Le mot commence par la lettre N',
       },
     ],
   },
   {
     id: 4,
-    title: 'Exercice 4: Les objets du quotidien',
+    title: 'Exercice 4 : Les objets du quotidien',
     questions: [
       {
         id: 1,
@@ -211,7 +211,7 @@ export const data = [
           { id: 3, label: 'Book', isCorrect: false },
           { id: 4, label: 'TV', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre C',
+        help: 'Le mot commence par la lettre C',
       },
       {
         id: 2,
@@ -223,7 +223,7 @@ export const data = [
           { id: 3, label: 'Pencil', isCorrect: true },
           { id: 4, label: 'Toothbrush', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre P',
+        help: 'Le mot commence par la lettre P',
       },
       {
         id: 3,
@@ -235,7 +235,7 @@ export const data = [
           { id: 3, label: 'Pencil', isCorrect: false },
           { id: 4, label: 'Cup', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre B',
+        help: 'Le mot commence par la lettre B',
       },
       {
         id: 4,
@@ -247,7 +247,7 @@ export const data = [
           { id: 3, label: 'Cup', isCorrect: false },
           { id: 4, label: 'Book', isCorrect: true },
         ],
-        help: 'le mot commence par la lettre B',
+        help: 'Le mot commence par la lettre B',
       },
       {
         id: 5,
@@ -259,13 +259,13 @@ export const data = [
           { id: 3, label: 'Chair', isCorrect: false },
           { id: 4, label: 'Lamp', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre T',
+        help: 'Le mot commence par la lettre T',
       },
     ],
   },
   {
     id: 5,
-    title: 'Exercice 5: Les émotions',
+    title: 'Exercice 5 : Les émotions',
     questions: [
       {
         id: 1,
@@ -277,7 +277,7 @@ export const data = [
           { id: 3, label: 'Joy', isCorrect: true },
           { id: 4, label: 'Pride', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre J',
+        help: 'Le mot commence par la lettre J',
       },
       {
         id: 2,
@@ -289,7 +289,7 @@ export const data = [
           { id: 3, label: 'Cry', isCorrect: false },
           { id: 4, label: 'Hangry', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre F',
+        help: 'Le mot commence par la lettre F',
       },
       {
         id: 3,
@@ -301,7 +301,7 @@ export const data = [
           { id: 3, label: 'Pride', isCorrect: false },
           { id: 4, label: 'Surprise', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre A',
+        help: 'Le mot commence par la lettre A',
       },
       {
         id: 4,
@@ -313,7 +313,7 @@ export const data = [
           { id: 3, label: 'Sadness', isCorrect: true },
           { id: 4, label: 'Anger', isCorrect: false },
         ],
-        help: 'le mot commence par la lettre S',
+        help: 'Le mot commence par la lettre S',
       },
       {
         id: 5,
@@ -325,7 +325,7 @@ export const data = [
           { id: 3, label: 'Hangry', isCorrect: false },
           { id: 4, label: 'Cry', isCorrect: true },
         ],
-        help: 'le mot commence par la lettre C',
+        help: 'Le mot commence par la lettre C',
       },
     ],
   },

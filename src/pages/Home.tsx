@@ -9,11 +9,11 @@ export default function Home() {
   const navigate = useNavigate()
   return (
     <>
-      <img src="./Bg-Home.jpg" className="h-[422px]"></img>
-      <Title title="Bienvenue sur PIDU" tag="h1" className="mt-16 text-[#646A69]" />
-      <Title title="Pour apprendre l'anglais en s'amusant" tag="h2" className="mt-12 text-xl" />
-      <div className="flex justify-center mt-14 text-xl">
-        <CustomButton bgColor="green" text="Démarrer" onClick={handleClick} />
+      <img src="./Background-Home.svg" className="w-screen" />
+      <Title title="Bienvenue sur PIDU" tag="h1" className="mt-10 text-[#646A69]" />
+      <Title title="Pour apprendre l'anglais en s'amusant" tag="h2" className="mt-6 text-xl" />
+      <div className="flex justify-center mt-12 text-xl">
+        <CustomButton bgColor="green" text="Démarrer" onClickHandler={handleClick} />
       </div>
     </>
   )
