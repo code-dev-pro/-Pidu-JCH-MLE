@@ -6,7 +6,7 @@ interface ContentCorrectAnswerProps {
 }
 export default function ContentCorrectAnswer({ value, isEnd }: ContentCorrectAnswerProps) {
   return (
-    <div className="rounded-xl w-64 h-25 flex items-center justify-center p-4 border-1 border-[#EAEEED]">
+    <div className="rounded-xl w-[300px] h-[90px] flex items-center justify-center p-4 border-1 border-[#EAEEED]">
       <div className="flex flex-col font-bold">
         <span className="text-[#646A69] text-[24px]">Réponses correctes</span>
         <ProgressNumber

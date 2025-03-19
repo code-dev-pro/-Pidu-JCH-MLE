@@ -8,21 +8,21 @@ export default function Level() {
   const resultTotalCorrect = totalAnswers.filter(answer => answer.isCorrect).length
   return (
     <>
-      <img
-        src="/Background-Level.svg"
-        alt="background"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute top-0 left-0 flex flex-row p-4">
-        <div className="relative p-2">
-          <Avatar />
+      <div
+        className=" absolute inset-0 h-svh bg-cover bg-center"
+        style={{ backgroundImage: `url(/Background-Level3.svg)` }}
+      >
+        <div className="absolute top-O left-10 flex flex-row ">
+          <div className="relative p-2">
+            <Avatar />
+          </div>
+          <div className="flex flex-row gap-5 p-7">
+            <CardRewardLevel value={resultTotalCorrect} />
+          </div>
         </div>
-        <div className="flex flex-row gap-7 p-7">
-          <CardRewardLevel value={resultTotalCorrect} />
+        <div>
+          <ButtonWrapper />
         </div>
-      </div>
-      <div className="relative">
-        <ButtonWrapper />
       </div>
     </>
   )
