@@ -15,10 +15,10 @@ export default function ResultCompleted() {
 
   return (
     <>
-      <img src="./Background-Bilan.svg" className="w-screen h-[250px]"></img>
-      <Title tag="h1" title="Bilan complet" className="p-5" />
-      <Title tag="h2" title="Félicitations !" />
-      <div className="flex flex-row items-center justify-center gap-7 mt-5">
+      <img src="./Background-Bilan2.svg" className="w-screen" alt="Background" />
+      <Title tag="h1" title="Bilan complet" className="p-5 text-center" />
+      <Title tag="h2" title="Félicitations !" className="text-center" />
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-7 mt-5">
         <ContentCorrectAnswer value={resultCorrect} isEnd />
         <CardReward value={resultCorrect} />
       </div>

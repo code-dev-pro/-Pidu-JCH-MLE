@@ -4,7 +4,6 @@ import ButtonHelp from '@/components/buttonhelp'
 import ProgressNumber from '@/components/progressnumber'
 import CardAnswer from '@/components/card-answer'
 import CustomButton from '@/components/buttonlong'
-import Picture from '@/components/picture'
 import useProgressStore from '@/store/tracking/tracker-progress'
 import useExerciseStore from '@/store/data/exercise'
 import useLevelStore from '@/store/store-level'
@@ -69,8 +68,8 @@ export default function Exercice() {
 
   return (
     <>
-      <div className="w-screen">
-        <div className="flex flex-wrap gap-6 justify-center mt-15">
+      <div className="w-full">
+        <div className="flex flex-row gap-6 justify-center mt-12 p-5 ">
           <div className="max-w-16 max-h-16 mt-[-20px]">
             <ButtonHelp text={help} />
           </div>
@@ -82,13 +81,10 @@ export default function Exercice() {
         </div>
         <Title tag="h1" title={title} className="mb-14" />
         <div className="flex justify-center">
-          <div className="w-[235px] h-[231px] bg-[#FDF3F2] rounded-2xl">
-            <Picture
-              src={image}
-              alt="image pomme"
-              className=" block mx-auto gap-7 w-[235px] h-[231px]"
-            />
-          </div>
+          <div
+            className="w-[235px] h-[231px] bg-[#FDF3F2] rounded-2xl bg-contain bg-center bg-no-repeat "
+            style={{ backgroundImage: `url(${image})` }}
+          ></div>
         </div>
         <div className="flex flex-wrap gap-6 justify-center mt-14">
           {choices.map((choice, index) => (
@@ -101,11 +97,11 @@ export default function Exercice() {
             />
           ))}
         </div>
-        <div className="flex justify-center gap-12 mt-14">
+        <div className="flex justify-center gap-12 p-8">
           <CustomButton onClickHandler={onClickHandler} text="Valider" disabled={!selectedChoice} />
         </div>
         {showing && (
-          <div className="mt-10">
+          <div className="mt-10 p-2">
             <Feedback correctAnswer={label} increaseProgress={onChangedProgress} />
           </div>
         )}

@@ -11,6 +11,7 @@ import useExerciseStore from '@/store/data/exercise'
 interface IButtonLevelProps {
   level: number
   title?: string
+  className?: string
 }
 
 function ButtonLocked() {
@@ -27,9 +28,7 @@ function ButtonLocked() {
       </button>
 
       {showing && (
-        <div className="relative w-[456px] h-[220px] bg-white rounded-[24px] shadow-lg text-center left-1/2 transform -translate-x-1/2">
-          <div className="absolute -top-2 left-1/2 bg-white -translate-x-1/2 w-4 h-4 rotate-45"></div>
-
+        <div className="fixed top-1/2 left-1/2 w-full max-w-[90%] sm:max-w-[456px] bg-white rounded-2xl shadow-lg text-center transform -translate-x-1/2 -translate-y-1/2 z-50 p-6 sm:p-10">
           <button
             onClick={() => setShowing(false)}
             className="absolute top-4 right-4"
@@ -38,9 +37,15 @@ function ButtonLocked() {
             <Picture src="./Close-Circle.svg" alt="Fermer" className="w-6 h-6 cursor-pointer" />
           </button>
 
-          <div className="p-10 font-bold text-base flex flex-col items-center justify-center">
-            <Picture src="./Pidu-study.svg" alt="pidu" className="w-[90px] h-[90px]" />
-            <p>Tu dois valider l'exercice en cours pour pouvoir passer au suivant</p>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <Picture
+              src="./Pidu-study.svg"
+              alt="pidu"
+              className="w-20 h-20 sm:w-[90px] sm:h-[90px]"
+            />
+            <p className="text-sm sm:text-base px-4">
+              Tu dois valider l'exercice en cours pour pouvoir passer au suivant.
+            </p>
           </div>
         </div>
       )}
@@ -64,21 +69,26 @@ function ButtonFlag() {
   }
   return (
     <>
-      <button onClick={handleClick} aria-label="Bouton pour ouvrir le modal de démarrage">
+      <button
+        onClick={handleClick}
+        aria-label="Bouton pour ouvrir le modal de démarrage"
+        className="circle pulse"
+      >
         <Picture src="./Btn.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
       </button>
       {showing && (
-        <div className="relative w-[619px] h-[326px] bg-white rounded-[24px] shadow-lg text-center left-1/2 transform -translate-x-1/2">
-          <div className="absolute -top-2 left-1/2 bg-white -translate-x-1/2 w-4 h-4 rotate-45"></div>
-          <div className="p-10 font-bold text-xl">
+        <div className="fixed top-1/2 left-1/2 w-full max-w-[90%] sm:max-w-[619px] bg-white rounded-2xl shadow-lg text-center transform -translate-x-1/2 -translate-y-1/2 z-50 p-6 sm:p-10">
+          <div className="font-bold text-lg sm:text-xl">
             <Title tag="h2" title={title} />
           </div>
-          <div className="flex flex-row ml-26">
+
+          <div className="flex items-center justify-center mt-4">
             <ProgressNumber colorNumber="text-black" currentColor="text-black" />
-            <span className="ml-1.5">questions</span>
+            <span className="ml-2 text-sm sm:text-base">questions</span>
           </div>
-          <div className="flex flex-col items-center justify-center gap-17">
-            <div className="w-[412px] h-[7px]">
+
+          <div className="flex flex-col items-center justify-center gap-6 sm:gap-8 mt-6">
+            <div className="w-full max-w-[412px] h-[7px]">
               <Progressbar />
             </div>
             <div className="text-lg">
@@ -115,11 +125,23 @@ function ButtonLevel(props: IButtonLevelProps) {
 export default function ButtonWrapper() {
   return (
     <>
-      <ButtonLevel level={1} />
-      <ButtonLevel level={2} />
-      <ButtonLevel level={3} />
-      <ButtonLevel level={4} />
-      <ButtonLevel level={5} />
+      <div className="relative h-screen ">
+        <div className="absolute" style={{ top: '80%', left: '50%' }}>
+          <ButtonLevel level={1} />
+        </div>
+        <div className="absolute" style={{ top: '65%', left: '39%' }}>
+          <ButtonLevel level={2} />
+        </div>
+        <div className="absolute" style={{ top: '46%', left: '53%' }}>
+          <ButtonLevel level={3} />
+        </div>
+        <div className="absolute" style={{ top: '33%', left: '38%' }}>
+          <ButtonLevel level={4} />
+        </div>
+        <div className="absolute" style={{ top: '17%', left: '49%' }}>
+          <ButtonLevel level={5} />
+        </div>
+      </div>
     </>
   )
 }

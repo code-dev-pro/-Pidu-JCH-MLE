@@ -42,9 +42,9 @@ export default function Result() {
 
   return (
     <>
-      <img src="./Background-Bilan.svg" className="w-screen"></img>
-      <Title tag="h1" title="Bilan exercice" className="p-5" />
-      <div className="flex flex-row items-center justify-center gap-7 mt-5">
+      <img src="./Background-Bilan2.svg" className="w-screen" alt="Background" />
+      <Title tag="h1" title="Bilan exercice" className="p-5 text-center" />
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-7 mt-5">
         <ContentCorrectAnswer value={resultCorrect} />
         <CardReward value={resultCorrect} />
       </div>
