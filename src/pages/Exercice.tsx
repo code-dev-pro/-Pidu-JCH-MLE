@@ -13,6 +13,7 @@ import { useState } from 'react'
 import useFeedbackStore from '@/store/data/feedback'
 import useAnswerStore from '@/store/store-choice-answer'
 import { useNavigate } from 'react-router-dom'
+import useAuthStore from '@/store/tracking/tracker-auth'
 
 export default function Exercice() {
   const { progressNumber, increaseProgress } = useProgressStore() //Récupère la valeur actuelle de la progression et une fonction pour l'augmenter
@@ -30,13 +31,13 @@ export default function Exercice() {
   const choices = data.questions[progressNumber - 1].choices // Récupère les choix de réponse pour la question actuelle
   const help = data.questions[progressNumber - 1].help // Récupère l'aide éventuelle pour la question actuelle
   const question = data.questions[progressNumber - 1] // Récupère l'objet complet de la question actuelle
-  const label = question.choices.find(choice => choice.isCorrect)?.label || '""' // Trouve le choix de réponse correct et récupère son label (texte affiché), sinon retourne une chaîne vide
+  const label = question.choices.find(choice => choice.iscorrect)?.label || '""' // Trouve le choix de réponse correct et récupère son label (texte affiché), sinon retourne une chaîne vide
 
   // Déclare un état pour stocker le choix sélectionné par l'utilisateur, qui peut être null par défaut
   const [selectedChoice, setSelectedChoice] = useState<{
     id: number
     label: string
-    isCorrect: boolean
+    iscorrect: boolean
   } | null>(null)
 
   const navigate = useNavigate() // Hook pour gérer la navigation entre les pages
@@ -55,20 +56,31 @@ export default function Exercice() {
     setShowing(false)
   }
   // Fonction déclenchée lorsqu'un utilisateur valide son choix
+  // const { userId } = useAuthStore()
+  // console.log('user id récuperer: ', userId)
   const onClickHandler = () => {
-    if (!selectedChoice) return // Si aucun choix n'est sélectionné, on arrête la fonction
-    addAnswer(exerciseId, questionId, selectedChoice.label, selectedChoice.isCorrect) // Ajoute la réponse donnée par l'utilisateur au store des réponses
-    setValue(selectedChoice.isCorrect ? 'success' : 'error') // Définit le feedback de l'utilisateur (succès si bonne réponse, erreur sinon)
-    setShowing(!showing) // Alterne l'affichage de l'élément lié au feedback
+    const userId = useAuthStore.getState().userId
+
+    if (!userId) {
+      console.error('Aucun ID utilisateur trouvé !')
+      return
+    }
+
+    if (!selectedChoice) return
+
+    addAnswer(userId, exerciseId, questionId, selectedChoice.label, selectedChoice.iscorrect)
+    setValue(selectedChoice.iscorrect ? 'success' : 'error')
+    setShowing(!showing)
   }
+
   // Fonction appelée lorsqu'un utilisateur sélectionne une réponse
-  const setTracking = (choice: { id: number; label: string; isCorrect: boolean }) => {
+  const setTracking = (choice: { id: number; label: string; iscorrect: boolean }) => {
     setSelectedChoice(choice) // Met à jour l'état du choix sélectionné avec l'objet correspondant
   }
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full relative">
         <div className="flex flex-row gap-6 justify-center mt-12 p-5 ">
           <div className="max-w-16 max-h-16 mt-[-20px]">
             <ButtonHelp text={help} />
@@ -93,15 +105,16 @@ export default function Exercice() {
               key={choice.id}
               index={index}
               label={choice.label}
-              isCorrect={choice.isCorrect}
+              iscorrect={choice.iscorrect}
             />
           ))}
         </div>
-        <div className="flex justify-center gap-12 p-8">
+        <div className="flex justify-center gap-12 p-8" hidden={showing}>
           <CustomButton onClickHandler={onClickHandler} text="Valider" disabled={!selectedChoice} />
         </div>
+
         {showing && (
-          <div className="mt-10 p-2">
+          <div className="mt-10 p-2 absolute w-full bottom-0 md:relative md:mt-6">
             <Feedback correctAnswer={label} increaseProgress={onChangedProgress} />
           </div>
         )}

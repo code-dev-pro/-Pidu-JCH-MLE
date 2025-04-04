@@ -30,9 +30,8 @@ export default function ButtonHelp({ text }: ButtonHelpProps) {
       {isOpen && (
         <div
           ref={refDiv as React.Ref<HTMLDivElement>}
-          className="relative w-dvw max-w-md p-4 bg-[#FBF4DC] rounded-2xl shadow-lg text-center left-1/2 transform -translate-x-1/2"
+          className="absolute h-auto mt-19 w-dvw max-w-md p-4 bg-[#FBF4DC] rounded-2xl shadow-lg text-center left-1/2 transform -translate-x-1/2"
         >
-          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#FBF4DC] rotate-45"></div>
           <button
             onClick={() => setIsOpen(false)}
             aria-label="fermeture du modal"

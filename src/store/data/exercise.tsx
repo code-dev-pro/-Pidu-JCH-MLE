@@ -1,12 +1,14 @@
 import { create } from 'zustand'
-import { data } from './const'
-interface Choice {
+// import { data } from './const'
+import { fetchExercises } from '@/services/service-exercise'
+
+export interface Choice {
   id: number
   label: string
-  isCorrect: boolean
+  iscorrect: boolean
 }
 
-interface Question {
+export interface Question {
   id: number
   question: string
   image: string
@@ -14,20 +16,43 @@ interface Question {
   help: string
 }
 
-interface Exercise {
+export interface Exercise {
   id: number
-  title: string
+  exercise_title: string
   questions: Question[]
 }
 
 interface ExerciseStore {
   exercises: Exercise[]
-  setExercises: (newExercises: Exercise[]) => void
+  // setExercises: (newExercises: Exercise[]) => void
+  isLoading: boolean
+  error: string | null
+  loadExercises: () => Promise<void>
 }
 // une nouvelle méthode qui va consommer l'api qui va retourner mon jeu de de data
 const useExerciseStore = create<ExerciseStore>(set => ({
-  exercises: data,
-  setExercises: newExercises => set({ exercises: newExercises }),
+  // exercises: data,
+  // setExercises: newExercises => set({ exercises: newExercises }),
+  exercises: [],
+  isLoading: false,
+  error: null,
+
+  loadExercises: async () => {
+    set({ isLoading: true, error: null })
+
+    try {
+      const exercises = await fetchExercises()
+      set({ exercises, isLoading: false })
+    } catch (error) {
+      if (error instanceof Error) {
+        set({ error: error.message, isLoading: false })
+      } else {
+        set({ error: 'Un erreur inconnue est survenue', isLoading: false })
+      }
+    } finally {
+      console.log('Chargement terminé')
+    }
+  },
 }))
 
 export default useExerciseStore

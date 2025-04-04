@@ -6,9 +6,16 @@ interface ButtonProps {
   icon?: string
   onClickHandler?: () => void
   disabled?: boolean
+  className?: string
 }
 
-export default function CustomButton({ onClickHandler, bgColor, text, icon }: ButtonProps) {
+export default function CustomButton({
+  onClickHandler,
+  bgColor,
+  text,
+  icon,
+  disabled,
+}: ButtonProps) {
   const backgroundColor = bgColor === 'orange' ? '#FF8B2D' : '#19C472'
 
   const setContentButton = () => {
@@ -18,12 +25,17 @@ export default function CustomButton({ onClickHandler, bgColor, text, icon }: Bu
     return null
   }
 
+  const buttonStyles = disabled
+    ? 'opacity-50 cursor-not-allowed'
+    : 'hover:scale-110 transition-transform duration-300'
+
   return (
     <button
-      className="relative rounded-4xl w-[240px] h-[60px] flex items-center justify-center cursor-pointer border-b-6 border-black/20 active:border-b-0 hover:scale-110 transition-transform duration-300"
+      className={`relative rounded-4xl w-[240px] h-[60px] flex items-center justify-center cursor-pointer border-b-6 border-black/20 ${buttonStyles}`}
       style={{ backgroundColor }}
       aria-label={text || 'Bouton avec icône'}
       onClick={onClickHandler}
+      disabled={disabled}
     >
       <Picture
         className="absolute top-1.5 left-2 w-[9px] h-[10px]"

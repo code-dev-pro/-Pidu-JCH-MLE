@@ -9,6 +9,7 @@ import StoryBook from '@/pages/storybook'
 import Layout from './components/layout/layout'
 import TheEnd from './pages/End'
 import ResultCompleted from './pages/completed'
+import CardLearning from './components/card-learning'
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         path="level"
         element={
           <Layout>
-            <Level />
+            <Level userId={0} />
           </Layout>
         }
       />
@@ -74,6 +75,14 @@ function App() {
         element={
           <Layout>
             <TheEnd />
+          </Layout>
+        }
+      />
+      <Route
+        path="card-learning"
+        element={
+          <Layout>
+            <CardLearning />
           </Layout>
         }
       />

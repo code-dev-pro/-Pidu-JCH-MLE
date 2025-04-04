@@ -16,7 +16,7 @@ export default function Result() {
   const { addTotalAnswer } = useTotalQuizStore() // Récupère la fonction pour ajouter le total des réponses enregistrées
   const { nextLevel, level } = useLevelStore() // Récupère la fonction pour passer au niveau suivant et le niveau actuel
   const isFinished = useRef<boolean>(false) // Référence mutable pour savoir si le dernier niveau est atteint (évite un re-rendu)
-  const resultCorrect = answers.filter(answer => answer.isCorrect).length // Calcule le nombre de réponses correctes
+  const resultCorrect = answers.filter(answer => answer.iscorrect).length // Calcule le nombre de réponses correctes
   const navigate = useNavigate() // Hook pour naviguer entre les pages
 
   // Fonction appelée lorsqu'on clique sur un bouton (ex: passer au niveau suivant ou terminer)

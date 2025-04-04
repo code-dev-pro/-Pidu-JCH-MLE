@@ -1,8 +1,52 @@
+import CustomButton from '@/components/buttonlong'
 import Picture from '@/components/picture'
+import useLevelStore from '@/store/store-level'
+import useProgressStore from '@/store/tracking/tracker-progress'
+import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
+import { useNavigate } from 'react-router-dom'
+import useAuthStore from '@/store/tracking/tracker-auth'
 
 export default function TheEnd() {
   const confettiCount = 50
   const colors = ['#ff0', '#ff6347', '#32cd32', '#1e90ff', '#ffa500']
+  const navigate = useNavigate()
+  const { resetTotalAnswers } = useTotalQuizStore()
+  const { resetProgress } = useProgressStore()
+  const { setLevel } = useLevelStore()
+  const { userId } = useAuthStore()
+
+  async function deleteUserProgress(userId: number) {
+    try {
+      const response = await fetch(`http://localhost:3000/delete/${userId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      const result = await response.json()
+      if (response.ok) {
+        console.log(result.message)
+      } else {
+        console.log('Erreur lors de la suppression, statut:', response.status, result.error)
+      }
+    } catch (err) {
+      console.error('Erreur réseau ou serveur:', err)
+    }
+  }
+  const handleClick = async () => {
+    if (userId) {
+      await deleteUserProgress(userId)
+
+      resetTotalAnswers()
+      resetProgress()
+      setLevel(1)
+      navigate('/Level')
+    } else {
+      console.error('Utilisateur non authentifié')
+      alert('Utilisateur non authentifié')
+    }
+  }
 
   return (
     <>
@@ -14,21 +58,20 @@ export default function TheEnd() {
             le début… De nouvelles surprises arriveront dans la prochaine version.
             <br />À très bientôt pour la suite !
           </p>
+          <CustomButton text="Rejouer" onClickHandler={handleClick} />
         </div>
-        {[...Array(confettiCount).keys()].map((_, index) => {
-          return (
-            <div
-              className="confetti"
-              style={{
-                backgroundColor: colors[Math.floor(Math.random() * colors.length)],
-                left: `${Math.random() * 100}vw`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${Math.random() * 3 + 3}s`,
-              }}
-              key={`confetti_${index}`}
-            />
-          )
-        })}
+        {[...Array(confettiCount).keys()].map((_, index) => (
+          <div
+            className="confetti"
+            style={{
+              backgroundColor: colors[Math.floor(Math.random() * colors.length)],
+              left: `${Math.random() * 100}vw`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${Math.random() * 3 + 3}s`,
+            }}
+            key={`confetti_${index}`}
+          />
+        ))}
       </div>
     </>
   )

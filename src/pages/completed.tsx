@@ -7,7 +7,7 @@ import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 
 export default function ResultCompleted() {
   const { totalAnswers } = useTotalQuizStore()
-  const resultCorrect = totalAnswers.filter(answer => answer.isCorrect).length
+  const resultCorrect = totalAnswers.filter(answer => answer.iscorrect).length
   const navigate = useNavigate()
   const handleClick = () => {
     navigate('/End')
