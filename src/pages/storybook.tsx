@@ -28,10 +28,10 @@ export default function StoryBook() {
         <h2 className="text-2xl font-semibold bg-pink-100">Card</h2>
         <Title tag="h3" title="Composant choix réponse" />
         <div className="flex flex-wrap gap-6">
-          <CardAnswer index={1} label="Apple" isCorrect />
-          <CardAnswer index={2} label="Orange" isCorrect />
-          <CardAnswer index={3} label="Apples" isCorrect />
-          <CardAnswer index={4} label="Coconut" isCorrect />
+          <CardAnswer index={1} label="Apple" iscorrect />
+          <CardAnswer index={2} label="Orange" iscorrect />
+          <CardAnswer index={3} label="Apples" iscorrect />
+          <CardAnswer index={4} label="Coconut" iscorrect />
         </div>
 
         <div className="flex gap-10 justify-center ">

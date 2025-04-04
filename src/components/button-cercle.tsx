@@ -58,7 +58,7 @@ function ButtonFlag() {
   const { exercises } = useExerciseStore()
   const { level } = useLevelStore()
   const data = exercises[level - 1]
-  const title = data.title
+  const title = data.exercise_title
 
   const navigate = useNavigate()
   const onClick = () => {
@@ -67,6 +67,7 @@ function ButtonFlag() {
   const handleClick = () => {
     setShowing(!showing)
   }
+
   return (
     <>
       <button

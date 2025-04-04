@@ -1,44 +1,47 @@
 import { create } from 'zustand'
 
 export interface Answer {
+  userId: number
   exerciseId: number
   questionId: number
   selectedChoice: string
-  isCorrect: boolean
+  iscorrect: boolean
 }
 
 interface QuizStore {
   answers: Answer[]
   addAnswer: (
+    userId: number,
     exerciseId: number,
     questionId: number,
     selectedChoice: string,
-    isCorrect: boolean
+    iscorrect: boolean
   ) => void
   resetAnswers: () => void
 }
 
 const useQuizStore = create<QuizStore>(set => ({
   answers: [],
-  addAnswer: (exerciseId, questionId, selectedChoice, isCorrect) =>
-    set(state => {
-      // Recherche si une réponse existe déjà pour cette question dans le tableau answers
-      const existingAnswerIndex = state.answers.findIndex(a => a.questionId === questionId)
-      // Si une réponse existe déjà pour cette question, on la met à jour
-      if (existingAnswerIndex !== -1) {
-        const updatedAnswers = [...state.answers] // Copie du tableau des réponses existantes
-        updatedAnswers[existingAnswerIndex] = {
-          exerciseId,
-          questionId,
-          selectedChoice,
-          isCorrect,
-        } // Remplacement de l'ancienne réponse par la nouvelle
-        return { answers: updatedAnswers } // Mise à jour du store avec la nouvelle liste de réponses
+  addAnswer: async (userId, exerciseId, questionId, selectedChoice, iscorrect) => {
+    const newAnswer = { userId, exerciseId, questionId, selectedChoice, iscorrect }
+    console.log("Données préparées pour l'envoi :", newAnswer)
+
+    set(state => ({ answers: [...state.answers, newAnswer] }))
+
+    try {
+      const response = await fetch('http://localhost:3000/answers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newAnswer),
+      })
+
+      if (!response.ok) {
+        console.error('Erreur lors de l’enregistrement en BDD')
       }
-      return {
-        answers: [...state.answers, { exerciseId, questionId, selectedChoice, isCorrect }],
-      }
-    }),
+    } catch (error) {
+      console.error('Problème de connexion à la BDD', error)
+    }
+  },
   resetAnswers: () => set({ answers: [] }),
 }))
 

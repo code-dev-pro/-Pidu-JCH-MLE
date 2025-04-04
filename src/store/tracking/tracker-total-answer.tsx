@@ -4,6 +4,7 @@ import { Answer } from './tracker-answer'
 interface TotalQuizStore {
   totalAnswers: Answer[]
   addTotalAnswer: (answers: Answer[]) => void
+  resetTotalAnswers: () => void
 }
 
 const useTotalQuizStore = create<TotalQuizStore>(set => ({
@@ -13,6 +14,7 @@ const useTotalQuizStore = create<TotalQuizStore>(set => ({
       totalAnswers: [...state.totalAnswers, ...answers],
     }))
   },
+  resetTotalAnswers: () => set({ totalAnswers: [] }),
 }))
 
 export default useTotalQuizStore
