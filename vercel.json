@@ -8,9 +8,17 @@
         "distDir": "dist",
         "buildCommand": "tsc -b && vite build"
       }
+    },
+    {
+      "src": "node-rest-api/server.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "node-rest-api/server.js"
+    },
     {
       "handle": "filesystem"
     },
