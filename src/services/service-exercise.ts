@@ -1,8 +1,9 @@
 import { Exercise } from '@/store/data/exercise'
+import { API_URL } from '@/config/api'
 
 export const fetchExercises = async (): Promise<Exercise[]> => {
   try {
-    const response = await fetch('http://localhost:3000/exercises')
+    const response = await fetch(`${API_URL}/exercises`)
 
     if (!response.ok) {
       throw new Error('Erreur lors du chargement des exercices!')

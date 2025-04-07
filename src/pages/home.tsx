@@ -9,6 +9,7 @@ import useAuthStore from '@/store/tracking/tracker-auth'
 import useLevelStore from '@/store/store-level'
 import useProgressStore from '@/store/tracking/tracker-progress'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
+import { API_URL } from '@/config/api'
 
 interface ExerciseData {
   exercise_id: number
@@ -34,7 +35,7 @@ export default function Home() {
 
   const fetchUserData = async (userId: number) => {
     try {
-      const response = await fetch(`http://localhost:3000/level/${userId}`)
+      const response = await fetch(`${API_URL}/level/${userId}`)
       const data = await response.json()
 
       console.log('Données utilisateur récupérées :', data)
