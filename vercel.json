@@ -10,7 +10,7 @@
       }
     },
     {
-      "src": "node-rest-api/server.js",
+      "src": "api/server.js",
       "use": "@vercel/node"
     }
   ],
@@ -20,7 +20,7 @@
     },
     {
       "src": "/api/(.*)",
-      "dest": "node-rest-api/server.js"
+      "dest": "/api/server.js"
     },
     {
       "src": "/assets/(.*)",
