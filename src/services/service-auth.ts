@@ -1,6 +1,8 @@
+import { API_URL } from '@/config/api'
+
 const authenticateCode = async (code_user: string) => {
   try {
-    const response = await fetch('http://localhost:3000/auth', {
+    const response = await fetch(`${API_URL}/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

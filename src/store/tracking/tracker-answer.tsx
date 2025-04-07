@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { API_URL } from '@/config/api'
 
 export interface Answer {
   userId: number
@@ -29,7 +30,7 @@ const useQuizStore = create<QuizStore>(set => ({
     set(state => ({ answers: [...state.answers, newAnswer] }))
 
     try {
-      const response = await fetch('http://localhost:3000/answers', {
+      const response = await fetch(`${API_URL}/answers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newAnswer),

@@ -5,6 +5,7 @@ import useProgressStore from '@/store/tracking/tracker-progress'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '@/store/tracking/tracker-auth'
+import { API_URL } from '@/config/api'
 
 export default function TheEnd() {
   const confettiCount = 50
@@ -17,7 +18,7 @@ export default function TheEnd() {
 
   async function deleteUserProgress(userId: number) {
     try {
-      const response = await fetch(`http://localhost:3000/delete/${userId}`, {
+      const response = await fetch(`${API_URL}/delete/${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

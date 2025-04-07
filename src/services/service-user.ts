@@ -1,8 +1,9 @@
 import useAuthStore from '@/store/tracking/tracker-auth'
+import { API_URL } from '@/config/api'
 
 const authenticateUser = async (code_user: string) => {
   try {
-    const response = await fetch('http://localhost:3000/user', {
+    const response = await fetch(`${API_URL}/user`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code_user }),

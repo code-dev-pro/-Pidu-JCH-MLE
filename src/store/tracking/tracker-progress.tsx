@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { API_URL } from '@/config/api'
 
 interface ProgressStore {
   progressNumber: number
@@ -25,7 +26,7 @@ const useProgressStore = create<ProgressStore>(set => ({
 
   fetchProgress: async (userId: number) => {
     try {
-      const response = await fetch(`http://localhost:3000/level/${userId}`)
+      const response = await fetch(`${API_URL}/level/${userId}`)
       if (!response.ok) throw new Error('Erreur lors de la récupération du progrès')
 
       const data = await response.json()
