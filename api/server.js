@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const { neon } = require('@neondatabase/serverless')
 
+// Initialisation de la connexion à la base de données
 let sql
 try {
   if (!process.env.DATABASE_URL) {
@@ -13,22 +14,26 @@ try {
   console.error('Error initializing database connection:', error)
 }
 
+// Création de l'application Express
 const app = express()
 app.use(cors())
 app.use(express.json())
 
+// Création d'un routeur pour les routes API
+const apiRouter = express.Router()
+
 // Route de test pour vérifier que le serveur fonctionne
-app.get('/', (req, res) => {
+apiRouter.get('/', (req, res) => {
   res.json({ status: 'ok', message: 'API server is running' })
 })
 
 // Route de test pour vérifier que le serveur fonctionne
-app.get('/health', (req, res) => {
+apiRouter.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' })
 })
 
 // Middleware pour gérer les erreurs de base de données
-app.use((req, res, next) => {
+apiRouter.use((req, res, next) => {
   if (!sql) {
     return res.status(500).json({
       error: 'Database connection not available',
@@ -39,7 +44,8 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/exercises', async (req, res) => {
+// Route pour récupérer tous les exercices
+apiRouter.get('/exercises', async (req, res) => {
   try {
     const exercisesWithDetails = await sql`
       SELECT 
@@ -77,7 +83,7 @@ app.get('/exercises', async (req, res) => {
   }
 })
 
-app.post('/code', async (req, res) => {
+apiRouter.post('/code', async (req, res) => {
   try {
     const { code_user } = req.body
 
@@ -99,7 +105,7 @@ app.post('/code', async (req, res) => {
   }
 })
 
-app.post('/auth', async (req, res) => {
+apiRouter.post('/auth', async (req, res) => {
   try {
     const { code_user } = req.body
     console.log('Code utilisateur reçu:', code_user)
@@ -125,7 +131,7 @@ app.post('/auth', async (req, res) => {
   }
 })
 
-app.post('/answers', async (req, res) => {
+apiRouter.post('/answers', async (req, res) => {
   try {
     const { userId, exerciseId, questionId, selectedChoice, iscorrect } = req.body
 
@@ -160,7 +166,7 @@ app.post('/answers', async (req, res) => {
   }
 })
 
-app.get('/level/:userId', async (req, res) => {
+apiRouter.get('/level/:userId', async (req, res) => {
   const { userId } = req.params
 
   try {
@@ -182,7 +188,7 @@ app.get('/level/:userId', async (req, res) => {
   }
 })
 
-app.post('/progress/:userId', async (req, res) => {
+apiRouter.post('/progress/:userId', async (req, res) => {
   const { userId } = req.params
   const { exercise_id, question_id, selected_choice, iscorrect } = req.body
 
@@ -207,7 +213,7 @@ app.post('/progress/:userId', async (req, res) => {
   }
 })
 
-app.post('/delete/:userId', async (req, res) => {
+apiRouter.post('/delete/:userId', async (req, res) => {
   const { userId } = req.params
   try {
     const result = await sql`
@@ -226,6 +232,9 @@ app.post('/delete/:userId', async (req, res) => {
     res.status(500).json({ error: 'Erreur serveur' })
   }
 })
+
+// Utilisation du routeur pour les routes API
+app.use('/api', apiRouter)
 
 const PORT = process.env.PORT || 3000
 
