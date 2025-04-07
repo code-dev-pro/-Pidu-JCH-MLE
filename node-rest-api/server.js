@@ -3,11 +3,24 @@ const express = require('express')
 const cors = require('cors')
 const { neon } = require('@neondatabase/serverless')
 
-const sql = neon(process.env.DATABASE_URL)
+let sql
+try {
+  if (!process.env.DATABASE_URL) {
+    console.error('DATABASE_URL environment variable is not set')
+  }
+  sql = neon(process.env.DATABASE_URL)
+} catch (error) {
+  console.error('Error initializing database connection:', error)
+}
 
 const app = express()
 app.use(cors())
 app.use(express.json())
+
+// Route de test pour vérifier que le serveur fonctionne
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Server is running' })
+})
 
 app.get('/exercises', async (req, res) => {
   try {

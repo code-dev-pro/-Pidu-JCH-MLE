@@ -17,7 +17,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "node-rest-api/server.js"
+      "dest": "/node-rest-api/server.js/$1"
     },
     {
       "handle": "filesystem"
