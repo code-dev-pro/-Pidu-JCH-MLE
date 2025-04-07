@@ -1,11 +1,10 @@
-import './App.css'
-import './end.css'
+import '@/styles/App.css'
+import '@/styles/end.css'
 import { Routes, Route } from 'react-router-dom'
 import Home from '@/pages/home'
 import Level from '@/pages/level'
 import Result from '@/pages/result'
 import Exercice from '@/pages/exercice'
-import StoryBook from '@/pages/storybook'
 import Layout from './components/layout/layout'
 import TheEnd from './pages/end'
 import ResultCompleted from './pages/completed'
@@ -51,14 +50,6 @@ function App() {
         element={
           <Layout>
             <Result />
-          </Layout>
-        }
-      />
-      <Route
-        path="storybook"
-        element={
-          <Layout>
-            <StoryBook />
           </Layout>
         }
       />

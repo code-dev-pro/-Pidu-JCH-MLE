@@ -6,8 +6,7 @@ import useQuizStore from '@/store/tracking/tracker-answer'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import useProgressStore from '@/store/tracking/tracker-progress'
 import useLevelStore from '@/store/store-level'
-import { data } from '@/store/data/const'
-import { useNavigate } from 'react-router-dom'
+import { data, useNavigate } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 
 export default function Result() {
