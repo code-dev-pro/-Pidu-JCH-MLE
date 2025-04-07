@@ -18,8 +18,25 @@ app.use(cors())
 app.use(express.json())
 
 // Route de test pour vérifier que le serveur fonctionne
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'API server is running' })
+})
+
+// Route de test pour vérifier que le serveur fonctionne
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' })
+})
+
+// Middleware pour gérer les erreurs de base de données
+app.use((req, res, next) => {
+  if (!sql) {
+    return res.status(500).json({
+      error: 'Database connection not available',
+      message:
+        'The server could not connect to the database. Please check the DATABASE_URL environment variable.',
+    })
+  }
+  next()
 })
 
 app.get('/exercises', async (req, res) => {
