@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"yarn front\" \"yarn back\"",
     "front": "vite",
-    "back": "cd node-rest-api && nodemon server.js",
+    "back": "cd api && nodemon server.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
