@@ -7,9 +7,10 @@ import { useNavigate } from 'react-router-dom'
 import useAuthStore from '@/store/tracking/tracker-auth'
 import { API_URL } from '@/config/api'
 
+const colors = ['#ff0', '#ff6347', '#32cd32', '#1e90ff', '#ffa500']
+
 export default function TheEnd() {
   const confettiCount = 50
-  const colors = ['#ff0', '#ff6347', '#32cd32', '#1e90ff', '#ffa500']
   const navigate = useNavigate()
   const { resetTotalAnswers } = useTotalQuizStore()
   const { resetProgress } = useProgressStore()
