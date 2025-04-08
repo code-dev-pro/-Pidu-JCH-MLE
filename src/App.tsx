@@ -8,7 +8,6 @@ import Exercice from '@/pages/exercice'
 import Layout from './components/layout/layout'
 import TheEnd from './pages/end'
 import ResultCompleted from './pages/completed'
-import CardLearning from './components/card-learning'
 
 function App() {
   return (
@@ -66,14 +65,6 @@ function App() {
         element={
           <Layout>
             <TheEnd />
-          </Layout>
-        }
-      />
-      <Route
-        path="card-learning"
-        element={
-          <Layout>
-            <CardLearning />
           </Layout>
         }
       />
