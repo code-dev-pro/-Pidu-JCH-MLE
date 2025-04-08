@@ -8,9 +8,9 @@ import useAuthStore from '@/store/tracking/tracker-auth'
 import { API_URL } from '@/config/api'
 
 const colors = ['#ff0', '#ff6347', '#32cd32', '#1e90ff', '#ffa500']
+const confettiCount = 50
 
 export default function TheEnd() {
-  const confettiCount = 50
   const navigate = useNavigate()
   const { resetTotalAnswers } = useTotalQuizStore()
   const { resetProgress } = useProgressStore()
@@ -46,7 +46,6 @@ export default function TheEnd() {
       navigate('/Level')
     } else {
       console.error('Utilisateur non authentifié')
-      alert('Utilisateur non authentifié')
     }
   }
 
