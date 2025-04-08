@@ -7,6 +7,7 @@ import Progressbar from './progressbar'
 import ProgressNumber from './progressnumber'
 import CustomButton from './buttonlong'
 import useExerciseStore from '@/store/data/exercise'
+import { ROUTES } from '@/const'
 
 interface IButtonLevelProps {
   level: number
@@ -62,7 +63,7 @@ function ButtonFlag() {
 
   const navigate = useNavigate()
   const onClick = () => {
-    navigate('/exercice')
+    navigate(`/${ROUTES.EXERCISE}`)
   }
   const handleClick = () => {
     setShowing(!showing)

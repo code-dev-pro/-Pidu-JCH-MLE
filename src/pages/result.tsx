@@ -6,8 +6,9 @@ import useQuizStore from '@/store/tracking/tracker-answer'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import useProgressStore from '@/store/tracking/tracker-progress'
 import useLevelStore from '@/store/store-level'
-import { data, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
+import { ROUTES } from '@/const'
 
 export default function Result() {
   const { answers, resetAnswers } = useQuizStore() // Récupère les réponses de l'utilisateur et la fonction pour les réinitialiser
@@ -26,17 +27,18 @@ export default function Result() {
     resetAnswers()
     resetProgress()
     if (isFinished.current) {
-      navigate('/completed') // Redirige vers la page de fin du quiz
+      navigate(`/${ROUTES.COMPLETED}`) // Redirige vers la page de fin du quiz
     } else {
       nextLevel() // Passe au niveau suivant
-      navigate('/level') // Redirige vers la page du niveau suivant
+      navigate(`/${ROUTES.LEVEL}`) // Redirige vers la page du niveau suivant
     }
   }
   // Met à jour isFinished pour savoir si l'utilisateur est au dernier niveau
   useEffect(() => {
-    if (level === data.length + 0) {
+    if (level === answers.length) {
       isFinished.current = true // Marque le quiz comme terminé
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [level]) // Exécuté à chaque changement du niveau
 
   return (

@@ -4,13 +4,14 @@ import CardReward from '@/components/card-reward'
 import CustomButton from '@/components/buttonlong'
 import { useNavigate } from 'react-router-dom'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
+import { ROUTES } from '@/const'
 
 export default function ResultCompleted() {
   const { totalAnswers } = useTotalQuizStore()
   const resultCorrect = totalAnswers.filter(answer => answer.iscorrect).length
   const navigate = useNavigate()
   const handleClick = () => {
-    navigate('/End')
+    navigate(`/${ROUTES.END}`)
   }
 
   return (

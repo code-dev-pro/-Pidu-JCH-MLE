@@ -9,6 +9,7 @@ import { useRef, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Answer } from '@/store/tracking/tracker-answer'
 import { API_URL } from '@/config/api'
+import { ROUTES } from '@/const'
 
 export const CodeGenerator = () => {
   const codeRef = useRef<HTMLParagraphElement>(null)
@@ -68,7 +69,7 @@ export const CodeGenerator = () => {
       if (response.success && typeof response.userId === 'number' && response.userId > 0) {
         setUserId(response.userId)
         await fetchUserData(response.userId)
-        navigate('/Level')
+        navigate(`/${ROUTES.LEVEL}`)
       } else {
         alert('Code invalide ❌')
       }
