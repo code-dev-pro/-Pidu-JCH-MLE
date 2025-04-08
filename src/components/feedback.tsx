@@ -1,6 +1,6 @@
 import Picture from './picture'
 import Title from './title'
-import CustomButton from './buttonlong'
+import CustomButton from './button-long'
 import useFeedbackStore from '@/store/data/feedback'
 
 interface FeedbackProps {

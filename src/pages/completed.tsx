@@ -1,7 +1,7 @@
 import Title from '@/components/title'
 import ContentCorrectAnswer from '@/components/card-correct-answer'
 import CardReward from '@/components/card-reward'
-import CustomButton from '@/components/buttonlong'
+import CustomButton from '@/components/button-long'
 import { useNavigate } from 'react-router-dom'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 

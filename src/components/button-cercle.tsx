@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Picture from './picture'
-import useLevelStore from '@/store/store-level'
+import useLevelStore from '@/store/level-progress'
 import Title from './title'
-import Progressbar from './progressbar'
-import ProgressNumber from './progressnumber'
-import CustomButton from './buttonlong'
+import Progressbar from './progress-bar'
+import ProgressNumber from './progress-number'
+import CustomButton from './button-long'
 import useExerciseStore from '@/store/data/exercise'
 
 interface IButtonLevelProps {

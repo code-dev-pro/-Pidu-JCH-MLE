@@ -1,5 +1,5 @@
 import Title from '@/components/title'
-import CustomButton from '@/components/buttonlong'
+import CustomButton from '@/components/button-long'
 import useExerciseStore from '@/store/data/exercise'
 import { useEffect, useState } from 'react'
 import { CodeGenerator } from '@/components/code-generator'

@@ -1,6 +1,6 @@
-import CustomButton from '@/components/buttonlong'
+import CustomButton from '@/components/button-long'
 import Picture from '@/components/picture'
-import useLevelStore from '@/store/store-level'
+import useLevelStore from '@/store/level-progress'
 import useProgressStore from '@/store/tracking/tracker-progress'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { useNavigate } from 'react-router-dom'
