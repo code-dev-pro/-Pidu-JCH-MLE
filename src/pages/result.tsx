@@ -1,11 +1,11 @@
 import Title from '@/components/title'
 import ContentCorrectAnswer from '@/components/card-correct-answer'
 import CardReward from '@/components/card-reward'
-import CustomButton from '@/components/buttonlong'
+import CustomButton from '@/components/button-long'
 import useQuizStore from '@/store/tracking/tracker-answer'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import useProgressStore from '@/store/tracking/tracker-progress'
-import useLevelStore from '@/store/store-level'
+import useLevelStore from '@/store/level-progress'
 import { data, useNavigate } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 

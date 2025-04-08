@@ -1,4 +1,4 @@
-import useAnswerStore from '@/store/store-choice-answer'
+import useAnswerStore from '@/store/selected-answer'
 interface CardAnswerProps {
   label: string
   index: number
