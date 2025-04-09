@@ -14,6 +14,7 @@ import useFeedbackStore from '@/store/data/feedback'
 import useAnswerStore from '@/store/selected-answer'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '@/store/tracking/tracker-auth'
+import { ROUTES } from '@/const'
 
 export default function Exercice() {
   const { progressNumber, increaseProgress } = useProgressStore() //Récupère la valeur actuelle de la progression et une fonction pour l'augmenter
@@ -47,8 +48,9 @@ export default function Exercice() {
     setClickedIndex(-1)
     setSelectedChoice(null)
     // Vérifie si la progression a atteint la dernière question (ici, la 5e question)
-    if (progressNumber === 5) {
-      navigate('/Result')
+
+    if (progressNumber === data.questions.length) {
+      navigate(`/${ROUTES.RESULT}`)
       return
     }
     // Incrémente la progression et cache l'affichage (ex: feedback)
@@ -56,8 +58,6 @@ export default function Exercice() {
     setShowing(false)
   }
   // Fonction déclenchée lorsqu'un utilisateur valide son choix
-  // const { userId } = useAuthStore()
-  // console.log('user id récuperer: ', userId)
   const onClickHandler = () => {
     const userId = useAuthStore.getState().userId
 

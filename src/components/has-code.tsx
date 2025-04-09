@@ -6,6 +6,7 @@ import useLevelStore from '@/store/level-progress'
 import useProgressStore from '@/store/tracking/tracker-progress'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { API_URL } from '@/config/api'
+import { ROUTES } from '@/const'
 
 interface ExerciseData {
   exercise_id: number
@@ -73,7 +74,7 @@ export const HasCode = () => {
         // Attendre que l'utilisateur voie le message avant de naviguer
         setTimeout(() => {
           setIsLoading(false) // Désactiver le chargement
-          navigate('/Level')
+          navigate(`/${ROUTES.LEVEL}`)
         }, 2000)
       } else {
         setMessage('Code invalide ❌')

@@ -6,6 +6,7 @@ import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '@/store/tracking/tracker-auth'
 import { API_URL } from '@/config/api'
+import { ROUTES } from '@/const'
 
 const colors = ['#ff0', '#ff6347', '#32cd32', '#1e90ff', '#ffa500']
 const confettiCount = 50
@@ -43,7 +44,7 @@ export default function TheEnd() {
       resetTotalAnswers()
       resetProgress()
       setLevel(1)
-      navigate('/Level')
+      navigate(`/${ROUTES.LEVEL}`)
     } else {
       console.error('Utilisateur non authentifié')
     }
