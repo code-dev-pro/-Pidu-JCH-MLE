@@ -3,7 +3,7 @@ import ButtonWrapper from './button-cercle'
 import Avatar from './card-avatar'
 import CardRewardLevel from './card-reward-level'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
-import useLevelStore from '@/store/store-level'
+import useLevelStore from '@/store/level-progress'
 
 export interface LevelComponentProps {
   userId: number

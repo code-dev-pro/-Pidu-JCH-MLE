@@ -1,5 +1,5 @@
 import Title from '@/components/title'
-import CustomButton from '@/components/buttonlong'
+import CustomButton from '@/components/button-long'
 import useExerciseStore from '@/store/data/exercise'
 import { useEffect, useState } from 'react'
 import { CodeGenerator } from '@/components/code-generator'
@@ -45,7 +45,7 @@ export default function Home() {
       ) : (
         <>
           <div className="flex flex-col items-center gap-4 mt-6">
-            <div className="flex gap-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
               <CustomButton bgColor="green" text="Je veux un code" onClickHandler={handleStart} />
               <CustomButton
                 bgColor="green"

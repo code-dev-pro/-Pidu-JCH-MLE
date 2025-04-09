@@ -1,6 +1,6 @@
-import CustomButton from '@/components/buttonlong'
+import CustomButton from '@/components/button-long'
 import Picture from '@/components/picture'
-import useLevelStore from '@/store/store-level'
+import useLevelStore from '@/store/level-progress'
 import useProgressStore from '@/store/tracking/tracker-progress'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { useNavigate } from 'react-router-dom'
@@ -9,9 +9,9 @@ import { API_URL } from '@/config/api'
 import { ROUTES } from '@/const'
 
 const colors = ['#ff0', '#ff6347', '#32cd32', '#1e90ff', '#ffa500']
+const confettiCount = 50
 
 export default function TheEnd() {
-  const confettiCount = 50
   const navigate = useNavigate()
   const { resetTotalAnswers } = useTotalQuizStore()
   const { resetProgress } = useProgressStore()
@@ -47,7 +47,6 @@ export default function TheEnd() {
       navigate(`/${ROUTES.LEVEL}`)
     } else {
       console.error('Utilisateur non authentifié')
-      alert('Utilisateur non authentifié')
     }
   }
 
