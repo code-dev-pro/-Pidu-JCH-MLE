@@ -5,11 +5,18 @@ import CustomButton from '@/components/button-long'
 import { useNavigate } from 'react-router-dom'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { ROUTES } from '@/const'
+import useSound from 'use-sound'
+import { useEffect } from 'react'
 
 export default function ResultCompleted() {
   const { totalAnswers } = useTotalQuizStore()
   const resultCorrect = totalAnswers.filter(answer => answer.iscorrect).length
   const navigate = useNavigate()
+  const [play] = useSound('/sound/finjeu.mp3', { volume: 0.25 })
+
+  useEffect(() => {
+    play()
+  }, [play])
   const handleClick = () => {
     navigate(`/${ROUTES.END}`)
   }

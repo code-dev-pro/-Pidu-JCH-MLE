@@ -7,6 +7,7 @@ import useProgressStore from '@/store/tracking/tracker-progress'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { API_URL } from '@/config/api'
 import { ROUTES } from '@/const'
+import useSound from 'use-sound'
 
 interface ExerciseData {
   exercise_id: number
@@ -23,6 +24,12 @@ export const HasCode = () => {
   const { setProgress } = useProgressStore()
   const { addTotalAnswer } = useTotalQuizStore()
   const navigate = useNavigate()
+
+  const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
+
+  const handleClick = () => {
+    play()
+  }
 
   const handleAuthCode = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -116,6 +123,7 @@ export const HasCode = () => {
             className="border p-2 rounded-md"
           />
           <button
+            onClick={handleClick}
             type="submit"
             className="px-4 py-2 rounded-4xl bg-[#19C472] text-white cursor-pointer border-b-6 border-black/20 w-40 
             hover:scale-110 transition-transform duration-300"

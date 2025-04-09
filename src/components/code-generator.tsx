@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { Answer } from '@/store/tracking/tracker-answer'
 import { API_URL } from '@/config/api'
 import { ROUTES } from '@/const'
+import useSound from 'use-sound'
 
 export const CodeGenerator = () => {
   const codeRef = useRef<HTMLParagraphElement>(null)
@@ -21,6 +22,7 @@ export const CodeGenerator = () => {
   const { setLevel } = useLevelStore()
   const { setProgress } = useProgressStore()
   const { addTotalAnswer } = useTotalQuizStore()
+  const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
 
   const fetchUserData = async (userId: number) => {
     try {
@@ -76,6 +78,10 @@ export const CodeGenerator = () => {
     } catch (error) {
       console.error('Erreur serveur:', error)
       alert('Erreur de connexion au serveur ❌')
+    }
+
+    {
+      play()
     }
   }
 

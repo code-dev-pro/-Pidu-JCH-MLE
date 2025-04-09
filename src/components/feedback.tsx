@@ -2,6 +2,8 @@ import Picture from './picture'
 import Title from './title'
 import CustomButton from './button-long'
 import useFeedbackStore from '@/store/data/feedback'
+import useSound from 'use-sound'
+import { useEffect } from 'react'
 
 interface FeedbackProps {
   correctAnswer: string
@@ -19,6 +21,11 @@ function Feedback({ correctAnswer, increaseProgress }: FeedbackProps) {
     ? 'Tu as trouvé la bonne réponse!'
     : `La bonne réponse est : "${correctAnswer}"`
   const color = isSuccess ? 'text-[#19C472]' : 'text-[#F84E40]'
+  const [play] = useSound(isSuccess ? '/sound/gagne.mp3' : '/sound/perdu.mp3', { volume: 0.25 })
+
+  useEffect(() => {
+    play()
+  }, [play])
 
   return (
     <div
