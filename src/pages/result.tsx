@@ -9,6 +9,7 @@ import useLevelStore from '@/store/level-progress'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 import { ROUTES } from '@/const'
+import useSound from 'use-sound'
 
 export default function Result() {
   const { answers, resetAnswers } = useQuizStore() // Récupère les réponses de l'utilisateur et la fonction pour les réinitialiser
@@ -18,6 +19,11 @@ export default function Result() {
   const isFinished = useRef<boolean>(false) // Référence mutable pour savoir si le dernier niveau est atteint (évite un re-rendu)
   const resultCorrect = answers.filter(answer => answer.iscorrect).length // Calcule le nombre de réponses correctes
   const navigate = useNavigate() // Hook pour naviguer entre les pages
+  const [play] = useSound('/sound/finjeu.mp3', { volume: 0.25 })
+
+  useEffect(() => {
+    play()
+  }, [play])
 
   // Fonction appelée lorsqu'on clique sur un bouton (ex: passer au niveau suivant ou terminer)
   const handleClick = () => {

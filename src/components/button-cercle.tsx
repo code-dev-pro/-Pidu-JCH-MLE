@@ -8,6 +8,7 @@ import ProgressNumber from './progress-number'
 import CustomButton from './button-long'
 import useExerciseStore from '@/store/data/exercise'
 import { ROUTES } from '@/const'
+import useSound from 'use-sound'
 
 interface IButtonLevelProps {
   level: number
@@ -17,9 +18,11 @@ interface IButtonLevelProps {
 
 function ButtonLocked() {
   const [showing, setShowing] = useState(false)
+  const [play] = useSound('/sound/wrong.mp3', { volume: 0.25 })
 
   const handleClick = () => {
     setShowing(!showing)
+    play()
   }
 
   return (
@@ -62,11 +65,14 @@ function ButtonFlag() {
   const title = data.exercise_title
 
   const navigate = useNavigate()
+
+  const [play] = useSound('/sound/fail.mp3', { volume: 0.25 })
   const onClick = () => {
     navigate(`/${ROUTES.EXERCISE}`)
   }
   const handleClick = () => {
     setShowing(!showing)
+    play()
   }
 
   return (

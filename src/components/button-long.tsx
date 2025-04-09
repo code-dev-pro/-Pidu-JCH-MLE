@@ -1,4 +1,6 @@
 import Picture from '@/components/picture'
+import useSound from 'use-sound'
+// import click from '/sound/click.mp3'
 
 interface ButtonProps {
   bgColor?: 'green' | 'orange'
@@ -16,6 +18,13 @@ export default function CustomButton({
   icon,
   disabled,
 }: ButtonProps) {
+  const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
+
+  const handleClick = () => {
+    play()
+    if (onClickHandler) onClickHandler()
+  }
+
   const backgroundColor = bgColor === 'orange' ? '#FF8B2D' : '#19C472'
 
   const setContentButton = () => {
@@ -34,7 +43,7 @@ export default function CustomButton({
       className={`relative rounded-4xl w-[240px] h-[60px] flex items-center justify-center cursor-pointer border-b-6 border-black/20 ${buttonStyles}`}
       style={{ backgroundColor }}
       aria-label={text || 'Bouton avec icône'}
-      onClick={onClickHandler}
+      onClick={handleClick}
       disabled={disabled}
     >
       <Picture
