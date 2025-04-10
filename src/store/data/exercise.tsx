@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-// import { data } from './const'
 import { fetchExercises } from '@/services/service-exercise'
 
 export interface Choice {

@@ -49,14 +49,14 @@ export default function Result() {
 
   return (
     <>
-      <img src="./Background-Bilan2.svg" className="w-screen" alt="Background" />
+      <img src="./img/Background-Bilan2.svg" className="w-screen" alt="Background" />
       <Title tag="h1" title="Bilan exercice" className="p-5 text-center" />
       <div className="flex flex-col sm:flex-row items-center justify-center gap-7 mt-5">
         <ContentCorrectAnswer value={resultCorrect} />
         <CardReward value={resultCorrect} />
       </div>
       <div className="flex justify-center gap-12 mt-7">
-        <CustomButton icon="./Arrow.svg" onClickHandler={handleClick} />
+        <CustomButton icon="./img/Arrow.svg" onClickHandler={handleClick} />
       </div>
     </>
   )
