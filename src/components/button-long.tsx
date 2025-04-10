@@ -1,6 +1,5 @@
 import Picture from '@/components/picture'
 import useSound from 'use-sound'
-// import click from '/sound/click.mp3'
 
 interface ButtonProps {
   bgColor?: 'green' | 'orange'
@@ -48,13 +47,13 @@ export default function CustomButton({
     >
       <Picture
         className="absolute top-1.5 left-2 w-[9px] h-[10px]"
-        src="./Vector.svg"
+        src="./img/Vector.svg"
         alt="vector"
       />
       {setContentButton()}
       <Picture
         className="absolute top-1.5 right-1 w-[30px] h-[15px]"
-        src="./Ellipse.svg"
+        src="./img/Ellipse.svg"
         alt="ellipse"
       />
     </button>

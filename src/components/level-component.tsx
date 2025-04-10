@@ -21,7 +21,7 @@ const LevelComponent = ({ userId }: LevelComponentProps) => {
     <>
       <div
         className="absolute inset-0 h-svh bg-cover bg-center"
-        style={{ backgroundImage: `url(/Background-Level3.svg)` }}
+        style={{ backgroundImage: `url(./img/Background-Level3.svg)` }}
       >
         <div className="absolute top-0 left-10 flex flex-row">
           <div className="relative p-2">

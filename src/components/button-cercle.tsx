@@ -28,7 +28,7 @@ function ButtonLocked() {
   return (
     <>
       <button onClick={handleClick} aria-label="Bouton du prochain niveau verrouillé">
-        <Picture src="./Lock.svg" alt="Bouton avec cadenas" className="cursor-pointer" />
+        <Picture src="./img/Lock.svg" alt="Bouton avec cadenas" className="cursor-pointer" />
       </button>
 
       {showing && (
@@ -38,12 +38,12 @@ function ButtonLocked() {
             className="absolute top-4 right-4"
             aria-label="Fermer le modal"
           >
-            <Picture src="./Close-Circle.svg" alt="Fermer" className="w-6 h-6 cursor-pointer" />
+            <Picture src="./img/Close-Circle.svg" alt="Fermer" className="w-6 h-6 cursor-pointer" />
           </button>
 
           <div className="flex flex-col items-center justify-center gap-4">
             <Picture
-              src="./Pidu-study.svg"
+              src="./img/Pidu-study.svg"
               alt="pidu"
               className="w-20 h-20 sm:w-[90px] sm:h-[90px]"
             />
@@ -82,7 +82,7 @@ function ButtonFlag() {
         aria-label="Bouton pour ouvrir le modal de démarrage"
         className="circle pulse"
       >
-        <Picture src="./Btn.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
+        <Picture src="./img/Btn.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
       </button>
       {showing && (
         <div className="fixed top-1/2 left-1/2 w-full max-w-[90%] sm:max-w-[619px] bg-white rounded-2xl shadow-lg text-center transform -translate-x-1/2 -translate-y-1/2 z-50 p-6 sm:p-10">
@@ -112,7 +112,7 @@ function ButtonFlag() {
 function ButtonCheck() {
   return (
     <button aria-label="Bouton pour ouvrir le modal de démarrage">
-      <Picture src="./Check.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
+      <Picture src="./img/Check.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
     </button>
   )
 }

@@ -50,7 +50,7 @@ function Feedback({ correctAnswer, increaseProgress }: FeedbackProps) {
           onClick={increaseProgress}
           className="mt-4 sm:mt-0 flex items-center justify-center sm:justify-end w-full sm:w-auto"
         >
-          <CustomButton bgColor="green" icon="Arrow.svg" />
+          <CustomButton bgColor="green" icon="./img/Arrow.svg" />
         </div>
       </div>
     </div>
