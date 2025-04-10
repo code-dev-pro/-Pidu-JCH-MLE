@@ -91,30 +91,31 @@ export default function Exercice() {
             currentColor="text-green-500"
           />
         </div>
-        <Title tag="h1" title={title} className="mb-14" />
+        <Title tag="h1" title={title} className="mb-10 text-center px-4" />
         <div className="flex justify-center">
           <div
-            className="w-[235px] h-[231px] bg-[#FDF3F2] rounded-2xl bg-contain bg-center bg-no-repeat "
+            className="w-48 h-48 sm:w-[235px] sm:h-[231px] bg-[#FDF3F2] rounded-2xl bg-contain bg-center bg-no-repeat "
             style={{ backgroundImage: `url(${image})` }}
           ></div>
         </div>
-        <div className="flex flex-wrap gap-6 justify-center mt-14">
+        <div className="flex flex-wrap gap-4 justify-center mt-10 px-4">
           {choices.map((choice, index) => (
-            <CardAnswer
-              onClickHandler={() => setTracking(choice)} // Passe la fonction setTracking avec le choix sélectionné lorsqu'on clique sur la carte
-              key={choice.id}
-              index={index}
-              label={choice.label}
-              iscorrect={choice.iscorrect}
-            />
+            <div key={choice.id} className="transform scale-[0.9] sm:scale-100">
+              <CardAnswer
+                onClickHandler={() => setTracking(choice)}
+                index={index}
+                label={choice.label}
+                iscorrect={choice.iscorrect}
+              />
+            </div>
           ))}
         </div>
-        <div className="flex justify-center gap-12 p-8" hidden={showing}>
+        <div className="flex justify-center gap-8 p-6" hidden={showing}>
           <CustomButton onClickHandler={onClickHandler} text="Valider" disabled={!selectedChoice} />
         </div>
 
         {showing && (
-          <div className="mt-10 p-2 absolute w-full bottom-0 md:relative md:mt-6">
+          <div className="mt-8 p-2 absolute w-full bottom-0 md:relative md:mt-6">
             <Feedback correctAnswer={label} increaseProgress={onChangedProgress} />
           </div>
         )}
