@@ -602,6 +602,18 @@
   resolved "https://registry.yarnpkg.com/@pkgr/core/-/core-0.2.2.tgz#224e466468489466a3ca77832be80cdd0bb8e523"
   integrity sha512-25L86MyPvnlQoX2MTIV2OiUcb6vJ6aRbFa9pbwByn95INKD5mFH2smgjDhq+fwJoqAgvgbdJLj6Tz7V9X5CFAQ==
 
+"@rive-app/canvas@2.26.8":
+  version "2.26.8"
+  resolved "https://registry.yarnpkg.com/@rive-app/canvas/-/canvas-2.26.8.tgz#094867f8b627194988aeee3d1310e0ccecf3e322"
+  integrity sha512-qCPEBCLRAOiMbAH54tGQN2DvHO+Oz5VXCyQ5/Pcv/mNJlUzu/p1CZgX+Q16FMOcc1s15QVUFcN+SovHwaRRBwg==
+
+"@rive-app/react-canvas@^4.18.7":
+  version "4.18.7"
+  resolved "https://registry.yarnpkg.com/@rive-app/react-canvas/-/react-canvas-4.18.7.tgz#86edc6e0cb0283e2a2ddf807dd47100173f3382e"
+  integrity sha512-nhY8zrPlhmC7fYTkr0alvahEnQUOcJawlCO16N9Bro8TSHEqO7xgEcKQ5e0VoSwpV9kxtCEWztN/xgZvHvQ2pw==
+  dependencies:
+    "@rive-app/canvas" "2.26.8"
+
 "@rollup/rollup-android-arm-eabi@4.39.0":
   version "4.39.0"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.39.0.tgz#1d8cc5dd3d8ffe569d8f7f67a45c7909828a0f66"
@@ -2001,9 +2013,9 @@ lint-staged@^15.4.3:
     yaml "^2.7.0"
 
 listr2@^8.2.5:
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/listr2/-/listr2-8.3.1.tgz#eb1817c57f209b0924331e5cbd44bc01cbecf70c"
-  integrity sha512-tx4s1tp3IYxCyVdPunlZ7MHlQ3FkjadHkbTCcQsOCFK90nM/aFEVEKIwpnn4r1WK1pIRiVrfuEpHV7PmtfvSZw==
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/listr2/-/listr2-8.3.2.tgz#c252ec9a3334950bfca9238457d0ad2c1a5cc867"
+  integrity sha512-vsBzcU4oE+v0lj4FhVLzr9dBTv4/fHIa57l+GCwovP8MoFNZJTOhGU8PXd4v2VJCbECAaijBiHntiekFMLvo0g==
   dependencies:
     cli-truncate "^4.0.0"
     colorette "^2.0.20"
