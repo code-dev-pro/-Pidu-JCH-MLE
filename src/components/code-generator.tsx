@@ -1,14 +1,9 @@
 import saveCodeToDatabase from '@/services/service-code'
-import generateCode from '@/utils'
+import generateCode from '@/utils/utils-code'
 import authenticateCode from '@/services/service-auth'
 import useAuthStore from '@/store/tracking/tracker-auth'
-import useLevelStore from '@/store/level-progress'
-import useProgressStore from '@/store/tracking/tracker-progress'
-import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { useRef, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Answer } from '@/store/tracking/tracker-answer'
-import { API_URL } from '@/config/api'
 import { ROUTES } from '@/const'
 import useSound from 'use-sound'
 
@@ -17,39 +12,9 @@ export const CodeGenerator = () => {
   const hasGenerated = useRef(false)
   const [generatedCode, setGeneratedCode] = useState('')
   const navigate = useNavigate()
-
   const { setUserId } = useAuthStore()
-  const { setLevel } = useLevelStore()
-  const { setProgress } = useProgressStore()
-  const { addTotalAnswer } = useTotalQuizStore()
   const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
 
-  const fetchUserData = async (userId: number) => {
-    try {
-      const response = await fetch(`${API_URL}/level/${userId}`)
-      const data: Answer[] = await response.json()
-
-      if (data.length > 0) {
-        const sortedData = data.sort(
-          (a, b) => b.exerciseId - a.exerciseId || b.questionId - a.questionId
-        )
-
-        const { exerciseId, questionId } = sortedData[0]
-
-        if (questionId >= 5) {
-          setLevel(exerciseId + 1)
-          setProgress(1)
-        } else {
-          setLevel(exerciseId)
-          setProgress(questionId + 1)
-        }
-
-        addTotalAnswer(data)
-      }
-    } catch (error) {
-      console.error('Erreur récupération données utilisateur:', error)
-    }
-  }
   const handleGenerateCode = async () => {
     const newCode = generateCode()
     setGeneratedCode(newCode)
@@ -70,7 +35,6 @@ export const CodeGenerator = () => {
 
       if (response.success && typeof response.userId === 'number' && response.userId > 0) {
         setUserId(response.userId)
-        await fetchUserData(response.userId)
         navigate(`/${ROUTES.LEVEL}`)
       } else {
         alert('Code invalide ❌')

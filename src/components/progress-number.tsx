@@ -1,5 +1,6 @@
 import useProgressStore from '@/store/tracking/tracker-progress'
-
+import useExerciseStore from '@/store/data/exercise'
+import useLevelStore from '@/store/level-progress'
 interface ProgressNumberProps {
   className?: string
   colorNumber?: string
@@ -16,7 +17,15 @@ export default function ProgressNumber({
 }: ProgressNumberProps) {
   const { progressNumber } = useProgressStore()
   const num = value ? value : progressNumber
-  const total = isEnd ? 25 : 5
+  const { exercises } = useExerciseStore()
+  const { level } = useLevelStore()
+
+  // Calcul dynamique du total de questions
+  const totalQuestions = exercises.reduce((sum, exercise) => {
+    return sum + exercise.questions.length
+  }, 0)
+
+  const total = isEnd ? totalQuestions : exercises[level - 1].questions.length
   return (
     <>
       <div className={className}>

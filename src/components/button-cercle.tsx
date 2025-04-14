@@ -9,6 +9,7 @@ import CustomButton from './button-long'
 import useExerciseStore from '@/store/data/exercise'
 import { ROUTES } from '@/const'
 import useSound from 'use-sound'
+import { useClickAway } from '@uidotdev/usehooks'
 
 interface IButtonLevelProps {
   level: number
@@ -24,7 +25,9 @@ function ButtonLocked() {
     setShowing(!showing)
     play()
   }
-
+  const refModal = useClickAway(() => {
+    setShowing(false)
+  })
   return (
     <>
       <button onClick={handleClick} aria-label="Bouton du prochain niveau verrouillé">
@@ -32,15 +35,10 @@ function ButtonLocked() {
       </button>
 
       {showing && (
-        <div className="fixed top-1/2 left-1/2 w-full max-w-[90%] sm:max-w-[456px] bg-white rounded-2xl shadow-lg text-center transform -translate-x-1/2 -translate-y-1/2 z-50 p-6 sm:p-10">
-          <button
-            onClick={() => setShowing(false)}
-            className="absolute top-4 right-4"
-            aria-label="Fermer le modal"
-          >
-            <Picture src="./img/Close-Circle.svg" alt="Fermer" className="w-6 h-6 cursor-pointer" />
-          </button>
-
+        <div
+          ref={refModal as React.Ref<HTMLDivElement>}
+          className="fixed top-1/2 left-1/2 w-full max-w-[90%] sm:max-w-[456px] bg-white rounded-2xl shadow-lg text-center transform -translate-x-1/2 -translate-y-1/2 z-50 p-6 sm:p-10"
+        >
           <div className="flex flex-col items-center justify-center gap-4">
             <Picture
               src="./img/Pidu-study.svg"
@@ -74,6 +72,9 @@ function ButtonFlag() {
     setShowing(!showing)
     play()
   }
+  const refModal = useClickAway(() => {
+    setShowing(false)
+  })
 
   return (
     <>
@@ -85,7 +86,10 @@ function ButtonFlag() {
         <Picture src="./img/Btn.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
       </button>
       {showing && (
-        <div className="fixed top-1/2 left-1/2 w-full max-w-[90%] sm:max-w-[619px] bg-white rounded-2xl shadow-lg text-center transform -translate-x-1/2 -translate-y-1/2 z-50 p-6 sm:p-10">
+        <div
+          ref={refModal as React.Ref<HTMLDivElement>}
+          className="fixed top-1/2 left-1/2 w-full max-w-[90%] sm:max-w-[619px] bg-white rounded-2xl shadow-lg text-center transform -translate-x-1/2 -translate-y-1/2 z-50 p-6 sm:p-10"
+        >
           <div className="font-bold text-lg sm:text-xl">
             <Title tag="h2" title={title} />
           </div>
@@ -134,20 +138,23 @@ export default function ButtonWrapper() {
   return (
     <>
       <div className="relative h-screen ">
-        <div className="absolute" style={{ top: '80%', left: '50%' }}>
+        <div className="absolute" style={{ top: '85%', left: '50%' }}>
           <ButtonLevel level={1} />
         </div>
-        <div className="absolute" style={{ top: '65%', left: '39%' }}>
+        <div className="absolute" style={{ top: '70%', left: '39%' }}>
           <ButtonLevel level={2} />
         </div>
-        <div className="absolute" style={{ top: '46%', left: '53%' }}>
+        <div className="absolute" style={{ top: '56%', left: '50%' }}>
           <ButtonLevel level={3} />
         </div>
-        <div className="absolute" style={{ top: '33%', left: '38%' }}>
+        <div className="absolute" style={{ top: '45%', left: '38%' }}>
           <ButtonLevel level={4} />
         </div>
-        <div className="absolute" style={{ top: '17%', left: '49%' }}>
+        <div className="absolute" style={{ top: '33%', left: '49%' }}>
           <ButtonLevel level={5} />
+        </div>
+        <div className="absolute" style={{ top: '20%', left: '40%' }}>
+          <ButtonLevel level={6} />
         </div>
       </div>
     </>

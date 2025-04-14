@@ -15,6 +15,8 @@ import useAnswerStore from '@/store/selected-answer'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '@/store/tracking/tracker-auth'
 import { ROUTES } from '@/const'
+import CardAudio from '@/components/card-audio'
+import { isAudio } from '@/utils/utils-audio'
 
 export default function Exercice() {
   const { progressNumber, increaseProgress } = useProgressStore() //Récupère la valeur actuelle de la progression et une fonction pour l'augmenter
@@ -28,7 +30,7 @@ export default function Exercice() {
   const questionId = progressNumber // Identifiant de la question basé sur le numéro de progression
 
   const title = data.questions[progressNumber - 1].question // Récupère le titre (question) de la question actuelle en fonction du numéro de progression
-  const image = data.questions[progressNumber - 1].image // Récupère l'image associée à la question actuelle
+  const media = data.questions[progressNumber - 1].image // Récupère l'image associée à la question actuelle
   const choices = data.questions[progressNumber - 1].choices // Récupère les choix de réponse pour la question actuelle
   const help = data.questions[progressNumber - 1].help // Récupère l'aide éventuelle pour la question actuelle
   const question = data.questions[progressNumber - 1] // Récupère l'objet complet de la question actuelle
@@ -54,7 +56,7 @@ export default function Exercice() {
       return
     }
     // Incrémente la progression et cache l'affichage (ex: feedback)
-    increaseProgress()
+    increaseProgress(data.questions.length)
     setShowing(false)
   }
   // Fonction déclenchée lorsqu'un utilisateur valide son choix
@@ -93,11 +95,18 @@ export default function Exercice() {
         </div>
         <Title tag="h1" title={title} className="mb-10 text-center px-4" />
         <div className="flex justify-center">
-          <div
-            className="w-48 h-48 sm:w-[235px] sm:h-[231px] bg-[#FDF3F2] rounded-2xl bg-contain bg-center bg-no-repeat "
-            style={{ backgroundImage: `url(${image})` }}
-          ></div>
+          {isAudio(media) ? (
+            <div className="flex justify-center w-48 h-48 sm:w-[235px] sm:h-[231px] bg-[#FDF3F2] rounded-2xl ">
+              <CardAudio media={media} key={media} />
+            </div>
+          ) : (
+            <div
+              className="w-48 h-48 sm:w-[235px] sm:h-[231px] bg-[#FDF3F2] rounded-2xl bg-contain bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${media})` }}
+            ></div>
+          )}
         </div>
+
         <div className="flex flex-wrap gap-4 justify-center mt-10 px-4">
           {choices.map((choice, index) => (
             <div key={choice.id} className="transform scale-[0.9] sm:scale-100">
