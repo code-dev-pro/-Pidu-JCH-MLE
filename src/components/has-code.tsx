@@ -8,6 +8,7 @@ import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { API_URL } from '@/config/api'
 import { ROUTES } from '@/const'
 import useSound from 'use-sound'
+import useExerciseStore from '@/store/data/exercise'
 
 interface ExerciseData {
   exercise_id: number
@@ -23,6 +24,7 @@ export const HasCode = () => {
   const { setLevel } = useLevelStore()
   const { setProgress } = useProgressStore()
   const { addTotalAnswer } = useTotalQuizStore()
+  const { exercises } = useExerciseStore()
   const navigate = useNavigate()
 
   const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
@@ -56,10 +58,12 @@ export const HasCode = () => {
 
           if (question_id >= 5) {
             setLevel(exercise_id + 1)
-            setProgress(1)
+            const total = exercises[exercise_id + 1].questions.length
+            setProgress(1, total)
           } else {
             setLevel(exercise_id)
-            setProgress(question_id + 1)
+            const total = exercises[exercise_id].questions.length
+            setProgress(question_id + 1, total)
           }
           addTotalAnswer(data)
         } else {
@@ -111,7 +115,7 @@ export const HasCode = () => {
   }
 
   return (
-    <div className="">
+    <>
       <div className="flex flex-col mt-2">
         <h2 className="text-xl font-semibold text-black">Entrez votre code</h2>
         <form onSubmit={handleAuthCode} className="flex flex-col items-center space-y-3">
@@ -134,6 +138,6 @@ export const HasCode = () => {
         </form>
         {message && <p className="mt-2">{message}</p>}
       </div>
-    </div>
+    </>
   )
 }
