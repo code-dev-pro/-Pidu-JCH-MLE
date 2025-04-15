@@ -4,6 +4,7 @@ import Avatar from './card-avatar'
 import CardRewardLevel from './card-reward-level'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import useLevelStore from '@/store/level-progress'
+import CardCode from './card-code-user'
 
 export interface LevelComponentProps {
   userId: number
@@ -23,17 +24,15 @@ const LevelComponent = ({ userId }: LevelComponentProps) => {
         className="absolute inset-0 h-svh bg-cover bg-center"
         style={{ backgroundImage: `url(./img/Background-Level3.svg)` }}
       >
-        <div className="absolute top-0 left-10 flex flex-row">
-          <div className="relative p-2 z-50">
+        <div className="absolute top-0 left-0 w-full flex flex-col sm:flex-row items-center sm:justify-start gap-4 sm:gap-10 p-4 sm:p-6">
+          <div className="flex flex-row gap-4 sm:gap-10 items-center relative p-2 z-50">
             <Avatar />
-          </div>
-          <div className="flex flex-row gap-5 p-7">
+            <CardCode />
             <CardRewardLevel value={resultTotalCorrect} />
           </div>
         </div>
-        <div>
-          <ButtonWrapper />
-        </div>
+
+        <ButtonWrapper />
       </div>
     </>
   )
