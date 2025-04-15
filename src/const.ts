@@ -4,4 +4,5 @@ export const ROUTES = {
   RESULT: 'result',
   END: 'end',
   EXERCISE: 'exercice',
+  AVATAR: 'avatar',
 }

@@ -23,17 +23,17 @@ app.use(express.json())
 const apiRouter = express.Router()
 
 // Route de test pour vérifier que le serveur fonctionne
-apiRouter.get('/', (req, res) => {
+apiRouter.get('/', (_req, res) => {
   res.json({ status: 'ok', message: 'API server is running' })
 })
 
 // Route de test pour vérifier que le serveur fonctionne
-apiRouter.get('/health', (req, res) => {
+apiRouter.get('/health', (_req, res) => {
   res.json({ status: 'ok', message: 'Server is running' })
 })
 
 // Middleware pour gérer les erreurs de base de données
-apiRouter.use((req, res, next) => {
+apiRouter.use((_req, res, next) => {
   if (!sql) {
     return res.status(500).json({
       error: 'Database connection not available',
@@ -45,7 +45,7 @@ apiRouter.use((req, res, next) => {
 })
 
 // Route pour récupérer tous les exercices
-apiRouter.get('/exercises', async (req, res) => {
+apiRouter.get('/exercises', async (_req, res) => {
   try {
     const exercisesWithDetails = await sql`
       SELECT 
@@ -108,7 +108,6 @@ apiRouter.post('/code', async (req, res) => {
 apiRouter.post('/auth', async (req, res) => {
   try {
     const { code_user } = req.body
-    console.log('Code utilisateur reçu:', code_user)
 
     if (!code_user) {
       return res.status(400).json({ success: false, message: 'Code requis.' })
@@ -121,6 +120,7 @@ apiRouter.post('/auth', async (req, res) => {
         success: true,
         message: 'Code valide !',
         userId: result[0].id_user,
+        avatar_id: result[0].avatar_id,
       })
     } else {
       res.status(404).json({ success: false, message: 'Code invalide.' })
@@ -229,6 +229,44 @@ apiRouter.post('/delete/:userId', async (req, res) => {
     }
   } catch (err) {
     console.error('Erreur de requête:', err)
+    res.status(500).json({ error: 'Erreur serveur' })
+  }
+})
+
+apiRouter.get('/avatar', async (_req, res) => {
+  console.log('Route /api/avatar appelée')
+  try {
+    const result = await sql`SELECT id, character FROM avatar`
+    console.log('Résultat SQL complet:', result)
+    res.json(result)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Erreur serveur' })
+  }
+})
+
+apiRouter.put('/avatar/update', async (req, res) => {
+  const { userId, avatar_id } = req.body
+
+  if (!userId || !avatar_id) {
+    return res.status(400).json({ error: 'userId et avatar_id sont requis' })
+  }
+
+  try {
+    const result = await sql`
+      UPDATE "user"
+      SET avatar_id = ${avatar_id}
+      WHERE id_user = ${userId}
+      RETURNING *;
+    `
+
+    if (result.length > 0) {
+      res.status(200).json({ message: 'Avatar mis à jour avec succès', data: result[0] })
+    } else {
+      res.status(404).json({ error: 'Utilisateur non trouvé' })
+    }
+  } catch (error) {
+    console.error('Erreur lors de la mise à jour de l’avatar :', error)
     res.status(500).json({ error: 'Erreur serveur' })
   }
 })
