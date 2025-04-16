@@ -8,7 +8,6 @@ import Exercice from '@/pages/exercise'
 import Layout from './components/layout/layout'
 import TheEnd from './pages/end'
 import ResultCompleted from './pages/completed'
-
 function App() {
   return (
     <Routes>
