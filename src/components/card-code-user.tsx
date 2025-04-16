@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
 import useAuthStore from '@/store/tracking/tracker-auth'
-import Picture from './picture'
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '@/const'
 
 const CardCode = () => {
   const { codeUser } = useAuthStore()
-
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate(`/${ROUTES.EXERCISE}`)
+  }
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -18,18 +22,11 @@ const CardCode = () => {
   }
 
   return (
-    <div className="flex min-w-19 gap-3 h-7 rounded-2xl bg-[#095F38] relative">
-      <div className="w-[30px] h-[30px]">
-        <Picture
-          src="./img/user.svg"
-          alt="Score illustration"
-          className="w-full h-full object-contain"
-        />
-      </div>
-      <div className="filter invert brightness-0 text-2xl mr-[7px]">
+    <button onClick={handleClick} aria-label="Code utilisateur">
+      <div className="filter invert brightness-0 text-3xl mr-[7px] cursor-pointer animate-bounce hover:animate-none hover:scale-110 transition-all duration-300 active:scale-95">
         <p>{codeUser ? codeUser : 'Code non disponible'}</p>
       </div>
-    </div>
+    </button>
   )
 }
 

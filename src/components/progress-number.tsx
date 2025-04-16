@@ -26,7 +26,6 @@ export default function ProgressNumber({
   }, 0)
 
   const total = isEnd ? totalQuestions : exercises[level - 1].questions.length
-  console.log()
   return (
     <>
       <div className={className}>
