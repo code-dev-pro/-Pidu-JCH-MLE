@@ -25,10 +25,14 @@ const LevelComponent = ({ userId }: LevelComponentProps) => {
         style={{ backgroundImage: `url(./img/Background-Level3.svg)` }}
       >
         <div className="absolute top-0 left-0 w-full flex flex-col sm:flex-row items-center sm:justify-start gap-4 sm:gap-10 p-4 sm:p-6">
-          <div className="flex flex-row gap-4 sm:gap-10 items-center relative p-2 z-50">
-            <Avatar />
-            <CardCode />
-            <CardRewardLevel value={resultTotalCorrect} />
+          <div className="flex flex-row items-center gap-4 sm:gap-6 p-2 z-50 relative">
+            <div className="flex flex-row items-center gap-5 sm:gap-4">
+              <Avatar />
+              <CardCode />
+            </div>
+            <div className="ml-4 sm:ml-2">
+              <CardRewardLevel value={resultTotalCorrect} />
+            </div>
           </div>
         </div>
 
