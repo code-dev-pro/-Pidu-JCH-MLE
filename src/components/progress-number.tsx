@@ -16,7 +16,7 @@ export default function ProgressNumber({
   isEnd,
 }: ProgressNumberProps) {
   const { progressNumber } = useProgressStore()
-  const num = value ? value : progressNumber
+  const num = value !== undefined ? value : progressNumber
   const { exercises } = useExerciseStore()
   const { level } = useLevelStore()
 
@@ -26,6 +26,7 @@ export default function ProgressNumber({
   }, 0)
 
   const total = isEnd ? totalQuestions : exercises[level - 1].questions.length
+  console.log()
   return (
     <>
       <div className={className}>
