@@ -236,7 +236,7 @@ apiRouter.post('/delete/:userId', async (req, res) => {
 apiRouter.get('/avatar', async (_req, res) => {
   console.log('Route /api/avatar appelée')
   try {
-    const result = await sql`SELECT id, character FROM avatar`
+    const result = await sql`SELECT id, character FROM avatar ORDER BY id ASC`
     console.log('Résultat SQL complet:', result)
     res.json(result)
   } catch (error) {

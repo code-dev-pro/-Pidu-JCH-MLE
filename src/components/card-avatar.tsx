@@ -37,7 +37,11 @@ export default function Avatar() {
 
         if (avatarId) {
           const found = data.find((a: AvatarItem) => a.id === avatarId)
-          if (found) setAvatar(found)
+          if (found) {
+            setAvatar(found)
+          }
+        } else if (data.length > 0) {
+          setAvatar(data[0])
         }
       })
       .catch(err => console.error('Erreur de récupération des avatars :', err))
@@ -78,7 +82,7 @@ export default function Avatar() {
           <Picture
             src={selectedAvatar ? selectedAvatar.character : './img/Happy.svg'}
             alt="avatar Pidu"
-            className="w-20 h-20 object-contain cursor-pointer"
+            className="w-20 h-20 object-contain object-center cursor-pointer"
           />
         </div>
       </button>
@@ -96,12 +100,13 @@ export default function Avatar() {
           >
             <Title tag="h2" title="Choisis ton avatar" className="text-2xl text-black mb-4" />
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-h-[400px] overflow-y-auto items-center">
+            <div className="grid grid-cols-2 sm:flex gap-4 justify-center max-h-[400px] overflow-y-auto items-center">
               {avatars.map(avatar => (
                 <ChoiceAvatar
                   key={avatar.id}
                   avatar={avatar}
                   onClickHandler={() => setAvatar(avatar)}
+                  isSelected={selectedAvatar?.id === avatar.id}
                 />
               ))}
             </div>
