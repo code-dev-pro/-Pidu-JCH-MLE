@@ -51,6 +51,7 @@ apiRouter.get('/exercises', async (_req, res) => {
       SELECT 
         e.id_exercise AS exercise_id, 
         e.title_exercise AS exercise_title,
+        e.image AS exercise_image,
         json_agg(
           json_build_object(
             'id', q.id_question, 
@@ -72,7 +73,7 @@ apiRouter.get('/exercises', async (_req, res) => {
         ) AS questions
       FROM exercise e
       LEFT JOIN question q ON q.exercise_id = e.id_exercise
-      GROUP BY e.id_exercise, e.title_exercise
+      GROUP BY e.id_exercise, e.title_exercise, e.image
       ORDER BY e.id_exercise ASC
     `
 
@@ -119,7 +120,7 @@ apiRouter.post('/auth', async (req, res) => {
       res.status(200).json({
         success: true,
         message: 'Code valide !',
-        userId: result[0].id_user,
+        user_id: result[0].id_user,
         avatar_id: result[0].avatar_id,
       })
     } else {
@@ -133,30 +134,36 @@ apiRouter.post('/auth', async (req, res) => {
 
 apiRouter.post('/answers', async (req, res) => {
   try {
-    const { userId, exerciseId, questionId, selectedChoice, iscorrect } = req.body
+    const { user_id, exercise_id, question_id, selected_choice, iscorrect } = req.body
 
-    console.log('Données reçues :', { userId, exerciseId, questionId, selectedChoice, iscorrect })
+    console.log('Données reçues :', {
+      user_id,
+      exercise_id,
+      question_id,
+      selected_choice,
+      iscorrect,
+    })
 
     if (
-      !userId ||
-      !exerciseId ||
-      !questionId ||
-      selectedChoice === undefined ||
+      !user_id ||
+      !exercise_id ||
+      !question_id ||
+      selected_choice === undefined ||
       iscorrect === undefined
     ) {
       console.error(' Données incomplètes :', {
-        userId,
-        exerciseId,
-        questionId,
-        selectedChoice,
+        user_id,
+        exercise_id,
+        question_id,
+        selected_choice,
         iscorrect,
       })
       return res.status(400).json({ error: 'Données incomplètes' })
     }
 
     await sql`
-      INSERT INTO answers (user_id, exercise_id, question_id, selected_choice, iscorrect) 
-           VALUES (${Number(userId)}, ${Number(exerciseId)}, ${Number(questionId)}, ${String(selectedChoice)}, ${Boolean(iscorrect)})
+      INSERT INTO answers (user_id, exercise_id, question_id, selected_choice, iscorrect)
+           VALUES (${Number(user_id)}, ${Number(exercise_id)}, ${Number(question_id)}, ${String(selected_choice)}, ${Boolean(iscorrect)})
     `
 
     res.status(201).json({ message: 'Réponse enregistrée' })
@@ -166,15 +173,15 @@ apiRouter.post('/answers', async (req, res) => {
   }
 })
 
-apiRouter.get('/level/:userId', async (req, res) => {
-  const { userId } = req.params
+apiRouter.get('/level/:user_id', async (req, res) => {
+  const { user_id } = req.params
 
   try {
     const result = await sql`
       SELECT exercise_id, question_id, selected_choice, iscorrect
       FROM answers
-      WHERE user_id = ${userId}
-      ORDER BY exercise_id , question_id 
+      WHERE user_id = ${user_id}
+      ORDER BY exercise_id , question_id
     `
 
     if (result.length > 0) {
@@ -188,17 +195,16 @@ apiRouter.get('/level/:userId', async (req, res) => {
   }
 })
 
-apiRouter.post('/progress/:userId', async (req, res) => {
-  const { userId } = req.params
+apiRouter.post('/progress/:user_id', async (req, res) => {
+  const { user_id } = req.params
   const { exercise_id, question_id, selected_choice, iscorrect } = req.body
 
   try {
     const result = await sql`
       INSERT INTO answers (user_id, exercise_id, question_id)
-      VALUES (${userId}, ${exercise_id}, ${question_id})
+      VALUES (${user_id}, ${exercise_id}, ${question_id})
       ON CONFLICT (user_id, exercise_id, question_id) 
       DO UPDATE SET selected_choice = ${selected_choice}, iscorrect = ${iscorrect}
-
     `
 
     console.log('Progression mise à jour :', result)
@@ -213,11 +219,11 @@ apiRouter.post('/progress/:userId', async (req, res) => {
   }
 })
 
-apiRouter.post('/delete/:userId', async (req, res) => {
-  const { userId } = req.params
+apiRouter.post('/delete/:user_id', async (req, res) => {
+  const { user_id } = req.params
   try {
     const result = await sql`
-      DELETE FROM answers WHERE user_id = ${userId}
+      DELETE FROM answers WHERE user_id = ${user_id}
     `
 
     if (result.affectedRows > 0) {
@@ -246,17 +252,17 @@ apiRouter.get('/avatar', async (_req, res) => {
 })
 
 apiRouter.put('/avatar/update', async (req, res) => {
-  const { userId, avatar_id } = req.body
+  const { user_id, avatar_id } = req.body
 
-  if (!userId || !avatar_id) {
-    return res.status(400).json({ error: 'userId et avatar_id sont requis' })
+  if (!user_id || !avatar_id) {
+    return res.status(400).json({ error: 'user_id et avatar_id sont requis' })
   }
 
   try {
     const result = await sql`
       UPDATE "user"
       SET avatar_id = ${avatar_id}
-      WHERE id_user = ${userId}
+      WHERE id_user = ${user_id}
       RETURNING *;
     `
 
@@ -267,6 +273,29 @@ apiRouter.put('/avatar/update', async (req, res) => {
     }
   } catch (error) {
     console.error('Erreur lors de la mise à jour de l’avatar :', error)
+    res.status(500).json({ error: 'Erreur serveur' })
+  }
+})
+
+apiRouter.get('/last-exercise/:user_id', async (req, res) => {
+  const { user_id } = req.params
+
+  try {
+    const result = await sql`
+      SELECT exercise_id
+      FROM answers
+      WHERE user_id = ${user_id}
+      ORDER BY exercise_id ASC
+      LIMIT 1
+    `
+
+    if (result.length > 0) {
+      res.json({ last_exercise_id: result[0].exercise_id })
+    } else {
+      res.status(404).json({ message: 'Aucun exercice trouvé pour cet utilisateur.' })
+    }
+  } catch (error) {
+    console.error('Erreur lors de la récupération du dernier exercice :', error)
     res.status(500).json({ error: 'Erreur serveur' })
   }
 })

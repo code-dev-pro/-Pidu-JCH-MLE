@@ -19,6 +19,7 @@ export default function Result() {
   const { nextLevel, level } = useLevelStore() // Récupère la fonction pour passer au niveau suivant et le niveau actuel
   const isFinished = useRef<boolean>(false) // Référence mutable pour savoir si le dernier niveau est atteint (évite un re-rendu)
   const resultCorrect = answers.filter(answer => answer.iscorrect).length // Calcule le nombre de réponses correctes
+
   const navigate = useNavigate() // Hook pour naviguer entre les pages
   const [play] = useSound('/sound/finjeu.mp3', { volume: 0.25 })
   const { exercises } = useExerciseStore()

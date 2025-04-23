@@ -4,18 +4,18 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/const'
 
 const CardCode = () => {
-  const { codeUser } = useAuthStore()
+  const { code_user } = useAuthStore()
   const navigate = useNavigate()
   const handleClick = () => {
-    navigate(`/${ROUTES.EXERCISE}`)
+    navigate(`/${ROUTES.PROFILE}`)
   }
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    if (codeUser !== null) {
+    if (code_user !== null) {
       setIsLoading(false)
     }
-  }, [codeUser])
+  }, [code_user])
 
   if (isLoading) {
     return <p>Chargement...</p>
@@ -24,7 +24,7 @@ const CardCode = () => {
   return (
     <button onClick={handleClick} aria-label="Code utilisateur">
       <div className="filter invert brightness-0 text-3xl mr-[7px] cursor-pointer animate-bounce hover:animate-none hover:scale-110 transition-all duration-300 active:scale-95">
-        <p>{codeUser ? codeUser : 'Code non disponible'}</p>
+        <p>{code_user ? code_user : 'Code non disponible'}</p>
       </div>
     </button>
   )

@@ -9,6 +9,8 @@ import { API_URL } from '@/config/api'
 import { ROUTES } from '@/const'
 import useSound from 'use-sound'
 import useExerciseStore from '@/store/data/exercise'
+import useQuizStore from '@/store/tracking/tracker-answer'
+import { Answer } from '@/store/tracking/tracker-answer'
 
 interface ExerciseData {
   exercise_id: number
@@ -20,13 +22,14 @@ export const HasCode = () => {
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const { setUserId } = useAuthStore()
+  const { setuser_id } = useAuthStore()
   const { setLevel } = useLevelStore()
   const { setProgress } = useProgressStore()
+  const { setAnswer } = useQuizStore()
   const { addTotalAnswer } = useTotalQuizStore()
   const { exercises } = useExerciseStore()
   const navigate = useNavigate()
-
+  const { resetAnswers } = useQuizStore()
   const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
 
   const handleClick = () => {
@@ -43,28 +46,47 @@ export const HasCode = () => {
 
     setIsLoading(true)
 
-    const fetchUserData = async (userId: number) => {
+    const fetchUserData = async (user_id: number) => {
       try {
-        const response = await fetch(`${API_URL}/level/${userId}`)
+        const response = await fetch(`${API_URL}/level/${user_id}`)
         const data = await response.json()
 
         if (data && data.length > 0) {
+          // ✅ Trier les données pour identifier la dernière réponse
           const sortedData = data.sort(
             (a: ExerciseData, b: ExerciseData) =>
               b.exercise_id - a.exercise_id || b.question_id - a.question_id
           )
 
           const { exercise_id, question_id } = sortedData[0]
+          const currentExercise = exercises[exercise_id]
+          const nextExercise = exercises[exercise_id + 1]
 
-          if (question_id >= 5) {
+          resetAnswers()
+
+          // Ne garder que les réponses de l'exercice en cours
+          data
+            .filter((answer: Answer) => answer.exercise_id === exercise_id)
+            .forEach((answer: Answer) => {
+              setAnswer(
+                answer.user_id,
+                answer.exercise_id,
+                answer.question_id,
+                answer.selected_choice,
+                answer.iscorrect
+              )
+            })
+
+          if (question_id >= 5 && nextExercise) {
             setLevel(exercise_id + 1)
-            const total = exercises[exercise_id + 1].questions.length
+            const total = nextExercise.questions.length
             setProgress(1, total)
-          } else {
+          } else if (currentExercise) {
             setLevel(exercise_id)
-            const total = exercises[exercise_id].questions.length
+            const total = currentExercise.questions.length
             setProgress(question_id + 1, total)
           }
+
           addTotalAnswer(data)
         } else {
           console.log('Pas de données disponibles')
@@ -77,16 +99,16 @@ export const HasCode = () => {
     try {
       const response = await authenticateCode(userCode)
       console.log("Réponse de l'API :", response)
-      if (response.success && typeof response.userId === 'number' && response.userId > 0) {
-        setUserId(response.userId)
-        await fetchUserData(response.userId)
+      if (response.success && typeof response.user_id === 'number' && response.user_id > 0) {
+        setuser_id(response.user_id)
+        await fetchUserData(response.user_id)
         setMessage('Code valide ✅')
 
         // Attendre que l'utilisateur voie le message avant de naviguer
         setTimeout(() => {
           setIsLoading(false) // Désactiver le chargement
           navigate(`/${ROUTES.LEVEL}`)
-        }, 2000)
+        }, 1000)
       } else {
         setMessage('Code invalide ❌')
 
@@ -97,7 +119,7 @@ export const HasCode = () => {
           }
           setMessage('')
           setIsLoading(false) // Désactiver le chargement après réinitialisation
-        }, 2000)
+        }, 1000)
       }
     } catch (error) {
       console.error('Erreur serveur:', error)
@@ -110,7 +132,7 @@ export const HasCode = () => {
         }
         setMessage('')
         setIsLoading(false) // Désactiver le chargement après réinitialisation
-      }, 2000)
+      }, 1000)
     }
   }
 
