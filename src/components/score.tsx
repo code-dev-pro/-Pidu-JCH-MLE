@@ -1,5 +1,5 @@
 interface ScoreProps {
-  value: number
+  value: number | null
 }
 
 function Score({ value }: ScoreProps) {

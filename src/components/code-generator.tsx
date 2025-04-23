@@ -12,7 +12,7 @@ export const CodeGenerator = () => {
   const hasGenerated = useRef(false)
   const [generatedCode, setGeneratedCode] = useState('')
   const navigate = useNavigate()
-  const { setUserId } = useAuthStore()
+  const { setuser_id } = useAuthStore()
   const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
 
   const handleGenerateCode = async () => {
@@ -33,8 +33,8 @@ export const CodeGenerator = () => {
     try {
       const response = await authenticateCode(generatedCode)
 
-      if (response.success && typeof response.userId === 'number' && response.userId > 0) {
-        setUserId(response.userId)
+      if (response.success && typeof response.user_id === 'number' && response.user_id > 0) {
+        setuser_id(response.user_id)
         navigate(`/${ROUTES.LEVEL}`)
       } else {
         alert('Code invalide ❌')

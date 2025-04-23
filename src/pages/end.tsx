@@ -16,11 +16,11 @@ export default function TheEnd() {
   const { resetTotalAnswers } = useTotalQuizStore()
   const { resetProgress } = useProgressStore()
   const { setLevel } = useLevelStore()
-  const { userId } = useAuthStore()
+  const { user_id } = useAuthStore()
 
-  async function deleteUserProgress(userId: number) {
+  async function deleteUserProgress(user_id: number) {
     try {
-      const response = await fetch(`${API_URL}/delete/${userId}`, {
+      const response = await fetch(`${API_URL}/delete/${user_id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,8 +38,8 @@ export default function TheEnd() {
     }
   }
   const handleClick = async () => {
-    if (userId) {
-      await deleteUserProgress(userId)
+    if (user_id) {
+      await deleteUserProgress(user_id)
 
       resetTotalAnswers()
       resetProgress()

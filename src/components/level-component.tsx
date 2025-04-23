@@ -7,16 +7,16 @@ import useLevelStore from '@/store/level-progress'
 import CardCode from './card-code-user'
 
 export interface LevelComponentProps {
-  userId: number
+  user_id: number
 }
-const LevelComponent = ({ userId }: LevelComponentProps) => {
+const LevelComponent = ({ user_id }: LevelComponentProps) => {
   const { setLevel } = useLevelStore()
   const { totalAnswers } = useTotalQuizStore()
   const resultTotalCorrect = totalAnswers.filter(answer => answer.iscorrect).length
 
   useEffect(() => {
-    if (userId) setLevel(userId)
-  }, [userId, setLevel])
+    if (user_id) setLevel(user_id)
+  }, [user_id, setLevel])
 
   return (
     <>

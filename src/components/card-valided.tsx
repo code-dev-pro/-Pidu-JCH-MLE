@@ -2,9 +2,10 @@ import Picture from '@/components/picture'
 
 interface CardValidedProps {
   status?: 'correct' | 'incorrect' | 'pending'
+  selected_choice: string
 }
 
-function CardValided({ status }: CardValidedProps) {
+function CardValided({ status, selected_choice }: CardValidedProps) {
   const iconColor =
     status === 'correct'
       ? './img/check-icon.svg'
@@ -23,8 +24,9 @@ function CardValided({ status }: CardValidedProps) {
               : 'bg-[#F6F6F9]'
         } rounded-[13px] w-[177px] h-[76px] flex items-center justify-center p-4`}
       >
-        <div className="flex flex-col items-center">
-          <Picture className={`w-[35px] h-[35px] `} src={iconColor} alt="icon" />
+        <div className="flex flex-col items-center space-y-2">
+          <Picture className="w-[35px] h-[35px]" src={iconColor} alt="icon" />
+          <p className="text-sm text-gray-700 text-center">{selected_choice}</p>
         </div>
       </div>
     </div>

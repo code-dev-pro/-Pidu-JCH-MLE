@@ -8,6 +8,8 @@ import Exercice from '@/pages/exercise'
 import Layout from './components/layout/layout'
 import TheEnd from './pages/end'
 import ResultCompleted from './pages/completed'
+import Profile from './pages/profile'
+
 function App() {
   return (
     <Routes>
@@ -23,7 +25,7 @@ function App() {
         path="level"
         element={
           <Layout>
-            <Level userId={0} />
+            <Level user_id={0} />
           </Layout>
         }
       />
@@ -64,6 +66,14 @@ function App() {
         element={
           <Layout>
             <TheEnd />
+          </Layout>
+        }
+      />
+      <Route
+        path="profile"
+        element={
+          <Layout>
+            <Profile />
           </Layout>
         }
       />

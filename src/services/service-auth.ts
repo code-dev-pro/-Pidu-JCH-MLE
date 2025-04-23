@@ -14,9 +14,9 @@ const authenticateCode = async (code_user: string) => {
     const data = await response.json()
 
     if (response.ok && data.success) {
-      useAuthStore.getState().setUserId(data.userId)
-      useAuthStore.getState().setCodeUser(code_user)
-      useAuthStore.getState().setAvatarId(data.avatar_id)
+      useAuthStore.getState().setuser_id(data.user_id)
+      useAuthStore.getState().setcode_user(code_user)
+      useAuthStore.getState().setavatar_id(data.avatar_id)
 
       return data
     } else {

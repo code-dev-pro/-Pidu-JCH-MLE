@@ -5,4 +5,5 @@ export const ROUTES = {
   END: 'end',
   EXERCISE: 'exercice',
   AVATAR: 'avatar',
+  PROFILE: 'profile',
 }

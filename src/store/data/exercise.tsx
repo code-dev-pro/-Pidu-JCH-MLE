@@ -18,6 +18,7 @@ export interface Question {
 export interface Exercise {
   id: number
   exercise_title: string
+  image: string
   questions: Question[]
 }
 

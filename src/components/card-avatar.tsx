@@ -19,7 +19,7 @@ export default function Avatar() {
   const [avatars, setAvatars] = useState<AvatarItem[]>([])
 
   const { selectedAvatar, setAvatar } = useAvatarStore()
-  const { userId, avatarId } = useAuthStore()
+  const { user_id, avatar_id } = useAuthStore()
 
   const refModal = useClickAway(() => {
     setShowing(false)
@@ -35,8 +35,8 @@ export default function Avatar() {
       .then(data => {
         setAvatars(data)
 
-        if (avatarId) {
-          const found = data.find((a: AvatarItem) => a.id === avatarId)
+        if (avatar_id) {
+          const found = data.find((a: AvatarItem) => a.id === avatar_id)
           if (found) {
             setAvatar(found)
           }
@@ -45,10 +45,10 @@ export default function Avatar() {
         }
       })
       .catch(err => console.error('Erreur de récupération des avatars :', err))
-  }, [avatarId, setAvatar])
+  }, [avatar_id, setAvatar])
 
   const handleValidate = async () => {
-    if (!selectedAvatar || !userId) {
+    if (!selectedAvatar || !user_id) {
       alert('Veuillez choisir un avatar')
       return
     }
@@ -58,7 +58,7 @@ export default function Avatar() {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId,
+          user_id,
           avatar_id: selectedAvatar.id,
         }),
       })

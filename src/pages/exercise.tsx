@@ -26,8 +26,8 @@ export default function Exercice() {
   const { addAnswer } = useQuizStore() // Récupère une fonction pour enregistrer une réponse au quiz
   const { setValue } = useFeedbackStore() // Récupère une fonction pour définir une valeur dans le store de feedback
   const data = exercises[level - 1] // Sélectionne les données de l'exercice correspondant au niveau actuel
-  const exerciseId = level // Identifiant de l'exercice basé sur le niveau actuel
-  const questionId = progressNumber // Identifiant de la question basé sur le numéro de progression
+  const exercise_id = level // Identifiant de l'exercice basé sur le niveau actuel
+  const question_id = progressNumber // Identifiant de la question basé sur le numéro de progression
 
   const title = data.questions[progressNumber - 1].question // Récupère le titre (question) de la question actuelle en fonction du numéro de progression
   const media = data.questions[progressNumber - 1].image // Récupère l'image associée à la question actuelle
@@ -37,7 +37,7 @@ export default function Exercice() {
   const label = question.choices.find(choice => choice.iscorrect)?.label || '""' // Trouve le choix de réponse correct et récupère son label (texte affiché), sinon retourne une chaîne vide
 
   // Déclare un état pour stocker le choix sélectionné par l'utilisateur, qui peut être null par défaut
-  const [selectedChoice, setSelectedChoice] = useState<{
+  const [selected_choice, setSelected_choice] = useState<{
     id: number
     label: string
     iscorrect: boolean
@@ -48,7 +48,7 @@ export default function Exercice() {
   // Fonction appelée pour changer la progression de l'exercice
   const onChangedProgress = () => {
     setClickedIndex(-1)
-    setSelectedChoice(null)
+    setSelected_choice(null)
     // Vérifie si la progression a atteint la dernière question (ici, la 5e question)
 
     if (progressNumber === data.questions.length) {
@@ -61,23 +61,23 @@ export default function Exercice() {
   }
   // Fonction déclenchée lorsqu'un utilisateur valide son choix
   const onClickHandler = () => {
-    const userId = useAuthStore.getState().userId
+    const user_id = useAuthStore.getState().user_id
 
-    if (!userId) {
+    if (!user_id) {
       console.error('Aucun ID utilisateur trouvé !')
       return
     }
 
-    if (!selectedChoice) return
+    if (!selected_choice) return
 
-    addAnswer(userId, exerciseId, questionId, selectedChoice.label, selectedChoice.iscorrect)
-    setValue(selectedChoice.iscorrect ? 'success' : 'error')
+    addAnswer(user_id, exercise_id, question_id, selected_choice.label, selected_choice.iscorrect)
+    setValue(selected_choice.iscorrect ? 'success' : 'error')
     setShowing(!showing)
   }
 
   // Fonction appelée lorsqu'un utilisateur sélectionne une réponse
   const setTracking = (choice: { id: number; label: string; iscorrect: boolean }) => {
-    setSelectedChoice(choice) // Met à jour l'état du choix sélectionné avec l'objet correspondant
+    setSelected_choice(choice) // Met à jour l'état du choix sélectionné avec l'objet correspondant
   }
 
   return (
@@ -120,7 +120,11 @@ export default function Exercice() {
           ))}
         </div>
         <div className="flex justify-center gap-8 p-6" hidden={showing}>
-          <CustomButton onClickHandler={onClickHandler} text="Valider" disabled={!selectedChoice} />
+          <CustomButton
+            onClickHandler={onClickHandler}
+            text="Valider"
+            disabled={!selected_choice}
+          />
         </div>
 
         {showing && (
