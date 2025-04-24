@@ -23,7 +23,7 @@ export default function ResultCompleted() {
 
   return (
     <>
-      <img src="./img/Background-Bilan2.svg" className="w-screen" alt="Background" />
+      <img src="./img/background/bilan.svg" className="w-screen" alt="Background" />
       <Title tag="h1" title="Bilan complet" className="p-5 text-center" />
       <Title tag="h2" title="Félicitations !" className="text-center" />
       <div className="flex flex-col sm:flex-row items-center justify-center gap-7 mt-5">
@@ -31,7 +31,7 @@ export default function ResultCompleted() {
         <CardReward value={resultCorrect} />
       </div>
       <div className="flex justify-center gap-12 mt-7">
-        <CustomButton icon="./img/Arrow.svg" onClickHandler={handleClick} />
+        <CustomButton icon="./img/components/arrow.svg" onClickHandler={handleClick} />
       </div>
     </>
   )

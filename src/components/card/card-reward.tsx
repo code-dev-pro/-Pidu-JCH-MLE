@@ -6,7 +6,7 @@ interface CardRewardProps {
 }
 
 export default function CardReward({ value }: CardRewardProps) {
-  const pictureSrc = value >= 0 ? './img/Diamond.svg' : './img/default.svg/'
+  const pictureSrc = value >= 0 ? './img/components/diamond.svg' : './img/default.svg/'
 
   return (
     <div className="bg-[#FBF4DC] rounded-[13px] min-w-48 h-[90px] flex items-center justify-center p-4">

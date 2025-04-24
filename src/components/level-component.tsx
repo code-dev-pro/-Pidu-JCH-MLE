@@ -22,7 +22,7 @@ const LevelComponent = ({ user_id }: LevelComponentProps) => {
     <>
       <div
         className="absolute inset-0 h-svh bg-cover bg-center"
-        style={{ backgroundImage: `url(./img/Background-Level3.svg)` }}
+        style={{ backgroundImage: `url(./img/background/level.svg)` }}
       >
         <div className="absolute top-0 left-0 w-full flex flex-col sm:flex-row items-center sm:justify-start gap-4 sm:gap-10 p-4 sm:p-6">
           <div className="flex flex-row items-center gap-4 sm:gap-6 p-2 z-50 relative">

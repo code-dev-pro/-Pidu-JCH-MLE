@@ -28,7 +28,7 @@ export default function ButtonHelp({ text }: ButtonHelpProps) {
         className="p-2 rounded-xl hover:bg-neutral-100 cursor-pointer relative"
         aria-label="Aide sur le jeu"
       >
-        <Picture src="./img/Guess-the-Word.svg" alt="Icône d'aide" />
+        <Picture src="./img/components/help.svg" alt="Icône d'aide" />
       </button>
       {isOpen && (
         <div
@@ -40,11 +40,6 @@ export default function ButtonHelp({ text }: ButtonHelpProps) {
             aria-label="fermeture du modal"
             className="self-end"
           >
-            <Picture
-              src="./img/Close-Circle.svg"
-              alt="Icône de fermeture du modal"
-              className="cursor-pointer absolute top-2 right-2"
-            />
             {text}
           </button>
         </div>

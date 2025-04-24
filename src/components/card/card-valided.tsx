@@ -1,17 +1,17 @@
 import Picture from '@/components/picture'
 
 interface CardValidedProps {
-  status?: 'correct' | 'incorrect' | 'pending'
+  status?: 'correct' | 'incorrect'
   selected_choice: string
 }
 
 function CardValided({ status, selected_choice }: CardValidedProps) {
   const iconColor =
     status === 'correct'
-      ? './img/check-icon.svg'
+      ? './img/components/check-green.svg'
       : status === 'incorrect'
-        ? './img/Checked.svg'
-        : './img/check-gray.svg'
+        ? './img/components/check-orange.svg'
+        : './img/default.svg'
 
   return (
     <div className="flex space-x-4">

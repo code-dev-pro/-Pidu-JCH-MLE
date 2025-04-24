@@ -36,7 +36,7 @@ export default function HeaderProfile() {
       </div>
 
       <div className="flex justify-center">
-        <Picture src="./img/Pidu-profile.svg" alt="pidu profil" />
+        <Picture src="./img/pidu/profile.svg" alt="pidu profil" />
       </div>
 
       <div

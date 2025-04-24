@@ -15,7 +15,7 @@ export default function CardAudio({ media }: CardAudio) {
       onClick={onClickHandler}
       className="cursor-pointer hover:scale-130 transition-transform duration-300"
     >
-      <Picture src="./img/icon-audio.svg" alt="audio" />
+      <Picture src="./img/components/icon-audio.svg" alt="audio" />
     </button>
   )
 }

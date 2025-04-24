@@ -31,7 +31,11 @@ function ButtonLocked() {
   return (
     <>
       <button onClick={handleClick} aria-label="Bouton du prochain niveau verrouillé">
-        <Picture src="./img/Lock.svg" alt="Bouton avec cadenas" className="cursor-pointer" />
+        <Picture
+          src="./img/components/locked.svg"
+          alt="Bouton avec cadenas"
+          className="cursor-pointer"
+        />
       </button>
 
       {showing && (
@@ -41,7 +45,7 @@ function ButtonLocked() {
         >
           <div className="flex flex-col items-center justify-center gap-4">
             <Picture
-              src="./img/Pidu-study.svg"
+              src="./img/pidu/study.svg"
               alt="pidu"
               className="w-20 h-20 sm:w-[90px] sm:h-[90px]"
             />
@@ -83,7 +87,11 @@ function ButtonFlag() {
         aria-label="Bouton pour ouvrir le modal de démarrage"
         className="circle pulse"
       >
-        <Picture src="./img/Btn.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
+        <Picture
+          src="./img/components/flag.svg"
+          alt="Bouton vert avec drapeau"
+          className="cursor-pointer"
+        />
       </button>
       {showing && (
         <div
@@ -116,7 +124,11 @@ function ButtonFlag() {
 function ButtonCheck() {
   return (
     <button aria-label="Bouton pour ouvrir le modal de démarrage">
-      <Picture src="./img/Check.svg" alt="Bouton vert avec drapeau" className="cursor-pointer" />
+      <Picture
+        src="./img/components/unlocked.svg"
+        alt="Bouton vert avec drapeau"
+        className="cursor-pointer"
+      />
     </button>
   )
 }
