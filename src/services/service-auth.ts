@@ -1,5 +1,5 @@
 import { API_URL } from '@/config/api'
-import useAuthStore from '@/store/tracking/tracker-auth'
+import useAuthStore from '@/store/tracking/auth'
 
 const authenticateCode = async (code_user: string) => {
   try {

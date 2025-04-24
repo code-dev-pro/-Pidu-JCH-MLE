@@ -1,4 +1,4 @@
-import useProgressStore from '@/store/tracking/tracker-progress'
+import useProgressStore from '@/store/tracking/exercise-progress'
 
 export default function Progressbar() {
   const newProgressBar = useProgressStore().progressBar

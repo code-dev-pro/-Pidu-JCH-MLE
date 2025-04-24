@@ -1,4 +1,4 @@
-import useAuthStore from '@/store/tracking/tracker-auth'
+import useAuthStore from '@/store/tracking/auth'
 import { API_URL } from '@/config/api'
 
 const authenticateUser = async (code_user: string) => {

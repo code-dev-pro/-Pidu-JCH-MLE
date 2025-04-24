@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 
-interface AnswerStore {
+interface ChoiceStore {
   clickedIndex: number
   setClickedIndex: (index: number) => void
 }
 
-const useAnswerStore = create<AnswerStore>(set => ({
+const useChoiceStore = create<ChoiceStore>(set => ({
   clickedIndex: -1,
   setClickedIndex: index => set(() => ({ clickedIndex: index })),
 }))
 
-export default useAnswerStore
+export default useChoiceStore

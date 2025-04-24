@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Answer } from './tracker-answer'
+import { Answer } from './answer'
 
 interface TotalQuizStore {
   totalAnswers: Answer[]

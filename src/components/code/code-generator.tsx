@@ -1,7 +1,7 @@
 import saveCodeToDatabase from '@/services/service-code'
 import generateCode from '@/utils/utils-code'
 import authenticateCode from '@/services/service-auth'
-import useAuthStore from '@/store/tracking/tracker-auth'
+import useAuthStore from '@/store/tracking/auth'
 import { useRef, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/const'

@@ -1,13 +1,13 @@
-import useAnswerStore from '@/store/selected-answer'
-interface CardAnswerProps {
+import useChoiceStore from '@/store/tracking/selected-choice'
+interface CardChoiceProps {
   label: string
   index: number
   iscorrect: boolean
   onClickHandler?: (id: number, label: string, iscorrect: boolean) => void
 }
 
-export default function CardAnswer({ label, index, onClickHandler, iscorrect }: CardAnswerProps) {
-  const { clickedIndex, setClickedIndex } = useAnswerStore()
+export default function CardChoice({ label, index, onClickHandler, iscorrect }: CardChoiceProps) {
+  const { clickedIndex, setClickedIndex } = useChoiceStore()
   const onChoice = () => {
     setClickedIndex(index)
     onClickHandler?.(index, label, iscorrect)

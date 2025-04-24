@@ -1,5 +1,5 @@
 import Picture from '@/components/picture'
-import useAvatarStore from '@/store/user'
+import useAvatarStore from '@/store/data/user'
 
 interface ChoiceAvatarProps {
   avatar: {

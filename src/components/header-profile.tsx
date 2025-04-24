@@ -1,5 +1,5 @@
 import { ROUTES } from '@/const'
-import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
+import useTotalQuizStore from '@/store/tracking/total-answer'
 import { useNavigate } from 'react-router-dom'
 import Avatar from '@/components/card/card-avatar'
 import CardCode from '@/components/card/card-code-user'

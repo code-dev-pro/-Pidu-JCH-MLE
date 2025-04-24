@@ -1,6 +1,6 @@
-import useProgressStore from '@/store/tracking/tracker-progress'
+import useProgressStore from '@/store/tracking/exercise-progress'
 import useExerciseStore from '@/store/data/exercise'
-import useLevelStore from '@/store/level-progress'
+import useLevelStore from '@/store/tracking/level-progress'
 interface ProgressNumberProps {
   className?: string
   colorNumber?: string

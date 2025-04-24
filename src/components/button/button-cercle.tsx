@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Picture from '@/components/picture'
-import useLevelStore from '@/store/level-progress'
+import useLevelStore from '@/store/tracking/level-progress'
 import Title from '@/components/title'
 import Progressbar from '@/components/progress/progress-bar'
 import ProgressNumber from '@/components/progress/progress-number'
