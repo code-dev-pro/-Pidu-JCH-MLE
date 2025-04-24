@@ -1,11 +1,11 @@
 import { ROUTES } from '@/const'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import { useNavigate } from 'react-router-dom'
-import Avatar from './card-avatar'
-import CardCode from './card-code-user'
-import CardRewardLevel from './card-reward-level'
-import Picture from './picture'
-import Score from './score'
+import Avatar from '@/components/card/card-avatar'
+import CardCode from '@/components/card/card-code-user'
+import CardRewardLevel from '@/components/card/card-reward-level'
+import Picture from '@/components/picture'
+import Score from '@/components/score'
 
 export default function HeaderProfile() {
   const { totalAnswers } = useTotalQuizStore()

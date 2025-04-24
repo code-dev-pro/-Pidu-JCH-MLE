@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import ButtonWrapper from './button-cercle'
-import Avatar from './card-avatar'
-import CardRewardLevel from './card-reward-level'
+import ButtonWrapper from '@/components/button/button-cercle'
+import Avatar from '@/components/card/card-avatar'
+import CardRewardLevel from '@/components/card/card-reward-level'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
 import useLevelStore from '@/store/level-progress'
-import CardCode from './card-code-user'
+import CardCode from '@/components/card/card-code-user'
 
 export interface LevelComponentProps {
   user_id: number

@@ -1,4 +1,4 @@
-import CustomButton from '@/components/button-long'
+import CustomButton from '@/components/button/button-long'
 import Picture from '@/components/picture'
 import useLevelStore from '@/store/level-progress'
 import useProgressStore from '@/store/tracking/tracker-progress'

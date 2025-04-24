@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
-import Picture from './picture'
-import CardValided from './card-valided'
-import StatProgress from './progress-stat-profile'
+import Picture from '@/components/picture'
+import CardValided from '@/components/card/card-valided'
+import StatProgress from '@/components/progress/progress-bar-profile'
 import { Answer } from '@/store/tracking/tracker-answer'
 import useExerciseStore from '@/store/data/exercise'
 

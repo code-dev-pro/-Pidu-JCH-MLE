@@ -1,4 +1,4 @@
-import Picture from './picture'
+import Picture from '@/components/picture'
 import { useClickAway } from '@uidotdev/usehooks'
 import * as React from 'react'
 import useSound from 'use-sound'
