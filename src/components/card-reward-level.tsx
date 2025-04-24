@@ -6,7 +6,7 @@ interface CardRewardLevelProps {
 }
 
 export default function CardRewardLevel({ value }: CardRewardLevelProps) {
-  const pictureSrc = value >= 0 ? './img/Diamond.svg' : './img/default.svg/'
+  const pictureSrc = value >= 0 ? './img/components/diamond.svg' : './img/default.svg/'
 
   return (
     <div className="flex gap-3 min-w-17 h-7 rounded-2xl bg-[#095F38] relative">

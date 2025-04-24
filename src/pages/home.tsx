@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <>
-      <img src="./img/Background-Home.svg" className="w-screen" alt="Background" />
+      <img src="./img/background/home.svg" className="w-screen" alt="Background" />
       <Title
         title="Bienvenue sur PIDU"
         tag="h1"

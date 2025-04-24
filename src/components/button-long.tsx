@@ -47,13 +47,13 @@ export default function CustomButton({
     >
       <Picture
         className="absolute top-1.5 left-2 w-[9px] h-[10px]"
-        src="./img/Vector.svg"
+        src="./img/components/vector-button.svg"
         alt="vector"
       />
       {setContentButton()}
       <Picture
         className="absolute top-1.5 right-1 w-[30px] h-[15px]"
-        src="./img/Ellipse.svg"
+        src="./img/components/ellipse-button.svg"
         alt="ellipse"
       />
     </button>

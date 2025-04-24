@@ -80,7 +80,7 @@ export default function Avatar() {
       <button onClick={handleClick} aria-label="Avatar utilisateur" className="z-50 circle pulse">
         <div className="bg-[#C1F9A6] rounded-full w-15 h-15 border-4 border-white overflow-hidden ">
           <Picture
-            src={selectedAvatar ? selectedAvatar.character : './img/Happy.svg'}
+            src={selectedAvatar ? selectedAvatar.character : './img/avatar/happy.svg'}
             alt="avatar Pidu"
             className="w-20 h-20 object-contain object-center cursor-pointer"
           />
