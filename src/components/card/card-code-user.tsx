@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import useAuthStore from '@/store/tracking/tracker-auth'
+import useAuthStore from '@/store/tracking/auth'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/const'
 

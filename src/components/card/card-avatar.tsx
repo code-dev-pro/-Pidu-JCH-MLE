@@ -6,8 +6,8 @@ import ChoiceAvatar from '@/components/choice-avatar'
 import CustomButton from '@/components/button/button-long'
 import { API_URL } from '@/config/api'
 import { ROUTES } from '@/const'
-import useAvatarStore from '@/store/user'
-import useAuthStore from '@/store/tracking/tracker-auth'
+import useAvatarStore from '@/store/data/user'
+import useAuthStore from '@/store/tracking/auth'
 
 interface AvatarItem {
   id: number

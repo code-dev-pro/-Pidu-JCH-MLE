@@ -1,16 +1,16 @@
 import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import authenticateCode from '@/services/service-auth'
-import useAuthStore from '@/store/tracking/tracker-auth'
-import useLevelStore from '@/store/level-progress'
-import useProgressStore from '@/store/tracking/tracker-progress'
-import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
+import useAuthStore from '@/store/tracking/auth'
+import useLevelStore from '@/store/tracking/level-progress'
+import useProgressStore from '@/store/tracking/exercise-progress'
+import useTotalQuizStore from '@/store/tracking/total-answer'
 import { API_URL } from '@/config/api'
 import { ROUTES } from '@/const'
 import useSound from 'use-sound'
 import useExerciseStore from '@/store/data/exercise'
-import useQuizStore from '@/store/tracking/tracker-answer'
-import { Answer } from '@/store/tracking/tracker-answer'
+import useQuizStore from '@/store/tracking/answer'
+import { Answer } from '@/store/tracking/answer'
 
 interface ExerciseData {
   exercise_id: number

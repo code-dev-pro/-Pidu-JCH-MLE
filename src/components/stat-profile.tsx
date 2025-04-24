@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import useTotalQuizStore from '@/store/tracking/tracker-total-answer'
+import useTotalQuizStore from '@/store/tracking/total-answer'
 import Picture from '@/components/picture'
 import CardValided from '@/components/card/card-valided'
 import StatProgress from '@/components/progress/progress-bar-profile'
-import { Answer } from '@/store/tracking/tracker-answer'
+import { Answer } from '@/store/tracking/answer'
 import useExerciseStore from '@/store/data/exercise'
 
 export default function StatProfile() {

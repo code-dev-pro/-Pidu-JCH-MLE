@@ -2,18 +2,18 @@ import Title from '@/components/title'
 import Progressbar from '@/components/progress/progress-bar'
 import ButtonHelp from '@/components/button/button-help'
 import ProgressNumber from '@/components/progress/progress-number'
-import CardAnswer from '@/components/card/card-answer'
+import CardChoice from '@/components/card/card-choice'
 import CustomButton from '@/components/button/button-long'
-import useProgressStore from '@/store/tracking/tracker-progress'
+import useProgressStore from '@/store/tracking/exercise-progress'
 import useExerciseStore from '@/store/data/exercise'
-import useLevelStore from '@/store/level-progress'
+import useLevelStore from '@/store/tracking/level-progress'
 import Feedback from '@/components/feedback'
-import useQuizStore from '@/store/tracking/tracker-answer'
+import useQuizStore from '@/store/tracking/answer'
 import { useState } from 'react'
 import useFeedbackStore from '@/store/data/feedback'
-import useAnswerStore from '@/store/selected-answer'
+import useChoiceStore from '@/store/tracking/selected-choice'
 import { useNavigate } from 'react-router-dom'
-import useAuthStore from '@/store/tracking/tracker-auth'
+import useAuthStore from '@/store/tracking/auth'
 import { ROUTES } from '@/const'
 import CardAudio from '@/components/card/card-audio'
 import { isAudio } from '@/utils/utils-audio'
@@ -22,7 +22,7 @@ export default function Exercice() {
   const { progressNumber, increaseProgress } = useProgressStore() //Récupère la valeur actuelle de la progression et une fonction pour l'augmenter
   const { exercises } = useExerciseStore() // Récupère la liste des exercices
   const { level } = useLevelStore() // Récupère le niveau actuel
-  const { setClickedIndex } = useAnswerStore() // Récupère une fonction pour enregistrer l'index de la réponse sélectionnée
+  const { setClickedIndex } = useChoiceStore() // Récupère une fonction pour enregistrer l'index de la réponse sélectionnée
   const { addAnswer } = useQuizStore() // Récupère une fonction pour enregistrer une réponse au quiz
   const { setValue } = useFeedbackStore() // Récupère une fonction pour définir une valeur dans le store de feedback
   const data = exercises[level - 1] // Sélectionne les données de l'exercice correspondant au niveau actuel
@@ -110,7 +110,7 @@ export default function Exercice() {
         <div className="flex flex-wrap gap-4 justify-center mt-10 px-4">
           {choices.map((choice, index) => (
             <div key={choice.id} className="transform scale-[0.9] sm:scale-100">
-              <CardAnswer
+              <CardChoice
                 onClickHandler={() => setTracking(choice)}
                 index={index}
                 label={choice.label}
