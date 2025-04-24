@@ -1,9 +1,9 @@
-import Title from './title'
-import CustomButton from './button-long'
+import Title from '@/components/title'
+import CustomButton from '@/components/button/button-long'
 import useFeedbackStore from '@/store/data/feedback'
 import useSound from 'use-sound'
 import { useEffect } from 'react'
-import AnimationHappy from './animation-happy'
+import AnimationHappy from '@/components/animation-happy'
 
 interface FeedbackProps {
   correctAnswer: string

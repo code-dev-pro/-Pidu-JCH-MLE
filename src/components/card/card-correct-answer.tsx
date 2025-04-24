@@ -1,4 +1,4 @@
-import ProgressNumber from '@/components/progress-number'
+import ProgressNumber from '@/components/progress/progress-number'
 
 interface ContentCorrectAnswerProps {
   value: number

@@ -1,5 +1,5 @@
-import Picture from './picture'
-import Score from './score'
+import Picture from '@/components/picture'
+import Score from '@/components/score'
 
 interface CardRewardProps {
   value: number

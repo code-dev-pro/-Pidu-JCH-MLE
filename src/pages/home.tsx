@@ -1,9 +1,9 @@
 import Title from '@/components/title'
-import CustomButton from '@/components/button-long'
+import CustomButton from '@/components/button/button-long'
 import useExerciseStore from '@/store/data/exercise'
 import { useEffect, useState } from 'react'
-import { CodeGenerator } from '@/components/code-generator'
-import { HasCode } from '@/components/has-code'
+import { CodeGenerator } from '@/components/code/code-generator'
+import { HasCode } from '@/components/code/has-code'
 
 export default function Home() {
   const { isLoading, error, loadExercises } = useExerciseStore()
