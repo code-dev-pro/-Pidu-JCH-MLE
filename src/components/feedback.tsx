@@ -4,7 +4,7 @@ import useFeedbackStore from '@/store/data/feedback'
 import useSound from 'use-sound'
 import { useEffect } from 'react'
 import AnimationHappy from '@/components/animation-happy'
-
+import { SOUND } from '@/const'
 interface FeedbackProps {
   correctAnswer: string
   increaseProgress?: () => void
@@ -21,7 +21,7 @@ function Feedback({ correctAnswer, increaseProgress }: FeedbackProps) {
     ? 'Tu as trouvé la bonne réponse!'
     : `La bonne réponse est : "${correctAnswer}"`
   const color = isSuccess ? 'text-[#19C472]' : 'text-[#F84E40]'
-  const [play] = useSound(isSuccess ? '/sound/gagne.mp3' : '/sound/perdu.mp3', { volume: 0.25 })
+  const [play] = useSound(isSuccess ? `/${SOUND.GAGNE}` : `/${SOUND.PERDU}`, { volume: 0.25 })
 
   useEffect(() => {
     play()

@@ -1,3 +1,5 @@
+import React from 'react'
+
 type TTitle = 'h1' | 'h2' | 'h3'
 
 interface ITitle {
@@ -7,8 +9,12 @@ interface ITitle {
   text?: string
 }
 
-export default function Title({ title, tag, className, text }: ITitle) {
+function Title({ title, tag, className, text }: ITitle) {
+  console.log('JE SUIS UN TITRE QUI EST RENDU !!')
+
   const Tag = tag
   const textHelp = text ? text : title
   return <Tag className={className}>{textHelp}</Tag>
 }
+
+export default React.memo(Title)

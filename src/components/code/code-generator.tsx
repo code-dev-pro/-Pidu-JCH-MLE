@@ -4,7 +4,7 @@ import authenticateCode from '@/services/service-auth'
 import useAuthStore from '@/store/tracking/auth'
 import { useRef, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '@/const'
+import { ROUTES, SOUND } from '@/const'
 import useSound from 'use-sound'
 
 export const CodeGenerator = () => {
@@ -13,7 +13,7 @@ export const CodeGenerator = () => {
   const [generatedCode, setGeneratedCode] = useState('')
   const navigate = useNavigate()
   const { setuser_id } = useAuthStore()
-  const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
+  const [play] = useSound(`/${SOUND.CLICK}`, { volume: 0.25 })
 
   const handleGenerateCode = async () => {
     const newCode = generateCode()

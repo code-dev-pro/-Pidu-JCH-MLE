@@ -6,7 +6,9 @@ import useTotalQuizStore from '@/store/tracking/total-answer'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '@/store/tracking/auth'
 import { API_URL } from '@/config/api'
-import { ROUTES } from '@/const'
+import { ROUTES, SOUND } from '@/const'
+import { useEffect } from 'react'
+import useSound from 'use-sound'
 
 const colors = ['#ff0', '#ff6347', '#32cd32', '#1e90ff', '#ffa500']
 const confettiCount = 50
@@ -17,7 +19,10 @@ export default function TheEnd() {
   const { resetProgress } = useProgressStore()
   const { setLevel } = useLevelStore()
   const { user_id } = useAuthStore()
-
+  const [play] = useSound(`/${SOUND.FINISH}`, { volume: 0.25 })
+  useEffect(() => {
+    play()
+  }, [play])
   async function deleteUserProgress(user_id: number) {
     try {
       const response = await fetch(`${API_URL}/delete/${user_id}`, {
@@ -57,7 +62,7 @@ export default function TheEnd() {
           <Picture src="./img/pidu/bye.svg" alt="pidu de fin" />
           <p className="text-xl sm:text-lg md:text-2xl">
             Merci d’avoir joué ! <br /> Tu es arrivé à la fin de cette aventure, mais ce n’est que
-            le début… De nouvelles surprises arriveront dans la prochaine version.
+            le début… De nouvelles surprises arriveront prochainement.
             <br />À très bientôt pour la suite !
           </p>
           <CustomButton text="Rejouer" onClickHandler={handleClick} />

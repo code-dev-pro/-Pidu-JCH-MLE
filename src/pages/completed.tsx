@@ -4,7 +4,7 @@ import CardReward from '@/components/card/card-reward'
 import CustomButton from '@/components/button/button-long'
 import { useNavigate } from 'react-router-dom'
 import useTotalQuizStore from '@/store/tracking/total-answer'
-import { ROUTES } from '@/const'
+import { ROUTES, SOUND } from '@/const'
 import useSound from 'use-sound'
 import { useEffect } from 'react'
 
@@ -12,7 +12,7 @@ export default function ResultCompleted() {
   const { totalAnswers } = useTotalQuizStore()
   const resultCorrect = totalAnswers.filter(answer => answer.iscorrect).length
   const navigate = useNavigate()
-  const [play] = useSound('/sound/finjeu.mp3', { volume: 0.25 })
+  const [play] = useSound(`/${SOUND.FINJEU}`, { volume: 0.25 })
 
   useEffect(() => {
     play()
