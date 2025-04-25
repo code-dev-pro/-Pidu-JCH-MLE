@@ -10,6 +10,7 @@ import useExerciseStore from '@/store/data/exercise'
 import { ROUTES } from '@/const'
 import useSound from 'use-sound'
 import { useClickAway } from '@uidotdev/usehooks'
+import { SOUND } from '@/const'
 
 interface IButtonLevelProps {
   level: number
@@ -19,7 +20,7 @@ interface IButtonLevelProps {
 
 function ButtonLocked() {
   const [showing, setShowing] = useState(false)
-  const [play] = useSound('/sound/wrong.mp3', { volume: 0.25 })
+  const [play] = useSound(`/${SOUND.WRONG}`, { volume: 0.25 })
 
   const handleClick = () => {
     setShowing(!showing)
@@ -68,7 +69,7 @@ function ButtonFlag() {
 
   const navigate = useNavigate()
 
-  const [play] = useSound('/sound/fail.mp3', { volume: 0.25 })
+  const [play] = useSound(`/${SOUND.FAIL}`, { volume: 0.25 })
   const onClick = () => {
     navigate(`/${ROUTES.EXERCISE}`)
   }

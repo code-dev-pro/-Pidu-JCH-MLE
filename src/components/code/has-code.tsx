@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import authenticateCode from '@/services/service-auth'
 import useAuthStore from '@/store/tracking/auth'
-import { ROUTES } from '@/const'
+import { ROUTES, SOUND } from '@/const'
 import useSound from 'use-sound'
 import { useGetExercise } from '@/services/service-answer'
 
@@ -12,7 +12,7 @@ export const HasCode = () => {
   const [isLoading, setIsLoading] = useState(false)
   const { setuser_id } = useAuthStore()
   const navigate = useNavigate()
-  const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
+  const [play] = useSound(`/${SOUND.CLICK}`, { volume: 0.25 })
   const { getExercise } = useGetExercise()
   console.log('getExercise appelé', getExercise)
 

@@ -1,4 +1,5 @@
 import Picture from '@/components/picture'
+import { SOUND } from '@/const'
 import { useClickAway } from '@uidotdev/usehooks'
 import * as React from 'react'
 import useSound from 'use-sound'
@@ -8,7 +9,7 @@ interface ButtonHelpProps {
 }
 export default function ButtonHelp({ text }: ButtonHelpProps) {
   const [isOpen, setIsOpen] = React.useState(false)
-  const [play] = useSound('/sound/dragdrop.mp3', { volume: 0.25 })
+  const [play] = useSound(`/${SOUND.DRAGDROP}`, { volume: 0.25 })
 
   const refDiv = useClickAway(() => {
     setIsOpen(false)

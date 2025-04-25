@@ -1,6 +1,6 @@
 import Picture from '@/components/picture'
 import useSound from 'use-sound'
-
+import { SOUND } from '@/const'
 interface ButtonProps {
   bgColor?: 'green' | 'orange'
   text?: string
@@ -17,7 +17,7 @@ export default function CustomButton({
   icon,
   disabled,
 }: ButtonProps) {
-  const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
+  const [play] = useSound(`/${SOUND.CLICK}`, { volume: 0.25 })
 
   const handleClick = () => {
     play()
