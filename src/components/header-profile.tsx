@@ -6,14 +6,14 @@ import CardCode from '@/components/card/card-code-user'
 import CardRewardLevel from '@/components/card/card-reward-level'
 import Picture from '@/components/picture'
 import Score from '@/components/score'
+import { sortAnswersByExerciseId } from '@/utils/utils-answer'
 
 export default function HeaderProfile() {
   const { totalAnswers } = useTotalQuizStore()
   const resultTotalCorrect = totalAnswers.filter(answer => answer.iscorrect).length
   const currentQuestion = totalAnswers.length
 
-  const sortedAnswers = [...totalAnswers].sort((a, b) => a.exercise_id - b.exercise_id)
-
+  const sortedAnswers = sortAnswersByExerciseId(totalAnswers)
   const currentExercise = sortedAnswers.length
     ? sortedAnswers[sortedAnswers.length - 1].exercise_id
     : null

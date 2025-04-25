@@ -14,6 +14,7 @@ export const HasCode = () => {
   const navigate = useNavigate()
   const [play] = useSound('/sound/click.mp3', { volume: 0.25 })
   const { getExercise } = useGetExercise()
+  console.log('getExercise appelé', getExercise)
 
   const handleClick = () => {
     play()
@@ -35,7 +36,7 @@ export const HasCode = () => {
 
       if (response.success && typeof response.user_id === 'number' && response.user_id > 0) {
         setuser_id(response.user_id)
-        await getExercise(response.user_id) // 👈 On appelle simplement ici
+        await getExercise(response.user_id)
         setMessage('Code valide ✅')
 
         setTimeout(() => {
