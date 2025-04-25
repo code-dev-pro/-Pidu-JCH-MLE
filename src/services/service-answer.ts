@@ -5,12 +5,7 @@ import useQuizStore from '@/store/tracking/answer'
 import useProgressStore from '@/store/tracking/exercise-progress'
 import useLevelStore from '@/store/tracking/level-progress'
 import useTotalQuizStore from '@/store/tracking/total-answer'
-
-interface ExerciseData {
-  exercise_id: number
-  question_id: number
-  iscorrect: boolean
-}
+import { sortExercises } from '@/utils/utils-exercise'
 
 export function useGetExercise() {
   const { setLevel } = useLevelStore()
@@ -25,11 +20,7 @@ export function useGetExercise() {
       const data = await response.json()
 
       if (data && data.length > 0) {
-        const sortedData = data.sort(
-          (a: ExerciseData, b: ExerciseData) =>
-            b.exercise_id - a.exercise_id || b.question_id - a.question_id
-        )
-
+        const sortedData = sortExercises(data)
         const { exercise_id } = sortedData[0]
         const currentExercise = exercises.find(ex => ex.id === exercise_id)
         const nextExercise = exercises.find(ex => ex.id === exercise_id + 1)
