@@ -19,10 +19,13 @@ export default function TheEnd() {
   const { resetProgress } = useProgressStore()
   const { setLevel } = useLevelStore()
   const { user_id } = useAuthStore()
-  const [play] = useSound(`/${SOUND.FINISH}`, { volume: 0.25 })
+  const [play, { stop }] = useSound(`/${SOUND.FINISH}`, { volume: 0.25 })
   useEffect(() => {
     play()
-  }, [play])
+    return () => {
+      stop()
+    }
+  }, [play, stop])
   async function deleteUserProgress(user_id: number) {
     try {
       const response = await fetch(`${API_URL}/delete/${user_id}`, {
