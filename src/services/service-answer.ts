@@ -57,7 +57,6 @@ export function useGetExercise() {
         addTotalAnswer(data)
         return true
       } else {
-        console.log('Pas de données disponibles')
         return false
       }
     } catch (error) {

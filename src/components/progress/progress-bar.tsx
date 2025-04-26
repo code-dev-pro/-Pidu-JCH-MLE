@@ -2,7 +2,6 @@ import useProgressStore from '@/store/tracking/exercise-progress'
 
 export default function Progressbar() {
   const newProgressBar = useProgressStore().progressBar
-  console.log(newProgressBar)
   return (
     <>
       <div className="w-full max-w-[895px] bg-[#FFF7F0] rounded-full h-[16px] overflow-hidden">

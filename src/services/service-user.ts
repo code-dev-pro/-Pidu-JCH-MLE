@@ -13,7 +13,6 @@ const authenticateUser = async (code_user: string) => {
 
     if (data.success) {
       useAuthStore.getState().setuser_id(data.user_id)
-      console.log('Authentification réussie, ID:', data.user_id)
     } else {
       console.error("Erreur d'auth:", data.message)
     }

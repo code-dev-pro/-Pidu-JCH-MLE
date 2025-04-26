@@ -14,7 +14,6 @@ export const HasCode = () => {
   const navigate = useNavigate()
   const [play] = useSound(`/${SOUND.CLICK}`, { volume: 0.25 })
   const { getExercise } = useGetExercise()
-  console.log('getExercise appelé', getExercise)
 
   const handleClick = () => {
     play()
@@ -32,7 +31,6 @@ export const HasCode = () => {
 
     try {
       const response = await authenticateCode(userCode)
-      console.log("Réponse de l'API :", response)
 
       if (response.success && typeof response.user_id === 'number' && response.user_id > 0) {
         setuser_id(response.user_id)

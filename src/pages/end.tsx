@@ -50,8 +50,6 @@ export default function TheEnd() {
       resetProgress()
       setLevel(1)
       navigate(`/${ROUTES.LEVEL}`)
-    } else {
-      console.error('Utilisateur non authentifié')
     }
   }
 

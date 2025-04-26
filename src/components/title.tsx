@@ -10,8 +10,6 @@ interface ITitle {
 }
 
 function Title({ title, tag, className, text }: ITitle) {
-  console.log('JE SUIS UN TITRE QUI EST RENDU !!')
-
   const Tag = tag
   const textHelp = text ? text : title
   return <Tag className={className}>{textHelp}</Tag>

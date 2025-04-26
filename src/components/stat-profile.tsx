@@ -54,8 +54,6 @@ export default function StatProfile() {
           console.warn(`❌ Aucun exercice trouvé pour l'ID ${level}`)
         }
 
-        console.log('BUG TITLE EXERCICE=>', answers)
-
         return (
           <React.Fragment key={level}>
             <div className="rounded-2xl w-[1255px] h-[250px] shadow-2xl shadow-gray-400 bg-white">
