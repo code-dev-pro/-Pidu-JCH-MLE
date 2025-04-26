@@ -151,23 +151,26 @@ export default function ButtonWrapper() {
   return (
     <>
       <div className="relative h-screen ">
-        <div className="absolute" style={{ top: '85%', left: '50%' }}>
+        <div className="absolute" style={{ top: '88%', left: '50%' }}>
           <ButtonLevel level={1} />
         </div>
-        <div className="absolute" style={{ top: '70%', left: '39%' }}>
+        <div className="absolute" style={{ top: '75%', left: '40%' }}>
           <ButtonLevel level={2} />
         </div>
-        <div className="absolute" style={{ top: '56%', left: '50%' }}>
+        <div className="absolute" style={{ top: '62%', left: '50%' }}>
           <ButtonLevel level={3} />
         </div>
-        <div className="absolute" style={{ top: '45%', left: '38%' }}>
+        <div className="absolute" style={{ top: '50%', left: '40%' }}>
           <ButtonLevel level={4} />
         </div>
-        <div className="absolute" style={{ top: '33%', left: '49%' }}>
+        <div className="absolute" style={{ top: '38%', left: '50%' }}>
           <ButtonLevel level={5} />
         </div>
-        <div className="absolute" style={{ top: '20%', left: '40%' }}>
+        <div className="absolute" style={{ top: '27%', left: '40%' }}>
           <ButtonLevel level={6} />
+        </div>
+        <div className="absolute" style={{ top: '18%', left: '50%' }}>
+          <ButtonLevel level={7} />
         </div>
       </div>
     </>
