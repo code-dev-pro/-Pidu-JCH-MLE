@@ -49,8 +49,6 @@ const useExerciseStore = create<ExerciseStore>(set => ({
       } else {
         set({ error: 'Un erreur inconnue est survenue', isLoading: false })
       }
-    } finally {
-      console.log('Chargement terminé')
     }
   },
 }))

@@ -13,8 +13,6 @@ const saveCodeToDatabase = async (newCode: string) => {
     const data = await response.json()
 
     if (response.ok && data.success) {
-      console.log('Code enregistré avec succès !', data.data)
-    } else {
       console.error('Erreur lors de l’enregistrement', data.message)
     }
   } catch (error) {

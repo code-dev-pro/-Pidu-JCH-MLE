@@ -32,7 +32,6 @@ export const fetchExercises = async (): Promise<Exercise[]> => {
     }
 
     const rawData: RawExercise[] = await response.json()
-    console.log('👉 Données reçues :', JSON.stringify(rawData, null, 2))
 
     const exercises: Exercise[] = rawData.map(
       (item): Exercise => ({
@@ -61,7 +60,5 @@ export const fetchExercises = async (): Promise<Exercise[]> => {
   } catch (error) {
     console.error('❌ Erreur lors de la récupération des exercices:', error)
     throw error
-  } finally {
-    console.log('✅ Requête API terminée')
   }
 }

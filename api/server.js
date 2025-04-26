@@ -136,14 +136,6 @@ apiRouter.post('/answers', async (req, res) => {
   try {
     const { user_id, exercise_id, question_id, selected_choice, iscorrect } = req.body
 
-    console.log('Données reçues :', {
-      user_id,
-      exercise_id,
-      question_id,
-      selected_choice,
-      iscorrect,
-    })
-
     if (
       !user_id ||
       !exercise_id ||
@@ -207,7 +199,6 @@ apiRouter.post('/progress/:user_id', async (req, res) => {
       DO UPDATE SET selected_choice = ${selected_choice}, iscorrect = ${iscorrect}
     `
 
-    console.log('Progression mise à jour :', result)
     if (result) {
       res.json({ message: 'Progression mise à jour avec succès' })
     } else {
@@ -240,10 +231,8 @@ apiRouter.post('/delete/:user_id', async (req, res) => {
 })
 
 apiRouter.get('/avatar', async (_req, res) => {
-  console.log('Route /api/avatar appelée')
   try {
     const result = await sql`SELECT id, character FROM avatar ORDER BY id ASC`
-    console.log('Résultat SQL complet:', result)
     res.json(result)
   } catch (error) {
     console.error(error)
