@@ -56,16 +56,24 @@ export default function StatProfile() {
 
         return (
           <React.Fragment key={level}>
-            <div className="rounded-2xl w-[1255px] h-[250px] shadow-2xl shadow-gray-400 bg-white">
-              <div className="flex flex-row justify-center items-center mt-5 gap-5">
-                <Picture src={imageSrc} alt="illustration" className="w-[90px] h-[90px]" />
+            <div className="rounded-2xl shadow-2xl shadow-gray-400 bg-white p-6 min-w-[80%] max-w-[80%] mx-auto">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
+                <Picture
+                  src={imageSrc}
+                  alt="illustration"
+                  className="w-[70px] h-[70px] sm:w-[90px] sm:h-[90px]"
+                />
                 <StatProgress progress={progress} />
-                <p className="text-[#FF8B2D] text-xl">{progress}%</p>
+                <p className="text-[#FF8B2D] text-lg sm:text-xl">{progress}%</p>
               </div>
-              <div className="w-[100%]">
-                <div className="flex flex-row gap-5 justify-start mt-5">
+
+              <div className="mt-5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 justify-items-center">
                   {answers.reverse().map(answer => (
-                    <div key={answer.question_id} className="w-[20%] flex justify-center">
+                    <div
+                      key={answer.question_id}
+                      className="flex justify-center w-full max-w-[90px] sm:max-w-[100px]"
+                    >
                       <CardValided
                         status={answer.iscorrect ? 'correct' : 'incorrect'}
                         selected_choice={answer.selected_choice}

@@ -40,7 +40,7 @@ export default function HeaderProfile() {
       </div>
 
       <div
-        className="rounded-2xl max-w-[95%] h-[70px] flex justify-center items-center mx-auto mt-[-70px] z-10 relative"
+        className="rounded-2xl max-w-[95%] h-[90px] sm:h-[70px] flex justify-center items-center mx-auto mt-[-70px] z-10 relative"
         style={{
           backgroundColor: 'rgba(53, 194, 127, 0.6)',
           backdropFilter: 'blur(7px)',
@@ -48,18 +48,18 @@ export default function HeaderProfile() {
       >
         <div className="flex flex-wrap justify-center items-center text-[#F6F6F9] gap-4 sm:gap-6">
           <div className="flex-1 sm:w-2xl text-center">
-            <p>Exercices</p>
+            <p>Exercice numéro</p>
             <Score value={currentExercise} />
           </div>
 
-          <Picture src="./img/Divider.svg" alt="séparateur" className="" />
+          <Picture src="./img/Divider.svg" alt="séparateur" />
 
           <div className="flex-1 sm:w-2xl text-center">
-            <p>Questions</p>
+            <p>Questions répondues</p>
             <Score value={currentQuestion} />
           </div>
 
-          <Picture src="./img/Divider.svg" alt="séparateur" className="" />
+          <Picture src="./img/Divider.svg" alt="séparateur" />
 
           <div className="flex-1 sm:w-2xl text-center">
             <p>Réponses correctes</p>
